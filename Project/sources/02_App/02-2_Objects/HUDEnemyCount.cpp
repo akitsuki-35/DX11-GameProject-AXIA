@@ -25,7 +25,7 @@ void HUDEnemyCount::Initialize()
 	// テキスト部分レンダラーの設定
 	_mTextRenderer = AddComponent<TextRenderer>(this);
 	_mTextRenderer->SetFont("Kaisotai")->SetText("Enemy")
-		->SetTextSize(32)->SetShadowColor({0.0f, 0.5f, 1.0f, 1.0f})->SetColor({0.5f, 1.0f, 0.3f, 1.0f})
+		->SetTextSize(32)->SetShadowColor({ 0.0f, 0.5f, 1.0f, 1.0f })->SetColor({ 0.5f, 1.0f, 0.3f, 1.0f })
 		->LoadShader("Font");
 
 	// エネミー数レンダラーの設定

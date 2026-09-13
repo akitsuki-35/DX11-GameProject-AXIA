@@ -47,6 +47,7 @@ void GameManager::Initialize()
 	_mGameAudios.emplace("Destroy", destroy);
 
 	// タイマー
+	_mWaveInterval = AddComponent<Timer>(this);
 	_mHitStop = AddComponent<Timer>(this);
 	_mSceneChangeTimer = AddComponent<Timer>(this);
 
@@ -68,14 +69,20 @@ void GameManager::Update(double deltaTime)
 
 	bool isMaxWave = false;
 
+	// そのウェーブの敵が全滅しているならスロー演出とインターバルの後、次ウェーブへ移行
+	if (mEnemyCount == 0 && _mHitStop->IsTimeUp() && mWave != MAX_WAVE) {
+		_mWaveInterval->Start(2.0);
+	}
+	// 最終ウェーブの場合はシーン遷移フラグをセット
+	else if (mEnemyCount == 0 && _mHitStop->IsTimeUp() && mWave == MAX_WAVE) {
+		isMaxWave = true;
+	}
+
 	// ウェーブカウント増加と敵配置
-	if (mEnemyCount == 0 && _mHitStop->IsTimeUp()) {
+	if (_mWaveInterval->IsTimeUp() && !isMaxWave) {
 		if (mWave < MAX_WAVE) {
 			mWave++;
 			enemySpawn();
-		}
-		else if (mWave == MAX_WAVE) {
-			isMaxWave = true;
 		}
 	}
 
@@ -85,7 +92,7 @@ void GameManager::Update(double deltaTime)
 	// シーン遷移処理
 	// 1.遷移条件を満たしたら遷移までのウェイトタイマーをセット
 	if (endFlag && !mTransitionWait && !_mSceneChangeTimer->GetEnable()) {
-		GameManager::SetSlow(true);
+		SetSlow(true);
 		_mSceneChangeTimer->Start(1.5);
 	}
 
@@ -100,7 +107,7 @@ void GameManager::Update(double deltaTime)
 	// 3.フェードアウトが完了したらシーン遷移
 	if (mTransitionWait && !Transition::getInstance().GetTransitionActive()) {
 		mTransitionWait = false;
-		GameManager::SetSlow(false);
+		SetSlow(false);
 		SceneManager::getInstance().SceneChange<Result>();
 	}
 
@@ -125,8 +132,10 @@ void GameManager::Draw() const
 
 void GameManager::EnemyCollision(GameObject& other, Vector3& position, float dt)
 {
+	// エネミー用簡易コリジョン処理
 	auto enemies = Game::GetGameObjects<Enemy>();
 	for (auto enemy : enemies) {
+		// 自身は無視
 		if (enemy == dynamic_cast<Enemy*>(&other)) continue;
 
 		// 相手との距離を計算
@@ -136,13 +145,14 @@ void GameManager::EnemyCollision(GameObject& other, Vector3& position, float dt)
 		// 半径の合計
 		float min = 4.0f;
 
+		// 当たり判定
 		if (distance < min && distance > 0.0f) {
 			otherDir.Normalize();
 
-			// めり込んでいる距離を計算
+			// 重なっている距離を計算
 			float overlap = min - distance;
 
-			// 押し出し
+			// 押し出しをかける
 			position += otherDir * overlap * 5.0f * dt;
 		}
 	}

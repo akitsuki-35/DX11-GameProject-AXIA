@@ -25,7 +25,7 @@ void HUDWave::Initialize()
 	// テキスト部分レンダラーの設定
 	_mTextRenderer = AddComponent<TextRenderer>(this);
 	_mTextRenderer->SetFont("Kaisotai")->SetText("Wave")
-		->SetTextSize(48)->SetShadowColor({0.0f, 0.5f, 1.0f, 1.0f})->SetColor({0.5f, 1.0f, 0.3f, 1.0f})
+		->SetTextSize(48)->SetShadowColor({ 0.0f, 0.5f, 1.0f, 1.0f })->SetColor({ 0.5f, 1.0f, 0.3f, 1.0f })
 		->LoadShader("Font");
 
 	// ウェーブ数値レンダラーの設定

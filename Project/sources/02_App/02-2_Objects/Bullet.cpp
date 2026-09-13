@@ -133,10 +133,16 @@ void Bullet::hitEffect(Enemy* enemy)
 		score += 2000;
 
 		// 最後の敵の場合はさらに演出を強化
-		if (GameManager::GetWave() == 5 && GameManager::GetEnemyCount() == 0) {
-			emitterLife = 3.0;
-			shake = 0.3f;
-			hitStop = 0.75;
+		if (GameManager::GetEnemyCount() == 0) {
+			if (GameManager::GetWave() == GameManager::GetMaxWave()) {
+				emitterLife = 3.0;
+				shake = 0.3f;
+				hitStop = 0.75;
+			}
+			else {
+				shake = 0.3f;
+				hitStop = 0.5;
+			}
 		}
 	}
 

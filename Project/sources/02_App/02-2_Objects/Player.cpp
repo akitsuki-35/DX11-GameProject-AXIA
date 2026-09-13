@@ -52,12 +52,6 @@ void Player::Update(double deltaTime)
 	// dtをfloatに変換
 	float dt = static_cast<float>(deltaTime);
 
-	if (Input::GetKeyTrigger('Z')) {
-		Damage(10);
-		Shake(0.1f);
-		GameManager::SetHitStop(0.025);
-	}
-
 	// 抵抗力
 	float r = 5.0f;
 
@@ -77,10 +71,10 @@ void Player::Update(double deltaTime)
 	mVelocity += forward * 100.0f * dt;
 
 	// キー入力で旋回
-	if (Input::GetKeyPress(VK_RIGHT)) {
+	if (Input::GetKeyPress(VK_RIGHT) && !Input::GetKeyPress(VK_LEFT)) {
 		rotation.z = std::max(rotation.z - 2.0f * dt, -1.0f);
 	}
-	else if (Input::GetKeyPress(VK_LEFT)) {
+	else if (Input::GetKeyPress(VK_LEFT) && !Input::GetKeyPress(VK_RIGHT)) {
 		rotation.z = std::min(rotation.z + 2.0f * dt, 1.0f);
 	}
 	else {
@@ -89,12 +83,12 @@ void Player::Update(double deltaTime)
 		else if (rotation.z < 0.0f) rotation.z = std::min(rotation.z + 2.0f * dt, 0.0f);
 	}
 
-	// 下キーでスピードダウン
-	if (Input::GetKeyPress(VK_DOWN)) {
-		mVelocity -= forward * 30.0f * dt;
+	// SHIFTキーでスピードダウン・Xキーでスピードアップ
+	if (Input::GetKeyPress(VK_SHIFT)) {
+		mVelocity -= forward * 50.0f * dt;
 	}
-	else if (Input::GetKeyPress('B')) {
-
+	if (Input::GetKeyPress('X')) {
+		mVelocity += forward * 105.0f * dt;
 	}
 
 	// カメラ方向にプレイヤーを向ける
@@ -116,7 +110,7 @@ void Player::Update(double deltaTime)
 
 	// 弾の発射
 	if(!_mShotInterval->GetEnable() && !GameManager::IsTransition())
-	if (Input::GetKeyPress(VK_SPACE)) {
+	if (Input::GetKeyPress('Z')) {
 		GameManager::AudioPlay("Shot");
 		Bullet* bullet = Game::AddGameObject<Bullet>();
 		bullet->SetPosition(mTransform.GetPosition());

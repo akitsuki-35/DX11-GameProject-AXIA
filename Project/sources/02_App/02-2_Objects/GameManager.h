@@ -30,6 +30,9 @@ private:
 	static inline int mWave{ 0 };
 	static inline constexpr int MAX_WAVE{ 5 };
 
+	// 次ウェーブに移行するまでのタイマー
+	static inline Timer* _mWaveInterval{ nullptr };
+
 	// 敵の数
 	static inline int mEnemyCount{ 0 };
 	static inline int mMaxEnemyCount{};
@@ -49,7 +52,7 @@ private:
 	// トランジション中フラグ
 	static inline bool mTransitionWait{ false };
 
-	// 敵全滅～シーン遷移までのタイマー
+	// 最終ウェーブ敵全滅～シーン遷移までのタイマー
 	static inline Timer* _mSceneChangeTimer{ nullptr };
 
 private:
@@ -75,6 +78,7 @@ public:
 
 	// ウェーブ数取得
 	static int GetWave() { return mWave; }
+	static int GetMaxWave() { return MAX_WAVE; }
 
 	// エネミーカウント関連
 	static int GetEnemyCount() { return mEnemyCount; }
