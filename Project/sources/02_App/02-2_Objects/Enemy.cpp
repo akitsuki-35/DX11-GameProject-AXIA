@@ -137,6 +137,7 @@ void Enemy::Damage()
 {
 	mLife--;
 
+	// HPが0なら消滅
 	if (mLife <= 0) {
 		SetDestroy();
 	}
@@ -150,33 +151,6 @@ void Enemy::Shake(float intensity, double shakeTime)
 	// タイマーをセット
 	_mShakeTimer->Start(shakeTime);
 }
-
-//Enemy* Enemy::PlayerLook()
-//{
-//	float angleY = 0.0f;
-//
-//	auto player = Game::GetGameObject<Player>();
-//	Vector3 playerPosition = player->GetPosition();
-//
-//	if (fabsf(playerPosition.x) < 0.001f && fabsf(playerPosition.z) < 0.001f) {
-//		Vector3 position = mTransform.GetPosition();
-//		
-//		if (position.x < 0.0f && position.z < 0.0f) {
-//			angleY = atan2f(position.x, position.z);
-//		}
-//		else {
-//			angleY = atan2f(-position.x, -position.z);
-//		}
-//	}
-//	else {
-//		Vector3 dir = playerPosition - mTransform.GetPosition();
-//		angleY = atan2f(dir.x, dir.z);
-//	}
-//
-//	mTransform.SetRotation({ 0.0f, angleY, 0.0f });
-//
-//	return this;
-//}
 
 void Enemy::shakeUpdate(Vector3& position)
 {

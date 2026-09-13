@@ -35,7 +35,9 @@ void Player::Initialize()
 		SetParameter({ 0.2f, 0.8f, 1.0f, 0.0f })->
 		LoadShader("PBR");
 
+	// タイマーのセット
 	_mShotInterval = AddComponent<Timer>(this);
+	_mShakeTimer = AddComponent<Timer>(this);
 }
 
 void Player::Finalize()
@@ -49,6 +51,12 @@ void Player::Update(double deltaTime)
 
 	// dtをfloatに変換
 	float dt = static_cast<float>(deltaTime);
+
+	if (Input::GetKeyTrigger('Z')) {
+		Damage(10);
+		Shake(0.1f);
+		GameManager::SetHitStop(0.025);
+	}
 
 	// 抵抗力
 	float r = 5.0f;
@@ -128,4 +136,41 @@ void Player::Update(double deltaTime)
 void Player::Draw() const
 {
 	GameObject::Draw();
+}
+
+void Player::Damage(int damage)
+{
+	mLife -= damage;
+
+	if (mLife < 0) {
+		mLife = 0;
+	}
+}
+
+void Player::Shake(float intensity, double shakeTime)
+{
+	// 揺れの強さをセット
+	mShakeIntensity = intensity;
+
+	// タイマーをセット
+	_mShakeTimer->Start(shakeTime);
+}
+
+void Player::shakeUpdate(Vector3& position)
+{
+	// タイマーの進行度に応じて揺れの強さを算出
+	float progress = _mShakeTimer->GetProgress();
+	float intensity = mShakeIntensity * progress;
+	float angle = static_cast<float>(_mShakeTimer->GetTime()) * 50.0f;
+	float shakeX = intensity * cosf(angle);
+	float shakeY = intensity * sinf(angle);
+
+	// 座標に揺れを加算
+	position.x += shakeX;
+	position.y += shakeY;
+
+	// 現在時間が0なら揺れの強さを0にする
+	if (_mShakeTimer->IsTimeUp()) {
+		mShakeIntensity = 0.0f;
+	}
 }

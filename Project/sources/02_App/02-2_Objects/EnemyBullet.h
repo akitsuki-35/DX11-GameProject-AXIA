@@ -1,39 +1,48 @@
 ﻿/*============================================================
-*	@file	 : Score.h
-*	@brief	 : スコア表示
+*	@file	 : EnemyBullet.h
+*	@brief	 : 敵の弾
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
-* 　@date	 : 2026/06/30
-*	@updated : 2026/08/12
+* 　@date	 : 2026/06/13
+*	@updated : 2026/09/13
 *============================================================*/
 #pragma once
 
 #include "GameObject.h"
+#include <memory>
 
 /*------------------------------------------------------------
 	前方宣言
 ------------------------------------------------------------*/
-class Timer;
-class TextRenderer;
+class ParticleEmitter;
+class Player;
 
 /*============================================================
-*	@class	: Score
-*	@brief	: スコア
+*	@class	: EnemyBullet
+*	@brief	: 敵の弾
 *============================================================*/
-class Score : public GameObject
+class EnemyBullet : public GameObject
 {
 private:
-	int mScore{};
-	TextRenderer* _mTextRenderer{ nullptr };
-	TextRenderer* _mScoreRenderer{ nullptr };
+	Vector3 mVelocity{ 0.0f, 0.0f, 0.0f };
+	Vector3 mAccel{ 0.0f, 0.0f, 0.0f };
+
+	// 弾が消えるまでの時間
+	double mLifeTime{ 2.0 };
+
+	// 軌跡用パーティクル
+	ParticleEmitter* _mEmitter{};
 
 public:
-	Score() = default;
+	EnemyBullet() = default;
 
 	void Initialize() override;
 	void Finalize() override;
 	void Update(double deltaTime) override;
 	void Draw() const override;
 
-	void AddScore(int add) { mScore += add; }
+	void SetVelocity(const Vector3& velocity) { mVelocity = velocity; }
+
+private:
+	void hitEffect(Player* enemy);
 };

@@ -28,9 +28,11 @@ class GameManager : public GameObject
 private:
 	// ウェーブ数
 	static inline int mWave{ 0 };
+	static inline constexpr int MAX_WAVE{ 5 };
 
 	// 敵の数
 	static inline int mEnemyCount{ 0 };
+	static inline int mMaxEnemyCount{};
 
 	// ゲーム内BGM・SE
 	static inline std::unordered_map<std::string, AudioPlayer*> _mGameAudios{};
@@ -76,6 +78,7 @@ public:
 
 	// エネミーカウント関連
 	static int GetEnemyCount() { return mEnemyCount; }
+	static int GetMaxEnemyCount() { return mMaxEnemyCount; }
 	static void AddEnemy() { mEnemyCount++; }
 	static void ReduceEnemy() { mEnemyCount--; }
 

@@ -12,6 +12,7 @@
 #include "Game.h"
 #include "Result.h"
 #include "Camera.h"
+#include "Player.h"
 #include "Enemy.h"
 #include "ParticleEmitter.h"
 #include "Timer.h"
@@ -65,15 +66,25 @@ void GameManager::Update(double deltaTime)
 	// ステージエフェクト更新
 	stageEffectUpdate();
 
+	bool isMaxWave = false;
+
 	// ウェーブカウント増加と敵配置
 	if (mEnemyCount == 0 && _mHitStop->IsTimeUp()) {
-		mWave++;
-		enemySpawn();
+		if (mWave < MAX_WAVE) {
+			mWave++;
+			enemySpawn();
+		}
+		else if (mWave == MAX_WAVE) {
+			isMaxWave = true;
+		}
 	}
+
+	// 遷移条件セット
+	bool endFlag = isMaxWave || Game::GetGameObject<Player>()->IsDestroy();
 
 	// シーン遷移処理
 	// 1.遷移条件を満たしたら遷移までのウェイトタイマーをセット
-	if (mWave == 6 && !mTransitionWait && !_mSceneChangeTimer->GetEnable()) {
+	if (endFlag && !mTransitionWait && !_mSceneChangeTimer->GetEnable()) {
 		GameManager::SetSlow(true);
 		_mSceneChangeTimer->Start(1.5);
 	}
@@ -252,6 +263,8 @@ void GameManager::enemySpawn()
 	default:
 		break;
 	}
+
+	mMaxEnemyCount = mEnemyCount;
 }
 
 void GameManager::stageEffectUpdate()

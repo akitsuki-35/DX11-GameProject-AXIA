@@ -18,8 +18,10 @@
 #include "Bullet.h"
 #include "Sky.h"
 #include "ScreenFilter.h"
-#include "Score.h"
-#include "HP.h"
+#include "HUDScore.h"
+#include "HUDLife.h"
+#include "HUDWave.h"
+#include "HUDEnemyCount.h"
 
 void Game::Initialize()
 {
@@ -40,8 +42,10 @@ void Game::Initialize()
 
 	// 2Dオブジェクト
 	AddGameObject<ScreenFilter>();
-	AddGameObject<Score>();
-	AddGameObject<HP>();
+	AddGameObject<HUDScore>();
+	AddGameObject<HUDLife>();
+	AddGameObject<HUDWave>();
+	AddGameObject<HUDEnemyCount>();
 
 	// マネージャー（制御用ダミーオブジェクト）
 	AddGameObject<GameManager>();

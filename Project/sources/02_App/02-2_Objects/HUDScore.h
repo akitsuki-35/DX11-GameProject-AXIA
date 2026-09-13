@@ -1,10 +1,10 @@
 ﻿/*============================================================
-*	@file	 : Enemy.h
-*	@brief	 : エネミー
+*	@file	 : HUDScore.h
+*	@brief	 : スコア表示
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
-* 　@date	 : 2026/05/19
-*	@updated : 2026/08/04
+* 　@date	 : 2026/06/30
+*	@updated : 2026/09/13
 *============================================================*/
 #pragma once
 
@@ -14,37 +14,26 @@
 	前方宣言
 ------------------------------------------------------------*/
 class Timer;
+class TextRenderer;
 
 /*============================================================
-*	@class	: Enemy
-*	@brief	: エネミー
+*	@class	: HUDScore
+*	@brief	: スコア表示用HUD
 *============================================================*/
-class Enemy : public GameObject
+class HUDScore : public GameObject
 {
 private:
-	Vector3 mVelocity{ 0.0f, 0.0f, 0.0f };
-	Vector3 mAccel{ 0.0f, 0.0f, 0.0f };
-
-	// 体力
-	int mLife{ 3 };
-
-	Timer* _mShakeTimer{ nullptr }; // シェイク用タイマー
-	float mShakeIntensity{}; // シェイク強度
+	int mScore{};
+	TextRenderer* _mTextRenderer{ nullptr };
+	TextRenderer* _mScoreRenderer{ nullptr };
 
 public:
-	Enemy() = default;
+	HUDScore() = default;
 
 	void Initialize() override;
 	void Finalize() override;
 	void Update(double deltaTime) override;
 	void Draw() const override;
 
-	// ダメージ
-	void Damage();
-
-	// シェイク
-	void Shake(float intensity, double shakeTime = 1.0);
-
-private:
-	void shakeUpdate(Vector3& position);
+	void AddScore(int add) { mScore += add; }
 };

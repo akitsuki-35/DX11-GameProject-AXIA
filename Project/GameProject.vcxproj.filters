@@ -285,7 +285,7 @@
     <ClCompile Include="sources\02_App\02-2_Objects\Player.cpp">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\Score.cpp">
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDScore.cpp">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClCompile>
     <ClCompile Include="sources\02_App\02-2_Objects\Sky.cpp">
@@ -342,7 +342,16 @@
     <ClCompile Include="sources\02_App\02-2_Objects\ResultManager.cpp">
       <Filter>02_App\02-2_Objects\Result</Filter>
     </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\HP.cpp">
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDLife.cpp">
+      <Filter>02_App\02-2_Objects\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\02_App\02-2_Objects\EnemyBullet.cpp">
+      <Filter>02_App\02-2_Objects\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDWave.cpp">
+      <Filter>02_App\02-2_Objects\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDEnemyCount.cpp">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -566,7 +575,7 @@
     <ClInclude Include="sources\02_App\02-2_Objects\Player.h">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\Score.h">
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDScore.h">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClInclude>
     <ClInclude Include="sources\02_App\02-2_Objects\Sky.h">
@@ -623,7 +632,16 @@
     <ClInclude Include="sources\02_App\02-2_Objects\ResultManager.h">
       <Filter>02_App\02-2_Objects\Result</Filter>
     </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\HP.h">
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDLife.h">
+      <Filter>02_App\02-2_Objects\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\02_App\02-2_Objects\EnemyBullet.h">
+      <Filter>02_App\02-2_Objects\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDWave.h">
+      <Filter>02_App\02-2_Objects\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDEnemyCount.h">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClInclude>
   </ItemGroup>

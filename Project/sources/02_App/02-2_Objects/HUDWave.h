@@ -1,10 +1,10 @@
 ﻿/*============================================================
-*	@file	 : HP.h
-*	@brief	 : スコア表示
+*	@file	 : HUDWave.h
+*	@brief	 : ウェーブ数表示
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
-* 　@date	 : 2026/06/30
-*	@updated : 2026/08/12
+* 　@date	 : 2026/09/13
+*	@updated : 2026/09/13
 *============================================================*/
 #pragma once
 
@@ -17,23 +17,20 @@ class Timer;
 class TextRenderer;
 
 /*============================================================
-*	@class	: HP
-*	@brief	: スコア
+*	@class	: HUDWave
+*	@brief	: ウェーブ数表示用HUD
 *============================================================*/
-class HP : public GameObject
+class HUDWave : public GameObject
 {
 private:
-	int mHP{};
 	TextRenderer* _mTextRenderer{ nullptr };
-	TextRenderer* _mHPRenderer{ nullptr };
+	TextRenderer* _mWaveRenderer{ nullptr };
 
 public:
-	HP() = default;
+	HUDWave() = default;
 
 	void Initialize() override;
 	void Finalize() override;
 	void Update(double deltaTime) override;
 	void Draw() const override;
-
-	void AddHP(int add) { mHP += add; }
 };

@@ -1,23 +1,22 @@
 ﻿/*============================================================
-*	@file	 : Bullet.cpp
-*	@brief	 : 弾
+*	@file	 : EnemyBullet.cpp
+*	@brief	 : 敵の弾
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
-* 　@date	 : 2026/06/02
+* 　@date	 : 2026/09/13
 *	@updated : 2026/09/13
 *============================================================*/
-#include "Bullet.h"
+#include "EnemyBullet.h"
 #include "Game.h"
 #include "GameManager.h"
-#include "Enemy.h"
+#include "Player.h"
 #include "Camera.h"
 #include "ParticleEmitter.h"
-#include "HUDScore.h"
 #include "Input.h"
 #include "ModelRenderer.h"
 #include "ParticleRenderer.h"
 
-void Bullet::Initialize()
+void EnemyBullet::Initialize()
 {
 	// トランスフォームの初期化
 	mTransform = Transform(
@@ -32,18 +31,18 @@ void Bullet::Initialize()
 	
 	// 軌跡用パーティクルのセット
 	_mEmitter = Game::AddGameObject<ParticleEmitter>();
-	_mEmitter->LoadCSV("assets\\csv\\Bullet.csv");
+	_mEmitter->LoadCSV("assets\\csv\\EnemyBullet.csv");
 
 	// モデル・シェーダー読み込み
 	AddComponent<ModelRenderer>(this)->LoadModel("assets\\models\\bullet.obj")->LoadShader("Unlit");
 }
 
-void Bullet::Finalize()
+void EnemyBullet::Finalize()
 {
 	GameObject::Finalize();
 }
 
-void Bullet::Update(double deltaTime)
+void EnemyBullet::Update(double deltaTime)
 {
 	if (mDestroy) return;
 
@@ -67,24 +66,20 @@ void Bullet::Update(double deltaTime)
 	_mEmitter->SetVelocity({ -mVelocity.x * 0.1f, -mVelocity.y * 0.1f, -mVelocity.z * 0.1f });
 
 	// 敵との衝突判定
-	auto enemies = Game::GetGameObjects<Enemy>();
-	for (auto enemy : enemies) {
-		// 距離計算
-		Vector3 dir = enemy->GetPosition() - position;
-		float length = dir.Length();
+	auto player = Game::GetGameObject<Player>();
+	// 距離計算
+	Vector3 dir = player->GetPosition() - position;
+	float length = dir.Length();
 
-		// 距離がオブジェクト半径より小さい
-		if (length < 2.0f) {
-			// 命中した敵・弾・パーティクルエミッタを削除
-			enemy->Damage();
-			SetDestroy();
-			_mEmitter->SetDestroy();
+	// 距離がオブジェクト半径より小さい
+	if (length < 2.0f) {
+		// 命中した敵・弾・パーティクルエミッタを削除
+		player->Damage(10);
+		SetDestroy();
+		_mEmitter->SetDestroy();
 
-			// ヒット演出
-			hitEffect(enemy);
-
-			break;
-		}
+		// ヒット演出
+		hitEffect(player);
 	}
 
 	// 一定時間経過で弾を削除
@@ -101,12 +96,12 @@ void Bullet::Update(double deltaTime)
 	GameObject::Update(deltaTime);
 }
 
-void Bullet::Draw() const
+void EnemyBullet::Draw() const
 {
 	GameObject::Draw();
 }
 
-void Bullet::hitEffect(Enemy* enemy)
+void EnemyBullet::hitEffect(Player* player)
 {
 	// 再生SEキー
 	std::string audio = "Hit";
@@ -120,24 +115,12 @@ void Bullet::hitEffect(Enemy* enemy)
 	// ヒットストップの長さ
 	double hitStop = 0.025;
 
-	// 加算スコア
-	int score = 200;
-
-	// 敵死亡時は演出を強化
-	if (enemy->IsDestroy()) {
+	// 死亡時は演出を強化
+	if (player->IsDestroy()) {
 		audio = "Destroy";
-		emitterLife = 1.0;
-		shake = 0.2f;
-		hitStop = 0.2;
-		GameManager::ReduceEnemy();
-		score += 2000;
-
-		// 最後の敵の場合はさらに演出を強化
-		if (GameManager::GetWave() == 5 && GameManager::GetEnemyCount() == 0) {
-			emitterLife = 3.0;
-			shake = 0.3f;
-			hitStop = 0.75;
-		}
+		emitterLife = 3.0;
+		shake = 0.3f;
+		hitStop = 0.75;
 	}
 
 	// ヒットSE
@@ -148,13 +131,10 @@ void Bullet::hitEffect(Enemy* enemy)
 		SetPosition({ mTransform.GetPosition().x, mTransform.GetPosition().y + 1.0f, mTransform.GetPosition().z});
 
 	// シェイク
-	enemy->Shake(shake);
+	player->Shake(shake);
 	auto camera = Game::GetGameObject<Camera>();
 	camera->Shake(shake);
 
 	// ヒットストップ
 	GameManager::SetHitStop(hitStop);
-
-	// スコア加算
-	Game::GetGameObject<HUDScore>()->AddScore(score);
 }

@@ -103,14 +103,17 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="sources\02_App\02-2_Objects\EnemyBullet.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\GameManager.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\GameObject.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\Grid.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\HP.cpp" />
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDEnemyCount.cpp" />
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDLife.cpp" />
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDWave.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\ParticleEmitter..cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\Player.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\ResultManager.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\Score.cpp">
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDScore.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -272,6 +275,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="sources\02_App\02-2_Objects\EnemyBullet.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\GameManager.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\GameObject.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -280,11 +284,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="sources\02_App\02-2_Objects\Grid.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\HP.h" />
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDEnemyCount.h" />
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDLife.h" />
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDWave.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\ParticleEmitter.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\Player.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\ResultManager.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\Score.h">
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDScore.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
