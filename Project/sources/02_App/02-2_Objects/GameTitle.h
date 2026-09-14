@@ -1,33 +1,23 @@
 ﻿/*============================================================
-*	@file	 : HUDScore.h
-*	@brief	 : スコア表示
+*	@file	 : GameTitle.h
+*	@brief	 : タイトル表示
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
-* 　@date	 : 2026/06/30
-*	@updated : 2026/09/13
+* 　@date	 : 2026/09/14
+*	@updated : 2026/09/14
 *============================================================*/
 #pragma once
 
 #include "GameObject.h"
 
-/*------------------------------------------------------------
-	前方宣言
-------------------------------------------------------------*/
-class Timer;
-class TextRenderer;
-
 /*============================================================
-*	@class	: HUDScore
-*	@brief	: スコア表示用HUD
+*	@class	: GameTitle
+*	@brief	: タイトル表示
 *============================================================*/
-class HUDScore : public GameObject
+class GameTitle : public GameObject
 {
-private:
-	TextRenderer* _mTextRenderer{ nullptr };
-	TextRenderer* _mScoreRenderer{ nullptr };
-
 public:
-	HUDScore() = default;
+	GameTitle() = default;
 
 	void Initialize() override;
 	void Finalize() override;

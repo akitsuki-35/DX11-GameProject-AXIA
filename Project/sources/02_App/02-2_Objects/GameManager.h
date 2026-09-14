@@ -37,9 +37,12 @@ private:
 	static inline int mEnemyCount{ 0 };
 	static inline int mMaxEnemyCount{};
 
+	// スコア
+	static inline int mScore{};
+
 	// ゲーム内BGM・SE
 	static inline std::unordered_map<std::string, AudioPlayer*> _mGameAudios{};
-	
+
 	// BGM音量
 	static inline float mBGMVolume{};
 	
@@ -85,6 +88,10 @@ public:
 	static int GetMaxEnemyCount() { return mMaxEnemyCount; }
 	static void AddEnemy() { mEnemyCount++; }
 	static void ReduceEnemy() { mEnemyCount--; }
+
+	// スコア関連
+	static int GetScore() { return mScore; }
+	static void AddScore(int add) { mScore += add; }
 
 	// オーディオ再生
 	static void AudioPlay(std::string key);

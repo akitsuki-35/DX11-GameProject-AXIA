@@ -29,12 +29,17 @@ void GameManager::Initialize()
 	// ウェーブ数初期化
 	mWave = 1;
 
-	// BGM読み込み・再生
-	mBGMVolume = 0.05f;
+	// スコア初期化
+	mScore = 0;
+
+	// エネミーカウント初期化
+	mEnemyCount = 0;
+	mMaxEnemyCount = 0;
+
+	// BGM読み込み
+	mBGMVolume = 0.09f;
 	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Stage.ogg")->SetVolume(mBGMVolume);
 	_mGameAudios.emplace("BGM", bgm);
-
-	_mGameAudios["BGM"]->Play();
 
 	// SE読み込み
 	AudioPlayer* shot = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Shot.mp3")->SetVolume(0.1f);
@@ -55,6 +60,8 @@ void GameManager::Initialize()
 	_mEffect = Game::AddGameObject<ParticleEmitter>()->LoadCSV("assets\\csv\\Effect.csv");
 
 	enemySpawn();
+
+	_mGameAudios["BGM"]->Play(true);
 }
 
 void GameManager::Finalize()

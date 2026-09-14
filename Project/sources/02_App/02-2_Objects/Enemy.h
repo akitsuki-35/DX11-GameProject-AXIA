@@ -28,6 +28,9 @@ private:
 	// 体力
 	int mLife{ 3 };
 
+	// ショット間隔
+	Timer* _mShotInterval{ nullptr };
+
 	Timer* _mShakeTimer{ nullptr }; // シェイク用タイマー
 	float mShakeIntensity{}; // シェイク強度
 
@@ -47,4 +50,6 @@ public:
 
 private:
 	void shakeUpdate(Vector3& position);
+
+	double setShotInterval(double min = 1.0, double max = 3.0);
 };

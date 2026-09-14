@@ -19,7 +19,7 @@
 class ResultManager : public GameObject
 {
 private:
-	// タイトルBGM・SE
+	// リザルトBGM・SE
 	static inline std::unordered_map<std::string, AudioPlayer*> _mResultAudios{};
 
 	// トランジション中フラグ

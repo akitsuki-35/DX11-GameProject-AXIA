@@ -72,9 +72,10 @@ void EnemyBullet::Update(double deltaTime)
 	float length = dir.Length();
 
 	// 距離がオブジェクト半径より小さい
-	if (length < 2.0f) {
-		// 命中した敵・弾・パーティクルエミッタを削除
-		player->Damage(10);
+	if (length < 2.0f && !player->IsDestroy()) {
+		player->Damage(3 + rand() % 3);
+
+		// 弾とパーティクルエミッタを削除
 		SetDestroy();
 		_mEmitter->SetDestroy();
 
@@ -109,6 +110,9 @@ void EnemyBullet::hitEffect(Player* player)
 	// エミッタ寿命
 	double emitterLife = 0.5;
 
+	// エミッタ発生座標
+	Vector3 effectPosition = mTransform.GetPosition();
+
 	// シェイクの強さ
 	float shake = 0.1f;
 
@@ -119,6 +123,7 @@ void EnemyBullet::hitEffect(Player* player)
 	if (player->IsDestroy()) {
 		audio = "Destroy";
 		emitterLife = 3.0;
+		effectPosition = player->GetPosition();
 		shake = 0.3f;
 		hitStop = 0.75;
 	}
@@ -126,9 +131,11 @@ void EnemyBullet::hitEffect(Player* player)
 	// ヒットSE
 	GameManager::AudioPlay(audio);
 
+	effectPosition.y += 1.0f;
+
 	// 爆発エフェクト
 	Game::AddGameObject<ParticleEmitter>()->LoadCSV("assets\\csv\\Explosion.csv")->SetEmitterLife(emitterLife)->
-		SetPosition({ mTransform.GetPosition().x, mTransform.GetPosition().y + 1.0f, mTransform.GetPosition().z});
+		SetPosition(effectPosition);
 
 	// シェイク
 	player->Shake(shake);

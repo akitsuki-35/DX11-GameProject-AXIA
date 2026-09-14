@@ -15,7 +15,15 @@
 void TitleManager::Initialize()
 {
 	// トランジション処理
-	Transition::getInstance().Start(0.5, true);
+	Transition::getInstance().Start(1.0, true);
+
+	_mTitleAudios.clear();
+
+	// BGM読み込み
+	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Title.ogg")->SetVolume(0.1f);
+	_mTitleAudios.emplace("BGM", bgm);
+
+	_mTitleAudios["BGM"]->Play(true);
 }
 
 void TitleManager::Finalize()

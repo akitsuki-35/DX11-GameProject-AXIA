@@ -16,6 +16,14 @@ void ResultManager::Initialize()
 {
 	// トランジション処理
 	Transition::getInstance().Start(1.0, true);
+	
+	_mResultAudios.clear();
+
+	// BGM読み込み
+	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Result.ogg")->SetVolume(0.1f);
+	_mResultAudios.emplace("BGM", bgm);
+
+	_mResultAudios["BGM"]->Play(true);
 }
 
 void ResultManager::Finalize()

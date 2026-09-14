@@ -106,6 +106,7 @@
     <ClCompile Include="sources\02_App\02-2_Objects\EnemyBullet.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\GameManager.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\GameObject.cpp" />
+    <ClCompile Include="sources\02_App\02-2_Objects\GameTitle.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\Grid.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDEnemyCount.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDLife.cpp" />
@@ -119,6 +120,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="sources\02_App\02-2_Objects\ResultScore.cpp" />
+    <ClCompile Include="sources\02_App\02-2_Objects\ResultText.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\ScreenFilter.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\Sky.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -283,6 +286,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="sources\02_App\02-2_Objects\GameTitle.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\Grid.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDEnemyCount.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDLife.h" />
@@ -296,6 +300,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="sources\02_App\02-2_Objects\ResultScore.h" />
+    <ClInclude Include="sources\02_App\02-2_Objects\ResultText.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\ScreenFilter.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\Sky.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

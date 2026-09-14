@@ -9,6 +9,7 @@
 #include "Enemy.h"
 #include "Game.h"
 #include "Player.h"
+#include "EnemyBullet.h"
 #include "Timer.h"
 #include "GameManager.h"
 #include "ModelRenderer.h"
@@ -31,7 +32,10 @@ void Enemy::Initialize()
 		SetParameter({ 0.2f, 0.8f, 1.0f, 0.0f })->
 		LoadShader("PBR");
 
-	// シェイク用タイマーのセット
+	// タイマーのセット
+	_mShotInterval = AddComponent<Timer>(this);
+	_mShotInterval->Start(setShotInterval());
+
 	_mShakeTimer = AddComponent<Timer>(this);
 
 	// エネミーカウントを増加
@@ -51,7 +55,7 @@ void Enemy::Update(double deltaTime)
 	float dt = static_cast<float>(deltaTime);
 
 	// 抵抗力
-	float r = 5.0f;
+	float r = 2.5f;
 
 	// 現在の座標と回転を取得
 	Vector3 position = mTransform.GetPosition();
@@ -121,6 +125,16 @@ void Enemy::Update(double deltaTime)
 	// 座標クランプ
 	GameManager::ClampPosition(position);
 	
+	// 弾の発射
+	if (_mShotInterval->IsTimeUp() && !GameManager::IsTransition()) {
+		GameManager::AudioPlay("Shot");
+		EnemyBullet* bullet = Game::AddGameObject<EnemyBullet>();
+		bullet->SetPosition(mTransform.GetPosition());
+		bullet->SetVelocity(forward * 50.0f);
+
+		_mShotInterval->Start(setShotInterval());
+	}
+
 	// 座標と回転をセット
 	mTransform.SetPosition(position);
 	mTransform.SetRotation(rotation);
@@ -169,4 +183,12 @@ void Enemy::shakeUpdate(Vector3& position)
 	if (_mShakeTimer->IsTimeUp()) {
 		mShakeIntensity = 0.0f;
 	}
+}
+
+double Enemy::setShotInterval(double min, double max)
+{
+	// ランダムにインターバルを設定
+	double interval = min + (double)rand() / RAND_MAX * (max - min);
+
+	return interval;
 }

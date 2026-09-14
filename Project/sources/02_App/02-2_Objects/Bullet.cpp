@@ -114,6 +114,9 @@ void Bullet::hitEffect(Enemy* enemy)
 	// エミッタ寿命
 	double emitterLife = 0.5;
 
+	// エミッタ発生座標
+	Vector3 effectPosition = mTransform.GetPosition();
+
 	// シェイクの強さ
 	float shake = 0.1f;
 
@@ -127,6 +130,7 @@ void Bullet::hitEffect(Enemy* enemy)
 	if (enemy->IsDestroy()) {
 		audio = "Destroy";
 		emitterLife = 1.0;
+		effectPosition = enemy->GetPosition();
 		shake = 0.2f;
 		hitStop = 0.2;
 		GameManager::ReduceEnemy();
@@ -149,9 +153,11 @@ void Bullet::hitEffect(Enemy* enemy)
 	// ヒットSE
 	GameManager::AudioPlay(audio);
 
+	effectPosition.y += 1.0f;
+
 	// 爆発エフェクト
 	Game::AddGameObject<ParticleEmitter>()->LoadCSV("assets\\csv\\Explosion.csv")->SetEmitterLife(emitterLife)->
-		SetPosition({ mTransform.GetPosition().x, mTransform.GetPosition().y + 1.0f, mTransform.GetPosition().z});
+		SetPosition(effectPosition);
 
 	// シェイク
 	enemy->Shake(shake);
@@ -162,5 +168,5 @@ void Bullet::hitEffect(Enemy* enemy)
 	GameManager::SetHitStop(hitStop);
 
 	// スコア加算
-	Game::GetGameObject<HUDScore>()->AddScore(score);
+	GameManager::AddScore(score);
 }

@@ -47,7 +47,13 @@ void Player::Finalize()
 
 void Player::Update(double deltaTime)
 {
+	if (IsDestroy()) return;
+
 	if (GameManager::IsHitStop()) return;
+
+	if (Input::GetKeyPress('A')) {
+		Damage(100);
+	}
 
 	// dtをfloatに変換
 	float dt = static_cast<float>(deltaTime);
@@ -109,15 +115,16 @@ void Player::Update(double deltaTime)
 	GameManager::ClampPosition(position);
 
 	// 弾の発射
-	if(!_mShotInterval->GetEnable() && !GameManager::IsTransition())
-	if (Input::GetKeyPress('Z')) {
-		GameManager::AudioPlay("Shot");
-		Bullet* bullet = Game::AddGameObject<Bullet>();
-		bullet->SetPosition(mTransform.GetPosition());
-		bullet->SetVelocity(forward * 100.0f);
+	if (!_mShotInterval->GetEnable() && !GameManager::IsTransition()) {
+		if (Input::GetKeyPress('Z')) {
+			GameManager::AudioPlay("Shot");
+			Bullet* bullet = Game::AddGameObject<Bullet>();
+			bullet->SetPosition(mTransform.GetPosition());
+			bullet->SetVelocity(forward * 100.0f);
 
-		// インターバルのセット
-		_mShotInterval->Start(0.2);
+			// インターバルのセット
+			_mShotInterval->Start(0.2);
+		}
 	}
 
 	// 座標と回転をセット

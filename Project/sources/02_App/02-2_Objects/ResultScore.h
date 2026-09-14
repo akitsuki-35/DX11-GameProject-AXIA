@@ -1,40 +1,41 @@
 ﻿/*============================================================
-*	@file	 : BackGroundTexture.h
-*	@brief	 : 背景テクスチャ
+*	@file	 : ResultScore.h
+*	@brief	 : リザルトスコア表示
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
-* 　@date	 : 2026/09/10
-*	@updated : 2026/09/10
+* 　@date	 : 2026/09/14
+*	@updated : 2026/09/14
 *============================================================*/
 #pragma once
 
 #include "GameObject.h"
-#include "Vector2.h"
 
 /*------------------------------------------------------------
 	前方宣言
 ------------------------------------------------------------*/
-class UIRenderer;
+class TextRenderer;
+class Timer;
 
 /*============================================================
-*	@class	: BackGroundTexture
-*	@brief	: 背景テクスチャ
+*	@class	: ResultScore
+*	@brief	: リザルトスコア表示
 *============================================================*/
-class BackGroundTexture : public GameObject
+class ResultScore : public GameObject
 {
 private:
-	UIRenderer* _mRenderer{ nullptr };
+	int mDisplayScore{};
+	TextRenderer* _mRenderer{ nullptr };
+	Timer* _mTimer{ nullptr };
 
 public:
-	BackGroundTexture() = default;
-	virtual ~BackGroundTexture() = default;
+	ResultScore() = default;
 
 	void Initialize() override;
 	void Finalize() override;
 	void Update(double deltaTime) override;
 	void Draw() const override;
 
-	BackGroundTexture* LoadTexture(const char* fileName);
-	BackGroundTexture* SetSize(const Vector2& size);
-	BackGroundTexture* SetColor(const DirectX::XMFLOAT4& color);
+private:
+	// 表示演出
+	int valueDrumRoll() const;
 };

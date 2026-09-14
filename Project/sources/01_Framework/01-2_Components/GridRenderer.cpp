@@ -68,7 +68,7 @@ void GridRenderer::Set(int xCount, int zCount, float size)
 
 	D3D11::DeviceManager::getInstance().GetDevice()->CreateBuffer(&bd, &sd, mVertexBuffer.GetAddressOf());
 
-	_mTexture = TextureManager::getInstance().Load("assets\\textures\\common\\white.png");
+	_mTexture = TextureManager::getInstance().Load("assets\\textures\\white.png");
 
 	delete[] pV;
 }

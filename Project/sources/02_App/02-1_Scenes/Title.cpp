@@ -9,13 +9,17 @@
 #include "Title.h"
 #include "TitleManager.h"
 #include "BackGroundTexture.h"
-#include "Timer.h"
+#include "GameTitle.h"
 
 void Title::Initialize()
 {
 	_mGameObjects.clear();
 
-	AddGameObject<BackGroundTexture>()->LoadTexture("assets\\textures\\title.png");
+	AddGameObject<BackGroundTexture>()->LoadTexture("assets\\textures\\title.jpg");
+	AddGameObject<BackGroundTexture>()->LoadTexture("assets\\textures\\white.jpg")->
+		SetColor({ 0.0f, 0.0f, 0.0f, 0.25f });
+
+	AddGameObject<GameTitle>();
 
 	// マネージャー（制御用ダミーオブジェクト）
 	AddGameObject<TitleManager>();

@@ -10,6 +10,7 @@
 #include "TextRenderer.h"
 #include "FontLoader.h"
 #include "Timer.h"
+#include "GameManager.h"
 #include <format>
 
 void HUDScore::Initialize()
@@ -42,7 +43,7 @@ void HUDScore::Finalize()
 void HUDScore::Update(double deltaTime)
 {
 	// 6桁でゼロ埋めする
-	std::string score = std::format("{:06}", mScore);
+	std::string score = std::format("{:06}", GameManager::GetScore());
 	_mScoreRenderer->SetText(score);
 
 	GameObject::Update(deltaTime);
