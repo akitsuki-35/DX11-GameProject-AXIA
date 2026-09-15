@@ -65,6 +65,7 @@ void ResultMenu::Update(double deltaTime)
 		}
 	}
 
+	// 選択項目を点滅させる
 	if (currentItem == 0) {
 		color.x = flashCalc(deltaTime);
 		_mTitleRenderer->SetColor({ color });
@@ -91,6 +92,7 @@ void ResultMenu::SetEaseTimer(double time)
 
 float ResultMenu::flashCalc(double deltaTime)
 {
+	// 点滅スピード計算
 	float flashSpeed = 5.0f;
 
 	static float time = 0.0f;
@@ -103,6 +105,7 @@ float ResultMenu::flashCalc(double deltaTime)
 
 void ResultMenu::easeItem(TextRenderer* renderer, float ease, bool isCurrent)
 {
+	// 選択項目のイージング
 	Vector2 itemOffset = renderer->GetOffset();
 	float startX = itemOffset.x;
 	float baseX = 0.0f;

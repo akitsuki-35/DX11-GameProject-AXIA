@@ -8,7 +8,6 @@
 *============================================================*/
 #include "HUDWave.h"
 #include "TextRenderer.h"
-#include "Timer.h"
 #include "GameManager.h"
 #include <format>
 
@@ -41,8 +40,13 @@ void HUDWave::Finalize()
 
 void HUDWave::Update(double deltaTime)
 {
-	std::string wave = std::format("{:0}", GameManager::GetWave());
-	_mWaveRenderer->SetText(wave);
+	if (GameManager::GetWave() == 0){
+		_mWaveRenderer->SetText("-");
+	}
+	else {
+		std::string wave = std::format("{:0}", GameManager::GetWave());
+		_mWaveRenderer->SetText(wave);
+	}
 
 	GameObject::Update(deltaTime);
 }

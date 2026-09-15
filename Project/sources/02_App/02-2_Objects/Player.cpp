@@ -51,9 +51,7 @@ void Player::Update(double deltaTime)
 
 	if (GameManager::IsHitStop()) return;
 
-	if (Input::GetKeyPress('A')) {
-		Damage(100);
-	}
+	mIsDamage = false;
 
 	// dtをfloatに変換
 	float dt = static_cast<float>(deltaTime);
@@ -142,6 +140,7 @@ void Player::Draw() const
 void Player::Damage(int damage)
 {
 	mLife -= damage;
+	mIsDamage = true;
 
 	if (mLife < 0) {
 		mLife = 0;

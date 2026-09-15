@@ -12,8 +12,6 @@
 #include "Transition.h"
 #include "Input.h"
 #include "Title.h"
-#include "Game.h"
-#include "Result.h"
 #include "Scene.h"
 #include "AudioPlayer.h"
 
@@ -28,7 +26,7 @@ void SceneManager::Initialize()
 	AudioPlayer::InitializeMaster();
 
 #if defined(DEBUG) || defined(_DEBUG)
-	SceneChange<Game>();
+	SceneChange<Title>();
 #else
 	SceneChange<Title>();
 #endif

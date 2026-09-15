@@ -73,7 +73,7 @@ void EnemyBullet::Update(double deltaTime)
 
 	// 距離がオブジェクト半径より小さい
 	if (length < 2.0f && !player->IsDestroy()) {
-		player->Damage(3 + rand() % 3);
+		player->Damage(3 + rand() % 5);
 
 		// 弾とパーティクルエミッタを削除
 		SetDestroy();

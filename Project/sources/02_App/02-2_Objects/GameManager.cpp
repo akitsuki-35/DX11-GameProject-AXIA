@@ -27,7 +27,7 @@ void GameManager::Initialize()
 	_mGameAudios.clear();
 
 	// ウェーブ数初期化
-	mWave = 1;
+	mWave = 0;
 
 	// スコア初期化
 	mScore = 0;
@@ -59,7 +59,8 @@ void GameManager::Initialize()
 	// ステージ上のエフェクト
 	_mEffect = Game::AddGameObject<ParticleEmitter>()->LoadCSV("assets\\csv\\Effect.csv");
 
-	enemySpawn();
+	_mWaveInterval->Start(2.0);
+	//enemySpawn();
 
 	_mGameAudios["BGM"]->Play(true);
 }

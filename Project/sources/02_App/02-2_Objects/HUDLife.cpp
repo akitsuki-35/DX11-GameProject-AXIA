@@ -56,7 +56,7 @@ void HUDLife::Update(double deltaTime)
 		_mLifeRenderer->SetOffset({ 60.0f, 0.0f });
 	}
 
-	// 文字色変更
+	// 残りライフに応じて文字色変更
 	if (life != 100) {
 		if (life > 60) {
 			XMFLOAT4 color = { 0.5f, 1.0f, 0.3f, 1.0f };

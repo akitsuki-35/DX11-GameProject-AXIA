@@ -49,6 +49,7 @@ void TitleManager::Finalize()
 
 void TitleManager::Update(double deltaTime)
 {
+	// 上下キーで項目選択
 	if (!Transition::getInstance().GetTransitionActive()) {
 		if (Input::GetKeyTrigger(VK_UP) && mTitleItem == 1) {
 			_mTitleAudios["Cursor"]->Play();
@@ -64,6 +65,7 @@ void TitleManager::Update(double deltaTime)
 
 	bool isInput = false;
 
+	// 決定
 	if (Input::GetKeyTrigger('Z') && !Transition::getInstance().GetTransitionActive()) {
 		isInput = true;
 

@@ -4,14 +4,12 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/04/21
-*	@updated : 2026/08/04
+*	@updated : 2026/09/15
 *============================================================*/
 #include "Graphics.h"
 #include "DeviceManager.h"
 #include "BufferManager.h"
 #include "ShaderManager.h"
-#include "TextureManager.h"
-#include "Texture.h"
 #include "FontLoader.h"
 #include "FontManager.h"
 #include "SystemWindow.h"
@@ -43,8 +41,8 @@ void D3D11::Graphics::Initialize()
 
 void D3D11::Graphics::Finalize()
 {
+	FontManager::getInstance().Clear();
 	ShaderManager::getInstance().Clear();
-	TextureManager::getInstance().Clear();
 
 	D3D11::DeviceManager::getInstance().Fainlize();
 }

@@ -118,7 +118,7 @@ float Utility::Easing::CalculateEase(double current, double duration, easing_fun
 {
 	double ratio = CalculateRatio(current, duration);
 
-	float ease = getEasingFunction(easeType)(ratio);
+	float ease = static_cast<float>(getEasingFunction(easeType)(ratio));
 
 	return ease;
 }

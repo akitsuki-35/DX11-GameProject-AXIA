@@ -43,7 +43,7 @@ void ResultScore::Update(double deltaTime)
 		mDisplayScore = GameManager::GetScore();
 	}
 	else {
-		// スコアのドラムロール
+		// スコアのドラムロール演出
 		mDisplayScore = valueDrumRoll();
 	}
 
@@ -66,6 +66,7 @@ Timer& ResultScore::GetDirectionTimer() const
 
 int ResultScore::valueDrumRoll() const
 {
+	// スコアをランダムで表示する演出用
 	int randValue[6]{};
 
 	for (size_t i = 0; i < 6; ++i) {

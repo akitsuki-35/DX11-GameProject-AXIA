@@ -10,20 +10,12 @@
 
 #include "GameObject.h"
 
-/*------------------------------------------------------------
-	前方宣言
-------------------------------------------------------------*/
-class TextRenderer;
-
 /*============================================================
 *	@class	: HUDGuide
 *	@brief	: ウェーブ数表示用HUD
 *============================================================*/
 class HUDGuide : public GameObject
 {
-private:
-	TextRenderer* _mRenderer{ nullptr };
-
 public:
 	HUDGuide() = default;
 

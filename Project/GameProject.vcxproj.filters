@@ -153,18 +153,6 @@
     <ClCompile Include="sources\04_External\include\ImGui\imgui_widgets.cpp">
       <Filter>04_External\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="sources\99_Debug\DebugCollisiondraw.cpp">
-      <Filter>99_Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\99_Debug\Debugger.cpp">
-      <Filter>99_Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\99_Debug\DebugOstream.cpp">
-      <Filter>99_Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\99_Debug\DebugText.cpp">
-      <Filter>99_Debug</Filter>
-    </ClCompile>
     <ClCompile Include="sources\00_Engine\00-1_Core\Utility.cpp">
       <Filter>00_Engine\00-1_Core</Filter>
     </ClCompile>
@@ -309,9 +297,6 @@
     <ClCompile Include="sources\00_Engine\00-2_Graphics\ParticleBase.cpp">
       <Filter>00_Engine\00-2_Graphics\Effects</Filter>
     </ClCompile>
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\ParticleBezier.cpp">
-      <Filter>00_Engine\00-2_Graphics\Effects</Filter>
-    </ClCompile>
     <ClCompile Include="sources\00_Engine\00-2_Graphics\ParticleBox.cpp">
       <Filter>00_Engine\00-2_Graphics\Effects</Filter>
     </ClCompile>
@@ -372,6 +357,9 @@
     <ClCompile Include="sources\02_App\02-2_Objects\HUDGuide.cpp">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClCompile>
+    <ClCompile Include="sources\00_Engine\00-2_Graphics\ParticleBezier.cpp">
+      <Filter>00_Engine\00-2_Graphics\Effects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\00_Engine\00-1_Core\Application.h">
@@ -384,9 +372,6 @@
       <Filter>00_Engine\00-1_Core</Filter>
     </ClInclude>
     <ClInclude Include="sources\00_Engine\00-1_Core\SystemWindow.h">
-      <Filter>00_Engine\00-1_Core</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\00_Engine\00-1_Core\Docs.h">
       <Filter>00_Engine\00-1_Core</Filter>
     </ClInclude>
     <ClInclude Include="sources\01_Framework\01-1_Common\Collision3D.h">
@@ -452,19 +437,7 @@
     <ClInclude Include="sources\04_External\include\ImGui\imstb_truetype.h">
       <Filter>04_External\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="sources\99_Debug\DebugCollisiondraw.h">
-      <Filter>99_Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\99_Debug\Debugger.h">
-      <Filter>99_Debug</Filter>
-    </ClInclude>
     <ClInclude Include="sources\99_Debug\DebugMemoryleak.h">
-      <Filter>99_Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\99_Debug\DebugOstream.h">
-      <Filter>99_Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\99_Debug\DebugText.h">
       <Filter>99_Debug</Filter>
     </ClInclude>
     <ClInclude Include="sources\00_Engine\00-1_Core\Utility.h">
@@ -620,9 +593,6 @@
     <ClInclude Include="sources\00_Engine\00-2_Graphics\ParticleBase.h">
       <Filter>00_Engine\00-2_Graphics\Effects</Filter>
     </ClInclude>
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\ParticleBezier.h">
-      <Filter>00_Engine\00-2_Graphics\Effects</Filter>
-    </ClInclude>
     <ClInclude Include="sources\00_Engine\00-2_Graphics\ParticleBox.h">
       <Filter>00_Engine\00-2_Graphics\Effects</Filter>
     </ClInclude>
@@ -680,6 +650,9 @@
     <ClInclude Include="sources\02_App\02-2_Objects\HUDGuide.h">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClInclude>
+    <ClInclude Include="sources\00_Engine\00-2_Graphics\ParticleBezier.h">
+      <Filter>00_Engine\00-2_Graphics\Effects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="sources\03_HLSL\UnlitPS.hlsl">
@@ -688,25 +661,13 @@
     <FxCompile Include="sources\03_HLSL\UnlitVS.hlsl">
       <Filter>03_HLSL</Filter>
     </FxCompile>
-    <FxCompile Include="sources\03_HLSL\DirectionalPS.hlsl">
-      <Filter>03_HLSL</Filter>
-    </FxCompile>
-    <FxCompile Include="sources\03_HLSL\DirectionalVS.hlsl">
-      <Filter>03_HLSL</Filter>
-    </FxCompile>
     <FxCompile Include="sources\03_HLSL\UISpriteVS.hlsl">
       <Filter>03_HLSL</Filter>
     </FxCompile>
     <FxCompile Include="sources\03_HLSL\FontPS.hlsl">
       <Filter>03_HLSL</Filter>
     </FxCompile>
-    <FxCompile Include="sources\03_HLSL\FontOutlinePS.hlsl">
-      <Filter>03_HLSL</Filter>
-    </FxCompile>
     <FxCompile Include="sources\03_HLSL\Common.hlsl">
-      <Filter>03_HLSL</Filter>
-    </FxCompile>
-    <FxCompile Include="sources\03_HLSL\PhongPS.hlsl">
       <Filter>03_HLSL</Filter>
     </FxCompile>
     <FxCompile Include="sources\03_HLSL\PhongVS.hlsl">

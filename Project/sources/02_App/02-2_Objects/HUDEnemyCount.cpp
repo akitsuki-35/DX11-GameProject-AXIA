@@ -41,9 +41,15 @@ void HUDEnemyCount::Finalize()
 
 void HUDEnemyCount::Update(double deltaTime)
 {
-	std::string current = std::format("{:0}", GameManager::GetEnemyCount());
-	std::string max = std::format("{:0}", GameManager::GetMaxEnemyCount());
-	_mEnemyCountRenderer->SetText(current + " / " + max);
+	if (GameManager::GetWave() == 0) {
+		_mEnemyCountRenderer->SetText("- / -");
+	}
+	else {
+
+		std::string current = std::format("{:0}", GameManager::GetEnemyCount());
+		std::string max = std::format("{:0}", GameManager::GetMaxEnemyCount());
+		_mEnemyCountRenderer->SetText(current + " / " + max);
+	}
 
 	GameObject::Update(deltaTime);
 }

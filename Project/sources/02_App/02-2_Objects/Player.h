@@ -32,6 +32,9 @@ private:
 	// 体力
 	int mLife{ 100 };
 
+	// そのフレームでダメージを受けたか
+	bool mIsDamage{ false };
+
 	Timer* _mShakeTimer{ nullptr }; // シェイク用タイマー
 	float mShakeIntensity{}; // シェイク強度
 
@@ -49,8 +52,15 @@ public:
 	// シェイク
 	void Shake(float intensity, double shakeTime = 1.0);
 
+	// HP取得
 	int GetLife() const { return mLife; }
+	
+	// 生死取得
+	// オブジェクトそのものを消さないためHPで判定
 	const bool IsDestroy() const override { return mLife == 0; }
+
+	// ダメージ判定
+	const bool IsDamage() const { return mIsDamage; }
 
 private:
 	void shakeUpdate(Vector3& position);

@@ -52,11 +52,13 @@ void ResultManager::Update(double deltaTime)
 {
 	auto& directionTimer = Result::GetGameObject<ResultScore>()->GetDirectionTimer();
 
+	// スコア表示演出が終わったら操作可能にする
 	if (directionTimer.IsTimeUp()) {
 		mResultItem = 0;
 		Result::GetGameObject<ResultMenu>()->SetEaseTimer(0.25);
 	}
 
+	// 上下キーで項目選択
 	if (!Transition::getInstance().GetTransitionActive()) {
 		if (Input::GetKeyTrigger(VK_UP) && mResultItem == 1) {
 			_mResultAudios["Cursor"]->Play();
@@ -72,6 +74,7 @@ void ResultManager::Update(double deltaTime)
 
 	bool isInput = false;
 
+	// 決定
 	if (Input::GetKeyTrigger('Z')) {
 		isInput = true;
 

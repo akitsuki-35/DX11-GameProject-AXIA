@@ -19,8 +19,8 @@ void HUDGuide::Initialize()
 	);
 
 	// テキストレンダラーの設定
-	_mRenderer = AddComponent<TextRenderer>(this);
-	_mRenderer->SetFont("Kaisotai")->SetText("       Z : ショット\n       X : スピードアップ\nShift : スピードダウン")
+	auto renderer = AddComponent<TextRenderer>(this);
+	renderer->SetFont("Kaisotai")->SetText("       Z : ショット\n       X : スピードアップ\nShift : スピードダウン")
 		->SetTextSize(28)->SetShadowColor({ 0.0f, 0.5f, 1.0f, 1.0f })->SetColor({ 0.5f, 1.0f, 0.3f, 1.0f })
 		->LoadShader("Font");
 }
