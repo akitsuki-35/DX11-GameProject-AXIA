@@ -109,6 +109,7 @@
     <ClCompile Include="sources\02_App\02-2_Objects\GameTitle.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\Grid.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDEnemyCount.cpp" />
+    <ClCompile Include="sources\02_App\02-2_Objects\HUDGuide.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDLife.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDWave.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\ParticleEmitter..cpp" />
@@ -291,6 +292,7 @@
     <ClInclude Include="sources\02_App\02-2_Objects\GameTitle.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\Grid.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDEnemyCount.h" />
+    <ClInclude Include="sources\02_App\02-2_Objects\HUDGuide.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDLife.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDWave.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\ParticleEmitter.h" />

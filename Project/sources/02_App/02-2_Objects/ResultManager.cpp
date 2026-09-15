@@ -10,6 +10,7 @@
 #include "SceneManager.h"
 #include "Transition.h"
 #include "ResultScore.h"
+#include "ResultMenu.h"
 #include "Title.h"
 #include "Game.h"
 #include "Result.h"
@@ -25,7 +26,8 @@ void ResultManager::Initialize()
 	mResultItem = -1;
 
 	// BGM読み込み
-	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Result.ogg")->SetVolume(0.1f);
+	mBGMVolume = 0.1f;
+	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Result.ogg")->SetVolume(mBGMVolume);
 	_mResultAudios.emplace("BGM", bgm);
 
 	// SE読み込み
@@ -52,15 +54,20 @@ void ResultManager::Update(double deltaTime)
 
 	if (directionTimer.IsTimeUp()) {
 		mResultItem = 0;
+		Result::GetGameObject<ResultMenu>()->SetEaseTimer(0.25);
 	}
 
-	if (Input::GetKeyTrigger(VK_UP) && mResultItem == 1) {
-		_mResultAudios["Cursor"]->Play();
-		mResultItem = 0;
-	}
-	if (Input::GetKeyTrigger(VK_DOWN) && mResultItem == 0) {
-		_mResultAudios["Cursor"]->Play();
-		mResultItem = 1;
+	if (!Transition::getInstance().GetTransitionActive()) {
+		if (Input::GetKeyTrigger(VK_UP) && mResultItem == 1) {
+			_mResultAudios["Cursor"]->Play();
+			Result::GetGameObject<ResultMenu>()->SetEaseTimer(0.25);
+			mResultItem = 0;
+		}
+		if (Input::GetKeyTrigger(VK_DOWN) && mResultItem == 0) {
+			_mResultAudios["Cursor"]->Play();
+			Result::GetGameObject<ResultMenu>()->SetEaseTimer(0.25);
+			mResultItem = 1;
+		}
 	}
 
 	bool isInput = false;
@@ -91,6 +98,12 @@ void ResultManager::Update(double deltaTime)
 		else if (mResultItem == 1) {
 			SceneManager::getInstance().SceneChange<Game>();
 		}
+	}
+
+	// BGMのフェードアウト処理
+	if (mTransitionWait) {
+		float volume = mBGMVolume * Transition::getInstance().GetTransitionProgress();
+		_mResultAudios["BGM"]->SetVolume(volume);
 	}
 
 	GameObject::Update(deltaTime);

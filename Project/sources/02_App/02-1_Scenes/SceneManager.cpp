@@ -28,7 +28,7 @@ void SceneManager::Initialize()
 	AudioPlayer::InitializeMaster();
 
 #if defined(DEBUG) || defined(_DEBUG)
-	SceneChange<Result>();
+	SceneChange<Game>();
 #else
 	SceneChange<Title>();
 #endif

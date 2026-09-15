@@ -22,6 +22,7 @@
 #include "HUDLife.h"
 #include "HUDWave.h"
 #include "HUDEnemyCount.h"
+#include "HUDGuide.h"
 
 void Game::Initialize()
 {
@@ -46,6 +47,7 @@ void Game::Initialize()
 	AddGameObject<HUDLife>();
 	AddGameObject<HUDWave>();
 	AddGameObject<HUDEnemyCount>();
+	AddGameObject<HUDGuide>();
 
 	// マネージャー（制御用ダミーオブジェクト）
 	AddGameObject<GameManager>();

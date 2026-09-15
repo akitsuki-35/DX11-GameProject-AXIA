@@ -22,6 +22,9 @@ private:
 	// リザルトBGM・SE
 	static inline std::unordered_map<std::string, AudioPlayer*> _mResultAudios{};
 
+	// BGM音量
+	static inline float mBGMVolume{};
+
 	// トランジション中フラグ
 	static inline bool mTransitionWait{ false };
 

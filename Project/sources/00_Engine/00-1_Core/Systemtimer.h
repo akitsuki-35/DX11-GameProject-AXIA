@@ -55,7 +55,16 @@ namespace System {
 		// タイマーリセット
 		void Refresh();
 
+		// 現在時間取得
+		double GetCurrent() const { return static_cast<double>(mCurrentTime.QuadPart); }
+
+		// 累積時間取得
+		double GetAccumulator() const { return mAccumulator; }
+
+		// dt取得
 		double GetDeltaTime() const { return mFps; }
+
+		// FPS値変更
 		void SetFps(double fps) { mFps = 1.0 / fps; }
 	};
 }

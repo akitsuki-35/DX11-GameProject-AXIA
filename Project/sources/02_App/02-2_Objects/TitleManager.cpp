@@ -9,7 +9,9 @@
 #include "TitleManager.h"
 #include "SceneManager.h"
 #include "Transition.h"
+#include "Title.h"
 #include "Game.h"
+#include "TitleMenu.h"
 #include "Input.h"
 #include "SystemWindow.h"
 
@@ -21,7 +23,8 @@ void TitleManager::Initialize()
 	_mTitleAudios.clear();
 
 	// BGM読み込み
-	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Title.ogg")->SetVolume(0.1f);
+	mBGMVolume = 0.1f;
+	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Title.ogg")->SetVolume(mBGMVolume);
 	_mTitleAudios.emplace("BGM", bgm);
 
 	// SE読み込み
@@ -35,6 +38,8 @@ void TitleManager::Initialize()
 	_mTitleAudios.emplace("Decision", decision);
 
 	_mTitleAudios["BGM"]->Play(true);
+
+	Title::GetGameObject<TitleMenu>()->SetEaseTimer(0.25);
 }
 
 void TitleManager::Finalize()
@@ -44,13 +49,17 @@ void TitleManager::Finalize()
 
 void TitleManager::Update(double deltaTime)
 {
-	if (Input::GetKeyTrigger(VK_UP) && mTitleItem == 1) {
-		_mTitleAudios["Cursor"]->Play();
-		mTitleItem = 0;
-	}
-	if (Input::GetKeyTrigger(VK_DOWN) && mTitleItem == 0) {
-		_mTitleAudios["Cursor"]->Play();
-		mTitleItem = 1;
+	if (!Transition::getInstance().GetTransitionActive()) {
+		if (Input::GetKeyTrigger(VK_UP) && mTitleItem == 1) {
+			_mTitleAudios["Cursor"]->Play();
+			Title::GetGameObject<TitleMenu>()->SetEaseTimer(0.25);
+			mTitleItem = 0;
+		}
+		if (Input::GetKeyTrigger(VK_DOWN) && mTitleItem == 0) {
+			_mTitleAudios["Cursor"]->Play();
+			Title::GetGameObject<TitleMenu>()->SetEaseTimer(0.25);
+			mTitleItem = 1;
+		}
 	}
 
 	bool isInput = false;
@@ -81,6 +90,12 @@ void TitleManager::Update(double deltaTime)
 		else if (mTitleItem == 1) {
 			System::Window::getInstance().GameQuit();
 		}
+	}
+
+	// BGMのフェードアウト処理
+	if (mTransitionWait) {
+		float volume = mBGMVolume * Transition::getInstance().GetTransitionProgress();
+		_mTitleAudios["BGM"]->SetVolume(volume);
 	}
 
 	GameObject::Update(deltaTime);

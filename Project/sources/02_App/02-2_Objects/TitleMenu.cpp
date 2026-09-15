@@ -9,7 +9,10 @@
 #include "TitleMenu.h"
 #include "TextRenderer.h"
 #include "TitleManager.h"
+#include "Timer.h"
 #include "Input.h"
+#include "Utility.h"
+#include "Easing.h"
 
 using namespace DirectX;
 
@@ -29,9 +32,12 @@ void TitleMenu::Initialize()
 		->LoadShader("Font");
 
 	_mQuitRenderer = AddComponent<TextRenderer>(this);
-	_mQuitRenderer->SetFont("Kaisotai")->SetText("ゲーム終了")->SetOffset({ 100.0f, 125.0f })
+	_mQuitRenderer->SetFont("Kaisotai")->SetText("ゲーム終了")->SetOffset({ 0.0f, 125.0f })
 		->SetTextSize(80)->SetShadowColor({ 0.0f, 0.0f, 0.0f, 1.0f })->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f })
 		->LoadShader("Font");
+
+	// タイマーのセット
+	_mEaseTimer = AddComponent<Timer>(this);
 }
 
 void TitleMenu::Finalize()
@@ -43,6 +49,21 @@ void TitleMenu::Update(double deltaTime)
 {
 	int currentItem = TitleManager::GetCurrentItem();
 	XMFLOAT4 color = { 0.0f, 1.0f, 1.0f, 1.0f };
+
+	// イージング
+	if (_mEaseTimer->GetEnable()) {
+		float ease = static_cast<float>(Utility::Easing::CalculateEase(_mEaseTimer->GetTime(), 0.25,
+			EaseInOutBack));
+
+		if (currentItem == 0) {
+			easeItem(_mStartRenderer, ease, true);
+			easeItem(_mQuitRenderer, ease, false);
+		}
+		else if (currentItem == 1) {
+			easeItem(_mStartRenderer, ease, false);
+			easeItem(_mQuitRenderer, ease, true);
+		}
+	}
 
 	if (currentItem == 0) {
 		color.x = flashCalc(deltaTime);
@@ -63,6 +84,11 @@ void TitleMenu::Draw() const
 	GameObject::Draw();
 }
 
+void TitleMenu::SetEaseTimer(double time)
+{
+	_mEaseTimer->Start(time);
+}
+
 float TitleMenu::flashCalc(double deltaTime)
 {
 	float flashSpeed = 5.0f;
@@ -73,4 +99,27 @@ float TitleMenu::flashCalc(double deltaTime)
 	float value = (sinf(time) + 1.0f) / 2.0f;
 
 	return value;
+}
+
+void TitleMenu::easeItem(TextRenderer* renderer, float ease, bool isCurrent)
+{
+	Vector2 itemOffset = renderer->GetOffset();
+	float startX = itemOffset.x;
+	float baseX = 0.0f;
+
+	if (isCurrent) {
+		float targetX = baseX + 100.0f;
+		itemOffset.x = startX + (targetX - startX) * ease;
+	}
+	else {
+		float targetX = baseX;
+
+		itemOffset.x = startX + (targetX - startX) * ease;
+
+		if (itemOffset.x < baseX) {
+			itemOffset.x = baseX;
+		}
+	}
+
+	renderer->SetOffset(itemOffset);
 }

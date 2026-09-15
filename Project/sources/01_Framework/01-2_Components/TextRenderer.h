@@ -79,4 +79,7 @@ public:
 
 	// ドロップシャドウの有効無効切り替え
 	TextRenderer* SetShadowEnable(const bool& isEnable);
+
+	// オフセット取得
+	Vector2 GetOffset() { return mOffset; }
 };
