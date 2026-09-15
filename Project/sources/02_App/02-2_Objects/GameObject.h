@@ -53,7 +53,7 @@ public:
 	const Vector3& GetRotation() const { return mTransform.GetRotation(); }
 	const Vector3& GetScale() const { return mTransform.GetScale(); }
 	const std::string& GetTag() const { return mTag; }
-	const bool& IsDestroy() const { return mDestroy; }
+	virtual const bool IsDestroy() const { return mDestroy; }
 
 	// セッター
 	GameObject& SetPosition(const Vector3& position);

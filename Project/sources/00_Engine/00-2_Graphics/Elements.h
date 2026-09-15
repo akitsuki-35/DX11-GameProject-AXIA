@@ -21,10 +21,10 @@ namespace Element {
 	----------------------------------------------------*/
 	struct VERTEX3D
 	{
-		DirectX::XMFLOAT3 Position;
-		DirectX::XMFLOAT3 Normal;
-		DirectX::XMFLOAT4 Diffuse;
-		DirectX::XMFLOAT2 TexCoord;
+		DirectX::XMFLOAT3 Position{};
+		DirectX::XMFLOAT3 Normal{};
+		DirectX::XMFLOAT4 Diffuse{};
+		DirectX::XMFLOAT2 TexCoord{};
 
 		uint32_t BoneIndices[4]{};
 		float BoneWeights[4]{};
@@ -44,12 +44,12 @@ namespace Element {
 	----------------------------------------------------*/
 	struct MATERIAL
 	{
-		DirectX::XMFLOAT4 Ambient;
-		DirectX::XMFLOAT4 Diffuse;
-		DirectX::XMFLOAT4 Specular;
-		DirectX::XMFLOAT4 Emission;
-		float Shininess;
-		int TextureEnable;
+		DirectX::XMFLOAT4 Ambient{};
+		DirectX::XMFLOAT4 Diffuse{};
+		DirectX::XMFLOAT4 Specular{};
+		DirectX::XMFLOAT4 Emission{};
+		float Shininess{};
+		int TextureEnable{};
 		float Dummy[2];
 	};
 
@@ -58,11 +58,11 @@ namespace Element {
 	----------------------------------------------------*/
 	struct LIGHT
 	{
-		DirectX::XMFLOAT4 Position;
-		bool Enable;
-		float Dummy[3];
-		DirectX::XMFLOAT4 Direction;
-		DirectX::XMFLOAT4 Diffuse;
-		DirectX::XMFLOAT4 Ambient;
+		DirectX::XMFLOAT4 Position{};
+		int Enable{};
+		float Dummy[3]{};
+		DirectX::XMFLOAT4 Direction{};
+		DirectX::XMFLOAT4 Diffuse{};
+		DirectX::XMFLOAT4 Ambient{};
 	};
 }

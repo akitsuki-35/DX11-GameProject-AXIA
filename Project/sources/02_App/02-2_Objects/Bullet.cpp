@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/02
-*	@updated : 2026/09/06
+*	@updated : 2026/09/13
 *============================================================*/
 #include "Bullet.h"
 #include "Game.h"
@@ -12,7 +12,7 @@
 #include "Enemy.h"
 #include "Camera.h"
 #include "ParticleEmitter.h"
-#include "Score.h"
+#include "HUDScore.h"
 #include "Input.h"
 #include "ModelRenderer.h"
 #include "ParticleRenderer.h"
@@ -114,6 +114,9 @@ void Bullet::hitEffect(Enemy* enemy)
 	// エミッタ寿命
 	double emitterLife = 0.5;
 
+	// エミッタ発生座標
+	Vector3 effectPosition = mTransform.GetPosition();
+
 	// シェイクの強さ
 	float shake = 0.1f;
 
@@ -127,25 +130,36 @@ void Bullet::hitEffect(Enemy* enemy)
 	if (enemy->IsDestroy()) {
 		audio = "Destroy";
 		emitterLife = 1.0;
+		effectPosition = enemy->GetPosition();
 		shake = 0.2f;
 		hitStop = 0.2;
 		GameManager::ReduceEnemy();
 		score += 2000;
 
 		// 最後の敵の場合はさらに演出を強化
-		if (GameManager::GetWave() == 5 && GameManager::GetEnemyCount() == 0) {
-			emitterLife = 3.0;
-			shake = 0.3f;
-			hitStop = 0.75;
+		if (GameManager::GetEnemyCount() == 0) {
+			if (GameManager::GetWave() == GameManager::GetMaxWave()) {
+				emitterLife = 3.0;
+				shake = 0.3f;
+				hitStop = 0.75;
+			}
+			else {
+				shake = 0.3f;
+				hitStop = 0.5;
+			}
+
+			score += 5000 * GameManager::GetWave();
 		}
 	}
 
 	// ヒットSE
 	GameManager::AudioPlay(audio);
 
+	effectPosition.y += 1.0f;
+
 	// 爆発エフェクト
 	Game::AddGameObject<ParticleEmitter>()->LoadCSV("assets\\csv\\Explosion.csv")->SetEmitterLife(emitterLife)->
-		SetPosition({ mTransform.GetPosition().x, mTransform.GetPosition().y + 1.0f, mTransform.GetPosition().z});
+		SetPosition(effectPosition);
 
 	// シェイク
 	enemy->Shake(shake);
@@ -156,5 +170,5 @@ void Bullet::hitEffect(Enemy* enemy)
 	GameManager::SetHitStop(hitStop);
 
 	// スコア加算
-	Game::GetGameObject<Score>()->AddScore(score);
+	GameManager::AddScore(score);
 }

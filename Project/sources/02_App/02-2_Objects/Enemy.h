@@ -28,8 +28,8 @@ private:
 	// 体力
 	int mLife{ 3 };
 
-	// スポーン時にプレイヤー方向を向くかのフラグ
-	bool mPlayerLook{ true };
+	// ショット間隔
+	Timer* _mShotInterval{ nullptr };
 
 	Timer* _mShakeTimer{ nullptr }; // シェイク用タイマー
 	float mShakeIntensity{}; // シェイク強度
@@ -45,9 +45,11 @@ public:
 	// ダメージ
 	void Damage();
 
-	// カメラシェイク
+	// シェイク
 	void Shake(float intensity, double shakeTime = 1.0);
 
 private:
 	void shakeUpdate(Vector3& position);
+
+	double setShotInterval(double min = 1.0, double max = 3.0);
 };

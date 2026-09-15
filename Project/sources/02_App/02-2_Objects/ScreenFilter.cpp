@@ -8,6 +8,8 @@
 *============================================================*/
 #include "ScreenFilter.h"
 #include "UIRenderer.h"
+#include "Game.h"
+#include "Player.h"
 #include "Config.h"
 
 void ScreenFilter::Initialize()
@@ -34,6 +36,15 @@ void ScreenFilter::Finalize()
 
 void ScreenFilter::Update(double deltaTime)
 {
+	// ダメージ時は赤くする
+	if (Game::GetGameObject<Player>()->IsDamage()) {
+		GetComponent<UIRenderer>()->SetColor({ 1.0f, 0.0f, 0.0f, 1.0f });
+	}
+	else {
+		GetComponent<UIRenderer>()->SetColor({ 0.0f, 0.0f, 0.0f, 1.0f });
+	}
+
+
 	GameObject::Update(deltaTime);
 }
 

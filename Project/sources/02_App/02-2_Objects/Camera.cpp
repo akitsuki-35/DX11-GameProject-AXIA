@@ -41,10 +41,10 @@ void Camera::Update(double deltaTime)
 	Vector3 rotation = mTransform.GetRotation();
 
 	if (!GameManager::IsHitStop()) {
-		if (Input::GetKeyPress(VK_LEFT)) {
+		if (Input::GetKeyPress(VK_LEFT) && !Input::GetKeyPress(VK_RIGHT)) {
 			mTransform.SetRotation({ rotation.x, rotation.y -= 3.0f * dt, rotation.z });
 		}
-		else if (Input::GetKeyPress(VK_RIGHT)) {
+		else if (Input::GetKeyPress(VK_RIGHT) && !Input::GetKeyPress(VK_LEFT)) {
 			mTransform.SetRotation({ rotation.x, rotation.y += 3.0f * dt, rotation.z });
 		}
 	}

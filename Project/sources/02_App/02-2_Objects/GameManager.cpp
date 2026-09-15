@@ -12,6 +12,7 @@
 #include "Game.h"
 #include "Result.h"
 #include "Camera.h"
+#include "Player.h"
 #include "Enemy.h"
 #include "ParticleEmitter.h"
 #include "Timer.h"
@@ -26,14 +27,19 @@ void GameManager::Initialize()
 	_mGameAudios.clear();
 
 	// ウェーブ数初期化
-	mWave = 1;
+	mWave = 0;
 
-	// BGM読み込み・再生
-	mBGMVolume = 0.05f;
+	// スコア初期化
+	mScore = 0;
+
+	// エネミーカウント初期化
+	mEnemyCount = 0;
+	mMaxEnemyCount = 0;
+
+	// BGM読み込み
+	mBGMVolume = 0.09f;
 	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Stage.ogg")->SetVolume(mBGMVolume);
 	_mGameAudios.emplace("BGM", bgm);
-
-	_mGameAudios["BGM"]->Play();
 
 	// SE読み込み
 	AudioPlayer* shot = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Shot.mp3")->SetVolume(0.1f);
@@ -46,13 +52,17 @@ void GameManager::Initialize()
 	_mGameAudios.emplace("Destroy", destroy);
 
 	// タイマー
+	_mWaveInterval = AddComponent<Timer>(this);
 	_mHitStop = AddComponent<Timer>(this);
 	_mSceneChangeTimer = AddComponent<Timer>(this);
 
 	// ステージ上のエフェクト
 	_mEffect = Game::AddGameObject<ParticleEmitter>()->LoadCSV("assets\\csv\\Effect.csv");
 
-	enemySpawn();
+	_mWaveInterval->Start(2.0);
+	//enemySpawn();
+
+	_mGameAudios["BGM"]->Play(true);
 }
 
 void GameManager::Finalize()
@@ -65,16 +75,32 @@ void GameManager::Update(double deltaTime)
 	// ステージエフェクト更新
 	stageEffectUpdate();
 
-	// ウェーブカウント増加と敵配置
-	if (mEnemyCount == 0 && _mHitStop->IsTimeUp()) {
-		mWave++;
-		enemySpawn();
+	bool isMaxWave = false;
+
+	// そのウェーブの敵が全滅しているならスロー演出とインターバルの後、次ウェーブへ移行
+	if (mEnemyCount == 0 && _mHitStop->IsTimeUp() && mWave != MAX_WAVE) {
+		_mWaveInterval->Start(2.0);
 	}
+	// 最終ウェーブの場合はシーン遷移フラグをセット
+	else if (mEnemyCount == 0 && _mHitStop->IsTimeUp() && mWave == MAX_WAVE) {
+		isMaxWave = true;
+	}
+
+	// ウェーブカウント増加と敵配置
+	if (_mWaveInterval->IsTimeUp() && !isMaxWave) {
+		if (mWave < MAX_WAVE) {
+			mWave++;
+			enemySpawn();
+		}
+	}
+
+	// 遷移条件セット
+	bool endFlag = isMaxWave || Game::GetGameObject<Player>()->IsDestroy();
 
 	// シーン遷移処理
 	// 1.遷移条件を満たしたら遷移までのウェイトタイマーをセット
-	if (mWave == 6 && !mTransitionWait && !_mSceneChangeTimer->GetEnable()) {
-		GameManager::SetSlow(true);
+	if (endFlag && !mTransitionWait && !_mSceneChangeTimer->GetEnable()) {
+		SetSlow(true);
 		_mSceneChangeTimer->Start(1.5);
 	}
 
@@ -89,7 +115,7 @@ void GameManager::Update(double deltaTime)
 	// 3.フェードアウトが完了したらシーン遷移
 	if (mTransitionWait && !Transition::getInstance().GetTransitionActive()) {
 		mTransitionWait = false;
-		GameManager::SetSlow(false);
+		SetSlow(false);
 		SceneManager::getInstance().SceneChange<Result>();
 	}
 
@@ -114,8 +140,10 @@ void GameManager::Draw() const
 
 void GameManager::EnemyCollision(GameObject& other, Vector3& position, float dt)
 {
+	// エネミー用簡易コリジョン処理
 	auto enemies = Game::GetGameObjects<Enemy>();
 	for (auto enemy : enemies) {
+		// 自身は無視
 		if (enemy == dynamic_cast<Enemy*>(&other)) continue;
 
 		// 相手との距離を計算
@@ -125,13 +153,14 @@ void GameManager::EnemyCollision(GameObject& other, Vector3& position, float dt)
 		// 半径の合計
 		float min = 4.0f;
 
+		// 当たり判定
 		if (distance < min && distance > 0.0f) {
 			otherDir.Normalize();
 
-			// めり込んでいる距離を計算
+			// 重なっている距離を計算
 			float overlap = min - distance;
 
-			// 押し出し
+			// 押し出しをかける
 			position += otherDir * overlap * 5.0f * dt;
 		}
 	}
@@ -252,6 +281,8 @@ void GameManager::enemySpawn()
 	default:
 		break;
 	}
+
+	mMaxEnemyCount = mEnemyCount;
 }
 
 void GameManager::stageEffectUpdate()

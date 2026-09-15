@@ -36,4 +36,5 @@ public:
 
 	BackGroundTexture* LoadTexture(const char* fileName);
 	BackGroundTexture* SetSize(const Vector2& size);
+	BackGroundTexture* SetColor(const DirectX::XMFLOAT4& color);
 };

@@ -12,6 +12,11 @@
 #include <vector>
 #include <filesystem>
 
+/*------------------------------------------------------------
+	前方宣言
+------------------------------------------------------------*/
+enum easing_functions : int;
+
 /*============================================================
 *	@namespace	: Utility
 *	@brief		: 汎用ユーティリティ関数群
@@ -42,5 +47,17 @@ namespace Utility
 	{
 		// std::string→std::wstringに変換
 		std::wstring toWideString(const std::string& string);
+	}
+
+/*--------------------------------------------------
+	イージング関連
+----------------------------------------------------*/
+	namespace Easing
+	{
+		// ratio算出
+		double CalculateRatio(double current, double duration);
+
+		// ease算出
+		float CalculateEase(double current, double duration, easing_functions easeType);
 	}
 }

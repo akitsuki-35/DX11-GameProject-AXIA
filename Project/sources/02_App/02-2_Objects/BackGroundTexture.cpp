@@ -48,3 +48,9 @@ BackGroundTexture* BackGroundTexture::SetSize(const Vector2& size)
 	mTransform.SetScale({ size.x, size.y, 0.0f });
 	return this;
 }
+
+BackGroundTexture* BackGroundTexture::SetColor(const DirectX::XMFLOAT4& color)
+{
+	_mRenderer->SetColor(color);
+	return this;
+}

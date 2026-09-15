@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/05/19
-*	@updated : 2026/08/04
+*	@updated : 2026/09/13
 *============================================================*/
 #pragma once
 
@@ -29,8 +29,14 @@ private:
 	// ショット間隔
 	Timer* _mShotInterval{ nullptr };
 
-	// HP
-	int mHP{ 100 };
+	// 体力
+	int mLife{ 100 };
+
+	// そのフレームでダメージを受けたか
+	bool mIsDamage{ false };
+
+	Timer* _mShakeTimer{ nullptr }; // シェイク用タイマー
+	float mShakeIntensity{}; // シェイク強度
 
 public:
 	Player() = default;
@@ -40,5 +46,22 @@ public:
 	void Update(double deltaTime) override;
 	void Draw() const override;
 
-	int GetHP() const { return mHP; }
+	// ダメージ
+	void Damage(int damage);
+
+	// シェイク
+	void Shake(float intensity, double shakeTime = 1.0);
+
+	// HP取得
+	int GetLife() const { return mLife; }
+	
+	// 生死取得
+	// オブジェクトそのものを消さないためHPで判定
+	const bool IsDestroy() const override { return mLife == 0; }
+
+	// ダメージ判定
+	const bool IsDamage() const { return mIsDamage; }
+
+private:
+	void shakeUpdate(Vector3& position);
 };

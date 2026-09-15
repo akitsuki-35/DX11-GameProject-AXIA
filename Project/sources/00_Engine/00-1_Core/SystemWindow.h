@@ -63,5 +63,8 @@ namespace System {
 
 		// ウィンドウハンドル取得
 		HWND GetHandle() const { return mHwnd; }
+
+		// ゲーム終了
+		void GameQuit() const;
 	};
 }

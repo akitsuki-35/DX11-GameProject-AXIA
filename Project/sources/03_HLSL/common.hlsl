@@ -42,8 +42,8 @@ struct MATERIAL
 struct LIGHT
 {
     float4 Position;
-    bool Enable;
-    float Dummy;
+    int Enable;
+    float3 Dummy;
     float4 Direction;
     float4 Diffuse;
     float4 Ambient;

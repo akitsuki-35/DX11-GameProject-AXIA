@@ -19,11 +19,17 @@
 class ResultManager : public GameObject
 {
 private:
-	// タイトルBGM・SE
+	// リザルトBGM・SE
 	static inline std::unordered_map<std::string, AudioPlayer*> _mResultAudios{};
+
+	// BGM音量
+	static inline float mBGMVolume{};
 
 	// トランジション中フラグ
 	static inline bool mTransitionWait{ false };
+
+	// リザルト画面選択項目
+	static inline int mResultItem{};
 
 private:
 	// コピー禁止
@@ -42,4 +48,7 @@ public:
 
 	// オーディオ再生
 	static void AudioPlay(std::string key);
+
+	// 選択中項目取得
+	static int GetCurrentItem() { return mResultItem; }
 };

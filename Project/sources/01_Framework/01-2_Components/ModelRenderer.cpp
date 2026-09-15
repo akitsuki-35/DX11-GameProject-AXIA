@@ -64,7 +64,7 @@ void ModelRenderer::Draw() const
                 _mModel->mMaterials[subset.MaterialIndex]._Texture->Bind();
             }
             else {
-                Texture* dummy = TextureManager::getInstance().Load("assets\\textures\\Common\\white.png");
+                Texture* dummy = TextureManager::getInstance().Load("assets\\textures\\white.png");
                 dummy->Bind();
             }
 

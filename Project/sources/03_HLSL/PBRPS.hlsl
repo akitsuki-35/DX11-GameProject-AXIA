@@ -52,7 +52,7 @@ void main(in PS_IN In, out float4 outDiffuse : SV_Target)
     
     float3 lit = 0;
     
-    int loop = (int) Parameter.z;
+    int loop = (int)Parameter.z;
     
     for (int i = 0; i < loop; i++)
     {
@@ -105,7 +105,7 @@ float CalculateCookTranceSpecular(float3 L, float3 V, float3 N, float smooth, fl
     float F = CalculateFresnel(metalic, vh);
     float G = CalculateGeometricDamping(nh, nv, nl, vh);
         
-    float m = PI * nv * nh;
+    float m = max(PI * nv * nh, 0.00001f);
     
     return max(F * D * G / m, 0.0f);
 }
