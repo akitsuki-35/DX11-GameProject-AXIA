@@ -10,6 +10,7 @@
 #include "TitleManager.h"
 #include "BackGroundTexture.h"
 #include "GameTitle.h"
+#include "TitleMenu.h"
 
 void Title::Initialize()
 {
@@ -20,6 +21,7 @@ void Title::Initialize()
 		SetColor({ 0.0f, 0.0f, 0.0f, 0.25f });
 
 	AddGameObject<GameTitle>();
+	AddGameObject<TitleMenu>();
 
 	// マネージャー（制御用ダミーオブジェクト）
 	AddGameObject<TitleManager>();

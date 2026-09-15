@@ -8,7 +8,6 @@
 *============================================================*/
 #include "GameTitle.h"
 #include "TextRenderer.h"
-#include "FontLoader.h"
 
 void GameTitle::Initialize()
 {

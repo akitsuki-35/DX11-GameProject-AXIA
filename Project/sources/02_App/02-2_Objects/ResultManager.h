@@ -25,6 +25,9 @@ private:
 	// トランジション中フラグ
 	static inline bool mTransitionWait{ false };
 
+	// リザルト画面選択項目
+	static inline int mResultItem{};
+
 private:
 	// コピー禁止
 	ResultManager(const ResultManager&) = delete;
@@ -42,4 +45,7 @@ public:
 
 	// オーディオ再生
 	static void AudioPlay(std::string key);
+
+	// 選択中項目取得
+	static int GetCurrentItem() { return mResultItem; }
 };

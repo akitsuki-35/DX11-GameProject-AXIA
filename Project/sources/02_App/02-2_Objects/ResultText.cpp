@@ -8,7 +8,6 @@
 *============================================================*/
 #include "ResultText.h"
 #include "TextRenderer.h"
-#include "FontLoader.h"
 
 void ResultText::Initialize()
 {

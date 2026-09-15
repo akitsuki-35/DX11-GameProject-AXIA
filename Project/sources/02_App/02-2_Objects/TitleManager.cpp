@@ -11,6 +11,7 @@
 #include "Transition.h"
 #include "Game.h"
 #include "Input.h"
+#include "SystemWindow.h"
 
 void TitleManager::Initialize()
 {
@@ -23,6 +24,16 @@ void TitleManager::Initialize()
 	AudioPlayer* bgm = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Title.ogg")->SetVolume(0.1f);
 	_mTitleAudios.emplace("BGM", bgm);
 
+	// SE読み込み
+	AudioPlayer* cursor = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Cursor.mp3")->SetVolume(0.3f);
+	_mTitleAudios.emplace("Cursor", cursor);
+
+	AudioPlayer* start = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\GameStart.ogg")->SetVolume(0.15f);
+	_mTitleAudios.emplace("GameStart", start);
+
+	AudioPlayer* decision = AddComponent<AudioPlayer>(this)->LoadAudio("assets\\audio\\Decision.ogg")->SetVolume(0.15f);
+	_mTitleAudios.emplace("Decision", decision);
+
 	_mTitleAudios["BGM"]->Play(true);
 }
 
@@ -33,15 +44,43 @@ void TitleManager::Finalize()
 
 void TitleManager::Update(double deltaTime)
 {
+	if (Input::GetKeyTrigger(VK_UP) && mTitleItem == 1) {
+		_mTitleAudios["Cursor"]->Play();
+		mTitleItem = 0;
+	}
+	if (Input::GetKeyTrigger(VK_DOWN) && mTitleItem == 0) {
+		_mTitleAudios["Cursor"]->Play();
+		mTitleItem = 1;
+	}
+
+	bool isInput = false;
+
+	if (Input::GetKeyTrigger('Z') && !Transition::getInstance().GetTransitionActive()) {
+		isInput = true;
+
+		if (mTitleItem == 0) {
+			_mTitleAudios["GameStart"]->Play();
+		}
+		else if (mTitleItem == 1) {
+			_mTitleAudios["Decision"]->Play();
+		}
+	}
+
 	// シーン遷移処理
-	if (!Transition::getInstance().GetTransitionActive() && Input::GetKeyTrigger(VK_RETURN)) {
-		Transition::getInstance().Start(0.5, false);
+	if (!Transition::getInstance().GetTransitionActive() && isInput) {
+		Transition::getInstance().Start(1.0, false);
 		mTransitionWait = true;
 	}
 
 	if (mTransitionWait && !Transition::getInstance().GetTransitionActive()) {
 		mTransitionWait = false;
-		SceneManager::getInstance().SceneChange<Game>();
+
+		if (mTitleItem == 0) {
+			SceneManager::getInstance().SceneChange<Game>();
+		}
+		else if (mTitleItem == 1) {
+			System::Window::getInstance().GameQuit();
+		}
 	}
 
 	GameObject::Update(deltaTime);

@@ -9,7 +9,6 @@
 #include "ResultScore.h"
 #include "GameManager.h"
 #include "TextRenderer.h"
-#include "FontLoader.h"
 #include "Timer.h"
 #include <format>
 
@@ -58,6 +57,11 @@ void ResultScore::Update(double deltaTime)
 void ResultScore::Draw() const
 {
 	GameObject::Draw();
+}
+
+Timer& ResultScore::GetDirectionTimer() const
+{
+	return *_mTimer;
 }
 
 int ResultScore::valueDrumRoll() const

@@ -11,6 +11,7 @@
 #include "BackGroundTexture.h"
 #include "ResultText.h"
 #include "ResultScore.h"
+#include "ResultMenu.h"
 
 void Result::Initialize()
 {
@@ -21,6 +22,7 @@ void Result::Initialize()
 
 	AddGameObject<ResultText>();
 	AddGameObject<ResultScore>();
+	AddGameObject<ResultMenu>();
 
 	// マネージャー（制御用ダミーオブジェクト）
 	AddGameObject<ResultManager>();

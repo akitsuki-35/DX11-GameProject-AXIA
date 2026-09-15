@@ -147,6 +147,8 @@ void Bullet::hitEffect(Enemy* enemy)
 				shake = 0.3f;
 				hitStop = 0.5;
 			}
+
+			score += 5000 * GameManager::GetWave();
 		}
 	}
 
