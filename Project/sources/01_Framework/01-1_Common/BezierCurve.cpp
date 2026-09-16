@@ -1,10 +1,10 @@
 ﻿/*============================================================
-*	@file	 : BezierCurve.h
+*	@file	 : BezierCurve.cpp
 *	@brief	 : ベジエ曲線
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/07/09
-*	@updated : 2026/08/19
+*	@updated : 2026/09/16
 *============================================================*/
 #include "BezierCurve.h"
 
@@ -38,7 +38,8 @@ void BezierCurve::Update()
 
 void BezierCurve::CalcBezier()
 {
-	double t;
+	double t{};
+
 	// 全フレームのベジエ曲線上のポイント計算
 	for (int k = 0; k < mFrameMax; k++) {
 		t = static_cast<double>(k) / static_cast<double>(mFrameMax - 1);

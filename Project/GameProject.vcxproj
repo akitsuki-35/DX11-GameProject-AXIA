@@ -188,12 +188,6 @@
     <ClInclude Include="sources\00_Engine\00-4_Importer\FontLoader.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\BezierCurve.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\BoneTransform.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\Collision3D.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="sources\01_Framework\01-1_Common\Easing.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\Transition.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>

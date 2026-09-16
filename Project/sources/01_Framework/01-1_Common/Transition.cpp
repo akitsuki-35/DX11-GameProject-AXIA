@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/03/29
-*	@updated : 2026/08/16
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Transition.h"
 
@@ -12,14 +12,18 @@ using namespace::DirectX;
 
 void Transition::Initialize()
 {
+	// タイマー初期化
 	_mTimer = std::make_unique<Timer>();
 
+	// レンダラー初期化
 	_mRenderer = std::make_unique<UIRenderer>();
 	_mRenderer->GetCanvas().CreateCanvas(UIStyle::Pivot::LeftTop);
 
+	// トランスフォーム初期化
 	mTransform.SetPosition({ 0.0f, 0.0f, 0.0f });
 	mTransform.SetScale({ Screen::WIDTH, Screen::HEIGHT, 0.0f });
 
+	// シェーダー読み込み
 	_mRenderer->LoadShader("UI");
 }
 
@@ -78,10 +82,12 @@ void Transition::Start(const double& fadeTime, const bool& isFadeIn, const Color
 
 bool Transition::GetTransitionActive()
 {
+	// トランジション中かを判定
 	return _mTimer->GetEnable();
 }
 
 float Transition::GetTransitionProgress()
 {
+	// トランジション進行度を取得
 	return _mTimer->GetProgress();
 }

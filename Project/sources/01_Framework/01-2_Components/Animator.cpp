@@ -1,17 +1,16 @@
 ﻿/*============================================================
 *	@file	 : Animator.cpp
-*	@brief	 : アニメーターコンポーネント
+*	@brief	 : アニメーションコンポーネント
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/07
-*	@updated : 2026/08/07
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Animator.h"
 #include "Model.h"
 #include "BoneTransform.h"
 #include "AnimationManager.h"
 #include "ModelRenderer.h"
-#include "GameObject.h"
 #include <cmath>
 using namespace DirectX;
 

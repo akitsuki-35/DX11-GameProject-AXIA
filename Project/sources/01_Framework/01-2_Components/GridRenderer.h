@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/20
-*	@updated : 2026/08/20
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -24,7 +24,10 @@ class Texture;
 class GridRenderer : public Renderer
 {
 private:
-	Microsoft::WRL::ComPtr<ID3D11Buffer> mVertexBuffer;
+	// 頂点バッファ
+	Microsoft::WRL::ComPtr<ID3D11Buffer> mVertexBuffer{};
+
+	// 調点数
 	int mVertexCount{};
 
 	// テクスチャ
@@ -39,7 +42,10 @@ public:
 
 	~GridRenderer() override = default;
 
+	// グリッド設定
 	void Set(int xCount, int zCount, float size);
+
+	// 描画
 	void Draw() const override;
 
 private:

@@ -25,16 +25,29 @@ class Particle
 	friend class ParticleRenderer;
 
 private:
+	// 座標
 	Vector3 mPosition{ 0.0f, 0.0f, 0.0f };
+
+	// スケール
 	Vector3 mScale{ 1.0f, 1.0f, 1.0f };
 
+	// 速度
 	Vector3 mVelocity{};
+	
+	// 加速度
 	Vector3 mAccel{};
+
+	// 重力加速度
 	float mGravity{};
+
+	// 抵抗
 	float mDrag{};
 
-	bool mEnable{ false };
+	// 寿命
 	int mLife{ 0 };
+
+	// 有効状態
+	bool mEnable{ false };
 
 public:
 	Particle() = default;
@@ -48,8 +61,7 @@ public:
 		const float& gravity,  const float& drag, const int& life);
 
 	// 有効・無効切り替え
-	void Enable() { mEnable = true; }
-	void Disable() { mEnable = false; }
+	void SetEnable(bool enable) { mEnable = enable; }
 
 	// 有効・無効状態取得
 	bool IsEnable() const { return mEnable; }

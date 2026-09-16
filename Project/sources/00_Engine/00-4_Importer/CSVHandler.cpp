@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/21
-*	@updated : 2026/08/21
+*	@updated : 2026/09/16
 *============================================================*/
 #include "CSVHandler.h"
 #include "Utility.h"
@@ -15,6 +15,7 @@ bool CSVHandler::Load(const char* filePath, Data& data)
 {
     data.clear();
 
+    // ファイルロード
     std::vector<char> buffer = Utility::File::load(filePath);
     
     if (buffer.empty()) {
@@ -60,15 +61,12 @@ bool CSVHandler::Export(const char* filePath, const Data& data)
     }
 
     // 2次元配列のデータをファイルに書き込み
-    for (const auto& row : data)
-    {
-        for (size_t i = 0; i < row.size(); ++i)
-        {
+    for (const auto& row : data) {
+        for (size_t i = 0; i < row.size(); ++i) {
             file << row[i];
 
             // 行末セル以外に区切り文字としてカンマを挿入
-            if (i < row.size() - 1)
-            {
+            if (i < row.size() - 1) {
                 file << ",";
             }
         }

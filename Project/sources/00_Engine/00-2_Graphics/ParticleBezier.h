@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/28
-*	@updated : 2026/08/28
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -13,12 +13,13 @@
 
 namespace ParticleType {
 /*============================================================
-*	@class	: Particle::Bezier
+*	@class	: ParticleType::Bezier
 *	@brief	: ベジエ曲線上を移動するパーティクル
 *============================================================*/
 	class Bezier : public Base
 	{
 	private:
+		// ベジエ曲線
 		BezierCurve mBezier{};
 
 	public:
@@ -29,6 +30,7 @@ namespace ParticleType {
 
 		void Emission(ParticleDesc& desc) override;
 
+		// ベジエ曲線取得
 		BezierCurve& GetBezier() { return mBezier; }
 
 		std::unique_ptr<ParticleType::Base> LoadCSV(const char* filePath) override;

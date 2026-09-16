@@ -4,13 +4,15 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/15
-*	@updated : 2026/08/15
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Particle.h"
 #include "ParticleEmitter.h"
 
 void Particle::Update(double deltaTime)
 {
+	// 発射後パーティクル更新
+
 	float dt = static_cast<float>(deltaTime);
 
 	if (!mEnable) {
@@ -19,8 +21,8 @@ void Particle::Update(double deltaTime)
 
 	Vector3 gravity{ 0.0f, -mGravity, 0.0f };
 	mVelocity += mAccel * dt;
-	mVelocity += gravity * dt; // 重力
-	mVelocity += mVelocity * mDrag * dt; // 抵抗
+	mVelocity += gravity * dt;
+	mVelocity += mVelocity * mDrag * dt;
 	mPosition += mVelocity * dt;
 
 	mLife--;
@@ -32,6 +34,7 @@ void Particle::Update(double deltaTime)
 
 void Particle::SetParameter(const Vector3& position, const Vector3& velocity, const Vector3& accel, const Vector3& scale, const float& gravity, const float& drag, const int& life)
 {
+	// 外部からメンバ変数を初期化
 	mPosition = position;
 	mVelocity = velocity;
 	mAccel = accel;

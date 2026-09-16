@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/27
-*	@updated : 2026/08/27
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -12,8 +12,8 @@
 
 namespace ParticleType {
 /*============================================================
-*	@class	: Particle::Box
-*	@brief	: ボックス型パーティクル
+*	@class	: ParticleType::Box
+*	@brief	: ボックス型散布パーティクル
 *============================================================*/
 	class Box : public Base
 	{

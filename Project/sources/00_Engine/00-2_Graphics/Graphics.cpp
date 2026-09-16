@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/04/21
-*	@updated : 2026/09/15
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Graphics.h"
 #include "DeviceManager.h"
@@ -49,7 +49,7 @@ void D3D11::Graphics::Finalize()
 
 void D3D11::Graphics::Begin()
 {
-	// ※ループ先頭で呼出
+	// ループ先頭で呼出
 	auto& device = D3D11::DeviceManager::getInstance();
 
 	// 画面クリア

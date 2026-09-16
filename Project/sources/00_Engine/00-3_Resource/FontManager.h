@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/11
-*	@updated : 2026/08/11
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -25,18 +25,31 @@ struct IDWriteFactory;
 ------------------------------------------------------------*/
 struct Glyph
 {
+	// テクスチャ本体
 	std::shared_ptr<Texture> Texture{ nullptr };
 
-	int BearingX{ 0 };   // 左側の余白
-	int BearingY{ 0 };   // 上側の余白
-	int Advance{ 0 };   // 次の文字までの移動量
+	// 左右余白
+	int BearingX{ 0 };
+
+	// 上下余白
+	int BearingY{ 0 };
+
+	// 字間
+	int Advance{ 0 };
 };
 
-// 探索用キー
+/*------------------------------------------------------------
+	文字探索用キー
+------------------------------------------------------------*/
 struct GlyphKey
 {
+	// フォント
 	Font* Font{};
+
+	// 文字
 	uint32_t Codepoint{};
+	
+	// フォントサイズ
 	int Size{};
 
 	bool operator==(const GlyphKey& o) const {
@@ -62,7 +75,7 @@ struct std::hash<GlyphKey> {
 
 /*============================================================
 *	@class	: FontManager
-*	@brief	: テクスチャのロード・管理
+*	@brief	: フォントのロード・管理
 *============================================================*/
 class FontManager final
 {
@@ -94,7 +107,7 @@ private:
 	// フォントコンテナ
 	std::unordered_map<std::string, std::unique_ptr<Font>> mFonts{};
 
-	// Glyphキャッシュ
+	// 文字テクスチャキャッシュ
 	std::unordered_map<GlyphKey, std::unique_ptr<Glyph>> mAtlas{};
 
 	// DirectWriteファクトリ
@@ -121,6 +134,8 @@ private:
 	bool generateGlyph(Glyph& glyph, const GlyphKey& key);
 };
 
+// フォントロード
+// ゲーム起動時に一度だけ呼ぶ
 namespace FontSet {
 	inline void initialize() {
 		FontManager::getInstance().Register("Kaisotai", "assets\\fonts\\Kaisotai-Next-UP-B.ttf");

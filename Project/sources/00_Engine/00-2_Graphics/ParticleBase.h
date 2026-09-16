@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/19
-*	@updated : 2026/08/27
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -18,9 +18,13 @@
 class ParticleEmitter;
 struct ParticleDesc;
 
+/*============================================================
+*	@namespace	: ParticleType
+*	@brief		: パーティクルタイプ定義
+*============================================================*/
 namespace ParticleType {
 /*============================================================
-*	@class	: Particle::Base
+*	@class	: ParticleType::Base
 *	@brief	: パーティクル形状基底クラス
 *============================================================*/
 	class Base
@@ -35,7 +39,10 @@ namespace ParticleType {
 			:_mEmitter(emitter) {}
 		virtual ~Base() = default;
 
+		// パーティクル発射
 		virtual void Emission(ParticleDesc& desc) = 0;
+
+		// 発射後パーティクルの更新
 		virtual void Update(double deltaTime);
 
 		// CSVファイル読み込み・書き出し

@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/07/14
-*	@updated : 2026/07/14
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -25,7 +25,8 @@ namespace Element {
 		DirectX::XMFLOAT3 Normal{};
 		DirectX::XMFLOAT4 Diffuse{};
 		DirectX::XMFLOAT2 TexCoord{};
-
+		
+		// ボーン
 		uint32_t BoneIndices[4]{};
 		float BoneWeights[4]{};
 	};
@@ -33,7 +34,9 @@ namespace Element {
 	/*--------------------------------------------------
 		ボーンバッファ
 	----------------------------------------------------*/
+	// 最大ボーン数
 	static constexpr size_t MAX_BONES{ 128 };
+	
 	struct BONE
 	{
 		DirectX::XMFLOAT4X4 Matrices[MAX_BONES]{};
