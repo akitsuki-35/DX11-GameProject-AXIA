@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/07/05
-*	@updated : 2026/08/04
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -43,7 +43,7 @@ namespace System {
 	private:
 		HWND mHwnd{ nullptr };
 		static constexpr char CLASS_NAME[] = "AppClass"; // ウィンドウクラス名
-		static constexpr char WINDOW_NAME[] = "Game Window"; // アプリケーション名
+		static constexpr char WINDOW_NAME[] = "A.X.I.A"; // アプリケーション名
 		HINSTANCE mHInstance{ nullptr };
 		int mWidth{ Screen::WIDTH };
 		int mHeigth{ Screen::HEIGHT };
