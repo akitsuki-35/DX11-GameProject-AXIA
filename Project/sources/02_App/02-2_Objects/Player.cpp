@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/05/19
-*	@updated : 2026/09/06
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Player.h"
 #include "Game.h"
@@ -35,7 +35,7 @@ void Player::Initialize()
 		SetParameter({ 0.2f, 0.8f, 1.0f, 0.0f })->
 		LoadShader("PBR");
 
-	// タイマーのセット
+	// タイマーの設定
 	_mShotInterval = AddComponent<Timer>(this);
 	_mShakeTimer = AddComponent<Timer>(this);
 }
@@ -47,10 +47,11 @@ void Player::Finalize()
 
 void Player::Update(double deltaTime)
 {
+	// 削除フラグが有効・ヒットストップ中は処理しない
 	if (IsDestroy()) return;
-
 	if (GameManager::IsHitStop()) return;
 
+	// ダメージフラグを無効化
 	mIsDamage = false;
 
 	// dtをfloatに変換
@@ -139,9 +140,13 @@ void Player::Draw() const
 
 void Player::Damage(int damage)
 {
+	// HP減少
 	mLife -= damage;
+
+	// ダメージフラグ有効
 	mIsDamage = true;
 
+	// 0を下回らないようにする
 	if (mLife < 0) {
 		mLife = 0;
 	}

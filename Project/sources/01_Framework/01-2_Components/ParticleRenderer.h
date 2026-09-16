@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/15
-*	@updated : 2026/08/15
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -23,7 +23,6 @@ class Texture;
 class ParticleRenderer : public Renderer
 {
 	friend class ParticleEmitter;
-	friend class ParticleGUI;
 
 private:
 	// エミッタ
@@ -50,6 +49,7 @@ public:
 		return this;
 	}
 
+	// 描画
 	void Draw() const override;
 
 	void Finalize() override {
@@ -61,7 +61,10 @@ private:
 	// ワールド行列取得
 	DirectX::XMMATRIX getWorldMatrix() const override;
 
+	// メインカラー描画
 	void mainColorDraw(const DirectX::XMMATRIX& rotation) const;
+
+	// サブカラー描画
 	void subColorDraw(const DirectX::XMMATRIX& rotation) const;
 
 public:
@@ -72,6 +75,6 @@ public:
 	Mesh& GetMesh() { return mMesh; }
 	Texture* GetTexture() const { return _mTexture; }
 
-	// カラーのセット
+	// サブカラーのセット
 	void SetSubColor(const DirectX::XMFLOAT4& color) { mSubColor = color; }
 };

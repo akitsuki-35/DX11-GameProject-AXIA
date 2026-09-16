@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/12
-*	@updated : 2026/08/12
+*	@updated : 2026/09/16
 *============================================================*/
 #include "TextRenderer.h"
 #include "Texture.h"
@@ -39,6 +39,7 @@ TextRenderer::TextRenderer(GameObject* owner)
 
 void TextRenderer::Draw() const
 {
+	// テキストが空白またはフォントが存在しない場合は描画しない
 	if (mText.empty() || !_mFont) {
 		return;
 	}
@@ -199,42 +200,49 @@ void TextRenderer::shadowDraw(const Glyph* glyph, const Transform& transform) co
 
 TextRenderer* TextRenderer::SetFont(const std::string& fontName)
 {
+	// フォント読み込み
 	_mFont = FontManager::getInstance().GetFont(fontName);
 	return this;
 }
 
 TextRenderer* TextRenderer::SetTextSize(const int& size)
 {
+	// 文字サイズ設定
 	mSize = size;
 	return this;
 }
 
 TextRenderer* TextRenderer::SetText(const std::string& text)
 {
+	// 文字列設定
 	mText = Utility::String::toWideString(text);
 	return this;
 }
 
 TextRenderer* TextRenderer::SetCharsPerLine(const size_t& charsPerLine)
 {
+	// 1行あたりの文字数設定
 	mCharsPerLine = charsPerLine;
 	return this;
 }
 
 TextRenderer* TextRenderer::SetOffset(const Vector2& offset)
 {
+	// オフセット設定
 	mOffset = offset;
 	return this;
 }
 
 TextRenderer* TextRenderer::SetShadowColor(const DirectX::XMFLOAT4 color)
 {
+	// ドロップシャドウ色設定
 	mShadowColor = color;
 	return this;
 }
 
 TextRenderer* TextRenderer::SetShadowEnable(const bool& isEnable)
 {
+	// ドロップシャドウ有効無効切り替え
 	mShadowEnable = isEnable;
 	return this;
 }

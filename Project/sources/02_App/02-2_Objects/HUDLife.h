@@ -1,10 +1,10 @@
 ﻿/*============================================================
 *	@file	 : HUDLife.h
-*	@brief	 : 体力表示
+*	@brief	 : プレイヤーHP表示
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/30
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -23,7 +23,10 @@ class TextRenderer;
 class HUDLife : public GameObject
 {
 private:
+	// テキスト部分レンダラー
 	TextRenderer* _mTextRenderer{ nullptr };
+
+	// HP数値レンダラー
 	TextRenderer* _mLifeRenderer{ nullptr };
 
 public:

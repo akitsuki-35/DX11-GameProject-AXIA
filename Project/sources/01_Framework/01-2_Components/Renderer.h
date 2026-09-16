@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/07/27
-*	@updated : 2026/08/15
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -45,9 +45,13 @@ enum class Layer : uint8_t
 // 描画ソート用情報
 struct SORTKEY
 {
+	// レイヤー
 	Layer layer{};
+
+	// Zバッファ
 	float Zdepth{};
 
+	// Zバッファによるソート
 	bool operator<(const SORTKEY& key) const
 	{
 		if (layer != key.layer) {
@@ -71,7 +75,8 @@ protected:
 	// カラー
 	DirectX::XMFLOAT4 mColor{ 1.0f, 1.0f, 1.0f, 1.0f };
 
-	// パラメータ
+	// 汎用パラメータ
+	// シェーダーで使用
 	DirectX::XMFLOAT4 mParameter{ 0.0f, 0.0f, 0.0f, 0.0f };
 
 	// ブレンドステート

@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/18
-*	@updated : 2026/06/18
+*	@updated : 2026/09/16
 *============================================================*/
 #include "ParticleEmitter.h"
 #include "ParticleRenderer.h"
@@ -18,6 +18,7 @@ using namespace DirectX;
 
 void ParticleEmitter::Initialize()
 {
+	// レンダラーにエミッタ本体をセット
 	ParticleRenderer* renderer = AddComponent<ParticleRenderer>(this)->SetEmitter(this);
 
 	// パーティクル用テクスチャ読み込み
@@ -30,7 +31,7 @@ void ParticleEmitter::Initialize()
 		mParticles[i].mEnable = false;
 	}
 
-	// 基本的に外部からCSVファイルで指定するため、仮のタイプ初期化
+	// 基本的に外部からCSVファイルで指定するため、仮にボックスで初期化
 	_mType = std::make_unique<ParticleType::Box>(this);
 }
 
@@ -41,6 +42,7 @@ void ParticleEmitter::Finalize()
 
 void ParticleEmitter::Update(double deltaTime)
 {
+	// ヒットストップ中は処理しない
 	if (GameManager::IsHitStop()) return;
 
 	_mType->Update(deltaTime);
@@ -72,6 +74,7 @@ void ParticleEmitter::Draw() const
 
 ParticleEmitter* ParticleEmitter::LoadCSV(const char* filePath)
 {
+	// CSVファイル読み込み
 	auto newType =_mType->LoadCSV(filePath);
 
 	// タイプを最後にセットする

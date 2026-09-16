@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/14
-*	@updated : 2026/09/14
+*	@updated : 2026/09/16
 *============================================================*/
 #include "ResultScore.h"
 #include "GameManager.h"
@@ -27,7 +27,7 @@ void ResultScore::Initialize()
 		->SetTextSize(254)->SetShadowColor({ 0.0f, 0.0f, 0.0f, 1.0f })->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f })
 		->LoadShader("Font");
 
-	// タイマーセット
+	// タイマー設定
 	_mTimer = AddComponent<Timer>(this);
 	_mTimer->Start(2.0);
 }
@@ -47,7 +47,7 @@ void ResultScore::Update(double deltaTime)
 		mDisplayScore = valueDrumRoll();
 	}
 
-	// 6桁でゼロ埋めする
+	// 6桁でゼロ埋めしてスコア表示
 	std::string scoreText = std::format("{:06}", mDisplayScore);
 	_mRenderer->SetText(scoreText);
 

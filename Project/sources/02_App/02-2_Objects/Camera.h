@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/04/26
-*	@updated : 2026/08/04
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -18,16 +18,22 @@ class Timer;
 
 /*============================================================
 *	@class	: Camera
-*	@brief	: カメラ
+*	@brief	: カメラオブジェクト
 *============================================================*/
 class Camera : public GameObject
 {
 protected:
-	Vector3 mTarget{}; // 注視点
-	DirectX::XMMATRIX mViewMatrix{}; // ビュー行列
+	// 注視点
+	Vector3 mTarget{};
 
-	Timer* _mShakeTimer{ nullptr }; // カメラシェイク用タイマー
-	float mShakeIntensity{}; // シェイク強度
+	// ビュー行列
+	DirectX::XMMATRIX mViewMatrix{};
+
+	// カメラシェイク用タイマー
+	Timer* _mShakeTimer{ nullptr };
+
+	// シェイク強度
+	float mShakeIntensity{};
 
 public:
 	virtual ~Camera() = default;
@@ -35,10 +41,13 @@ public:
 	void Finalize() override;
 	void Update(double deltaTime) override;
 
+	// ビュー行列取得
 	DirectX::XMMATRIX GetViewMatrix() const { return mViewMatrix; }
 
+	// カメラ前方取得
 	Vector3 GetForward() const;
 
+	// カメラ右方向取得
 	Vector3 GetRight() const;
 
 	// カメラ行列のセット
@@ -48,5 +57,6 @@ public:
 	void Shake(float intensity, double shakeTime = 1.0);
 
 private:
+	// シェイク更新
 	void shakeUpdate();
 };

@@ -4,14 +4,14 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/05/12
-*	@updated : 2026/09/09
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
 #include "Vector3.h"
 #include "Component.h"
 #include "Transform.h"
-#include <sstream>
+#include <string>
 #include <memory>
 #include <vector>
 #include <DirectXMath.h>

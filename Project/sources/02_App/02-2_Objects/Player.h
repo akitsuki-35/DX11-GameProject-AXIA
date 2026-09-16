@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/05/19
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -35,8 +35,11 @@ private:
 	// そのフレームでダメージを受けたか
 	bool mIsDamage{ false };
 
-	Timer* _mShakeTimer{ nullptr }; // シェイク用タイマー
-	float mShakeIntensity{}; // シェイク強度
+	// シェイク用タイマー
+	Timer* _mShakeTimer{ nullptr };
+
+	// シェイク強度
+	float mShakeIntensity{};
 
 public:
 	Player() = default;
@@ -63,5 +66,6 @@ public:
 	const bool IsDamage() const { return mIsDamage; }
 
 private:
+	// シェイク更新
 	void shakeUpdate(Vector3& position);
 };

@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/15
-*	@updated : 2026/08/15
+*	@updated : 2026/09/16
 *============================================================*/
 #include "ParticleRenderer.h"
 #include "ParticleEmitter.h"
@@ -66,6 +66,7 @@ void ParticleRenderer::Draw() const
 
 DirectX::XMMATRIX ParticleRenderer::getWorldMatrix() const
 {
+	// ビルボード行列取得
 	Camera* camera = Scene::GetGameObject<Camera>();
 	return _mOwner->GetTransform().GetBillboardMatrix(camera->GetViewMatrix());
 }
@@ -140,6 +141,7 @@ void ParticleRenderer::subColorDraw(const DirectX::XMMATRIX& rotation) const
 
 ParticleRenderer* ParticleRenderer::LoadTexture(const char* fileName)
 {
+	// テクスチャ読み込み
 	_mTexture = TextureManager::getInstance().Load(fileName);
 	return this;
 }

@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/13
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #include "EnemyBullet.h"
 #include "Game.h"
@@ -12,9 +12,7 @@
 #include "Player.h"
 #include "Camera.h"
 #include "ParticleEmitter.h"
-#include "Input.h"
 #include "ModelRenderer.h"
-#include "ParticleRenderer.h"
 
 void EnemyBullet::Initialize()
 {
@@ -44,8 +42,8 @@ void EnemyBullet::Finalize()
 
 void EnemyBullet::Update(double deltaTime)
 {
+	// 削除フラグが有効・ヒットストップ中は処理しない
 	if (mDestroy) return;
-
 	if (GameManager::IsHitStop()) return;
 
 	// dtをfloatに変換
@@ -67,6 +65,7 @@ void EnemyBullet::Update(double deltaTime)
 
 	// 敵との衝突判定
 	auto player = Game::GetGameObject<Player>();
+
 	// 距離計算
 	Vector3 dir = player->GetPosition() - position;
 	float length = dir.Length();

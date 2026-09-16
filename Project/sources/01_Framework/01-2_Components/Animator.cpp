@@ -11,6 +11,7 @@
 #include "BoneTransform.h"
 #include "AnimationManager.h"
 #include "ModelRenderer.h"
+#include "GameObject.h"
 #include <cmath>
 using namespace DirectX;
 

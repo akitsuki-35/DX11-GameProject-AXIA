@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/30
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #include "HUDScore.h"
 #include "TextRenderer.h"
@@ -41,7 +41,7 @@ void HUDScore::Finalize()
 
 void HUDScore::Update(double deltaTime)
 {
-	// 6桁でゼロ埋めする
+	// 現在スコアを6桁でゼロ埋めして表示
 	std::string score = std::format("{:06}", GameManager::GetScore());
 	_mScoreRenderer->SetText(score);
 

@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/13
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -41,8 +41,10 @@ public:
 	void Update(double deltaTime) override;
 	void Draw() const override;
 
+	// 速度をセット
 	void SetVelocity(const Vector3& velocity) { mVelocity = velocity; }
 
 private:
+	// ヒット演出
 	void hitEffect(Player* enemy);
 };

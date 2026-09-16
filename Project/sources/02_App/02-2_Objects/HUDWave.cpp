@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/13
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #include "HUDWave.h"
 #include "TextRenderer.h"
@@ -40,6 +40,7 @@ void HUDWave::Finalize()
 
 void HUDWave::Update(double deltaTime)
 {
+	// 現在のウェーブ数を表示
 	if (GameManager::GetWave() == 0){
 		_mWaveRenderer->SetText("-");
 	}

@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/05/19
-*	@updated : 2026/08/04
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Enemy.h"
 #include "Game.h"
@@ -16,6 +16,7 @@
 
 void Enemy::Initialize()
 {
+	// トランスフォーム初期化
 	mTransform = Transform(
 		{ 0.0f, 0.0f, 0.0f },
 		{ 0.0f, 0.0f, 0.0f },
@@ -32,10 +33,11 @@ void Enemy::Initialize()
 		SetParameter({ 0.2f, 0.8f, 1.0f, 0.0f })->
 		LoadShader("PBR");
 
-	// タイマーのセット
+	// インターバルタイマー
 	_mShotInterval = AddComponent<Timer>(this);
 	_mShotInterval->Start(setShotInterval());
 
+	// シェイク用タイマー
 	_mShakeTimer = AddComponent<Timer>(this);
 
 	// エネミーカウントを増加
@@ -49,6 +51,7 @@ void Enemy::Finalize()
 
 void Enemy::Update(double deltaTime)
 {
+	// ヒットストップ中は処理しない
 	if (GameManager::IsHitStop()) return;
 
 	// dtをfloatに変換
@@ -132,6 +135,7 @@ void Enemy::Update(double deltaTime)
 		bullet->SetPosition(mTransform.GetPosition());
 		bullet->SetVelocity(forward * 50.0f);
 
+		// インターバルをリセット
 		_mShotInterval->Start(setShotInterval());
 	}
 
@@ -144,11 +148,12 @@ void Enemy::Update(double deltaTime)
 
 void Enemy::Draw() const
 {
-	GameObject::Draw(); // 継承元のDrawを呼び出す
+	GameObject::Draw();
 }
 
 void Enemy::Damage()
 {
+	// 体力減少
 	mLife--;
 
 	// HPが0なら消滅

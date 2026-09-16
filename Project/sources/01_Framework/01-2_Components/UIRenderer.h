@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/12
-*	@updated : 2026/08/12
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -24,7 +24,7 @@ class Transform;
 class UIRenderer : public Renderer
 {
 protected:
-	// キャンバス
+	// UIキャンバス
 	UICanvas mCanvas{};
 
 	// テクスチャ
@@ -49,6 +49,7 @@ public:
 		Renderer::Finalize();
 	}
 
+	// 描画
 	void Draw() const override;
 
 	// トランスフォームを直接指定して描画

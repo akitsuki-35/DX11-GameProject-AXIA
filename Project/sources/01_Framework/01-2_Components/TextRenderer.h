@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/12
-*	@updated : 2026/08/12
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -26,15 +26,26 @@ struct Glyph;
 class TextRenderer : public UIRenderer
 {
 private:
-	Font* _mFont{}; // フォント
-	std::wstring mText{}; // 表示文字列
-	size_t mCharsPerLine{ 30 }; // 1行あたりの文字数
-	int mSize{ 32 }; // フォントサイズ
-	Vector2 mOffset{}; // トランスフォーム座標からのズレ
+	// フォント
+	Font* _mFont{};
 
-	// ドロップシャドウ関連
-	DirectX::XMFLOAT4 mShadowColor{ 0.0f, 0.0f, 0.0f, 1.0f }; // ドロップシャドウカラー
-	bool mShadowEnable{ true }; // ドロップシャドウの有無
+	// 表示文字列
+	std::wstring mText{};
+
+	// 1行あたりの文字数
+	size_t mCharsPerLine{ 30 };
+
+	// フォントサイズ
+	int mSize{ 32 }; 
+
+	// トランスフォーム座標からのオフセット
+	Vector2 mOffset{};
+
+	// ドロップシャドウカラー
+	DirectX::XMFLOAT4 mShadowColor{ 0.0f, 0.0f, 0.0f, 1.0f };
+
+	// ドロップシャドウの有無
+	bool mShadowEnable{ true };
 
 public:
 	void Finalize() override {
@@ -48,6 +59,7 @@ public:
 
 	~TextRenderer() override = default;
 
+	// 描画
 	void Draw() const override;
 
 private:
@@ -57,6 +69,7 @@ private:
 	DirectX::XMMATRIX getWorldMatrix() = delete;
 
 public:
+	// テクスチャ読み込みは不要なので削除
 	UIRenderer* LoadTexture(const char* fileName) = delete;
 
 	// フォントセット

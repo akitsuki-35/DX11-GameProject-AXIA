@@ -1,10 +1,10 @@
 ﻿/*============================================================
 *	@file	 : ResultManager.cpp
-*	@brief	 : リザルトシーン制御用ダミーオブジェクト
+*	@brief	 : リザルト制御用マネージャーオブジェクト
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/07
-*	@updated : 2026/09/07
+*	@updated : 2026/09/16
 *============================================================*/
 #include "ResultManager.h"
 #include "SceneManager.h"
@@ -23,6 +23,7 @@ void ResultManager::Initialize()
 	
 	_mResultAudios.clear();
 
+	// 項目未選択状態にする
 	mResultItem = -1;
 
 	// BGM読み込み
@@ -50,6 +51,7 @@ void ResultManager::Finalize()
 
 void ResultManager::Update(double deltaTime)
 {
+	// リザルト演出タイマー取得
 	auto& directionTimer = Result::GetGameObject<ResultScore>()->GetDirectionTimer();
 
 	// スコア表示演出が終わったら操作可能にする
@@ -74,7 +76,7 @@ void ResultManager::Update(double deltaTime)
 
 	bool isInput = false;
 
-	// 決定
+	// 決定された
 	if (Input::GetKeyTrigger('Z')) {
 		isInput = true;
 
@@ -92,6 +94,7 @@ void ResultManager::Update(double deltaTime)
 		mTransitionWait = true;
 	}
 
+	// フェードアウトしたらシーン遷移
 	if (mTransitionWait && !Transition::getInstance().GetTransitionActive()) {
 		mTransitionWait = false;
 

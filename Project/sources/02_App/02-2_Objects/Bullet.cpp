@@ -1,21 +1,18 @@
 ﻿/*============================================================
 *	@file	 : Bullet.cpp
-*	@brief	 : 弾
+*	@brief	 : プレイヤーの弾
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/02
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Bullet.h"
+#include "ModelRenderer.h"
 #include "Game.h"
 #include "GameManager.h"
 #include "Enemy.h"
 #include "Camera.h"
 #include "ParticleEmitter.h"
-#include "HUDScore.h"
-#include "Input.h"
-#include "ModelRenderer.h"
-#include "ParticleRenderer.h"
 
 void Bullet::Initialize()
 {
@@ -45,8 +42,8 @@ void Bullet::Finalize()
 
 void Bullet::Update(double deltaTime)
 {
+	// 削除フラグが有効・ヒットストップ中は処理しない
 	if (mDestroy) return;
-
 	if (GameManager::IsHitStop()) return;
 
 	// dtをfloatに変換

@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2025/09/17
-*	@updated : 2026/08/15
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -20,6 +20,7 @@
 class Scene
 {
 protected:
+	// ゲームオブジェクト配列
 	static inline std::list<std::unique_ptr<GameObject>> _mGameObjects{};
 
 	// ポーズ・ヒットストップフラグ
@@ -35,6 +36,7 @@ public:
 	virtual void Update(double deltaTime);
 	virtual void Draw() const;
 
+	// ポーズ・ヒットストップフラグ設定
 	static void SetPause(const bool& isPause) { mPause = isPause; }
 	static void SetHitStop(const bool& isHitStop) { mHitStop = isHitStop; };
 

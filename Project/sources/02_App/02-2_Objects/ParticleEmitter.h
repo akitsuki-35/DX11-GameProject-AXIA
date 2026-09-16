@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/18
-*	@updated : 2026/08/15
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -13,15 +13,30 @@
 #include "ParticleBase.h"
 #include <memory>
 
-// パーティクル本体の初期化に使用するデータ構造体
+/*------------------------------------------------------------
+	初期化用データ構造体
+------------------------------------------------------------*/
 struct ParticleDesc {
-	Vector3 Velocity{ 0.0f, 10.0f, 0.0f }; // 散布方向
-	Vector3 SpreadRate{ 20.0f, 20.0f, 20.0f }; // 散布率
-	Vector3 Accel{}; // 加速度
-	float Scale{ 5.0f }; // スケール倍率
-	float Gravity{ 9.8f }; // 重力
-	float Drag{ -1.0f }; // 抵抗
-	int Life{ 60 }; // 全体フレーム
+	// 散布方向
+	Vector3 Velocity{ 0.0f, 10.0f, 0.0f };
+
+	// 散布率
+	Vector3 SpreadRate{ 20.0f, 20.0f, 20.0f };
+	
+	// 加速度
+	Vector3 Accel{};
+
+	// スケール倍率
+	float Scale{ 5.0f };
+
+	// 重力
+	float Gravity{ 9.8f };
+
+	// 抵抗
+	float Drag{ -1.0f };
+
+	// 全体フレーム
+	int Life{ 60 };
 };
 
 /*------------------------------------------------------------
@@ -36,10 +51,12 @@ class Timer;
 class ParticleEmitter : public GameObject
 {
 	friend class ParticleRenderer;
-	friend class ParticleGUI;
 
 private:
+	// パーティクル最大数
 	static constexpr int PARTICLE_MAX{ 10000 };
+
+	// パーティクル配列
 	std::vector<Particle> mParticles{};
 
 	// データ構造体
@@ -55,7 +72,7 @@ private:
 	// ループフラグ
 	bool mLoop{ true };
 
-	// エミッタ自体の寿命
+	// エミッタ本体の寿命
 	Timer* _mEmitterLife{ nullptr };
 
 	// パーティクルタイプ
@@ -96,5 +113,6 @@ public:
 	ParticleEmitter* SetEmitterLife(double lifeTime);
 
 private:
+	// 透明度更新
 	void alphaUpdate();
 };

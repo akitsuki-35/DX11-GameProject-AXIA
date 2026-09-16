@@ -4,14 +4,14 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/09
-*	@updated : 2026/09/09
+*	@updated : 2026/09/16
 *============================================================*/
 #include "GameObject.h"
 
 bool GameObject::Destroy()
 {
+	// 削除フラグがオンならオブジェクト削除
 	if (mDestroy) {
-		// 削除フラグがオンなら削除
 		Finalize();
 		return true;
 	}
