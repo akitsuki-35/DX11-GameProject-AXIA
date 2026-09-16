@@ -4,13 +4,12 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/15
-*	@updated : 2026/09/15
+*	@updated : 2026/09/17
 *============================================================*/
 #include "TitleMenu.h"
 #include "TextRenderer.h"
 #include "TitleManager.h"
 #include "Timer.h"
-#include "Input.h"
 #include "Utility.h"
 #include "Easing.h"
 
@@ -87,6 +86,7 @@ void TitleMenu::Draw() const
 
 void TitleMenu::SetEaseTimer(double time)
 {
+	// イージング用タイマーをセット
 	_mEaseTimer->Start(time);
 }
 
@@ -124,5 +124,6 @@ void TitleMenu::easeItem(TextRenderer* renderer, float ease, bool isCurrent)
 		}
 	}
 
+	// オフセット移動
 	renderer->SetOffset(itemOffset);
 }

@@ -1,10 +1,10 @@
 ﻿/*============================================================
 *	@file	 : TitleManager.cpp
-*	@brief	 : タイトルシーン制御用ダミーオブジェクト
+*	@brief	 : タイトル制御用マネージャーオブジェクト
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/07
-*	@updated : 2026/09/07
+*	@updated : 2026/09/17
 *============================================================*/
 #include "TitleManager.h"
 #include "SceneManager.h"
@@ -39,6 +39,7 @@ void TitleManager::Initialize()
 
 	_mTitleAudios["BGM"]->Play(true);
 
+	// イージング用タイマーのセット
 	Title::GetGameObject<TitleMenu>()->SetEaseTimer(0.25);
 }
 
@@ -65,7 +66,7 @@ void TitleManager::Update(double deltaTime)
 
 	bool isInput = false;
 
-	// 決定
+	// 決定された
 	if (Input::GetKeyTrigger('Z') && !Transition::getInstance().GetTransitionActive()) {
 		isInput = true;
 
@@ -83,6 +84,7 @@ void TitleManager::Update(double deltaTime)
 		mTransitionWait = true;
 	}
 
+	// フェードアウトしたらシーン遷移
 	if (mTransitionWait && !Transition::getInstance().GetTransitionActive()) {
 		mTransitionWait = false;
 

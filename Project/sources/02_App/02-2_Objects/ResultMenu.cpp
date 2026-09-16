@@ -1,16 +1,15 @@
 ﻿/*============================================================
 *	@file	 : ResultMenu.cpp
-*	@brief	 : タイトルメニュー
+*	@brief	 : リザルトメニュー
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/15
-*	@updated : 2026/09/16
+*	@updated : 2026/09/17
 *============================================================*/
 #include "ResultMenu.h"
 #include "TextRenderer.h"
 #include "ResultManager.h"
 #include "Timer.h"
-#include "Input.h"
 #include "Utility.h"
 #include "Easing.h"
 
