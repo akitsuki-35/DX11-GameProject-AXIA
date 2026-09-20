@@ -360,6 +360,9 @@
     <ClCompile Include="sources\00_Engine\00-2_Graphics\ParticleBezier.cpp">
       <Filter>00_Engine\00-2_Graphics\Effects</Filter>
     </ClCompile>
+    <ClCompile Include="sources\02_App\02-1_Scenes\AppSetup.cpp">
+      <Filter>02_App\02-1_Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sources\00_Engine\00-1_Core\AppLoop.h">
@@ -649,6 +652,9 @@
     </ClInclude>
     <ClInclude Include="sources\00_Engine\00-2_Graphics\ParticleBezier.h">
       <Filter>00_Engine\00-2_Graphics\Effects</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\02_App\02-1_Scenes\AppSetup.h">
+      <Filter>02_App\02-1_Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
