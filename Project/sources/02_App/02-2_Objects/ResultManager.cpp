@@ -4,10 +4,10 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/07
-*	@updated : 2026/09/16
+*	@updated : 2026/09/20
 *============================================================*/
 #include "ResultManager.h"
-#include "SceneManager.h"
+#include "Application.h"
 #include "Transition.h"
 #include "ResultScore.h"
 #include "ResultMenu.h"
@@ -99,10 +99,10 @@ void ResultManager::Update(double deltaTime)
 		mTransitionWait = false;
 
 		if (mResultItem == 0) {
-			SceneManager::getInstance().SceneChange<Title>();
+			Application::getInstance().SceneChange<Title>();
 		}
 		else if (mResultItem == 1) {
-			SceneManager::getInstance().SceneChange<Game>();
+			Application::getInstance().SceneChange<Game>();
 		}
 	}
 

@@ -4,10 +4,10 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/07
-*	@updated : 2026/09/16
+*	@updated : 2026/09/20
 *============================================================*/
 #include "GameManager.h"
-#include "SceneManager.h"
+#include "Application.h"
 #include "Transition.h"
 #include "Game.h"
 #include "Result.h"
@@ -116,7 +116,7 @@ void GameManager::Update(double deltaTime)
 	if (mTransitionWait && !Transition::getInstance().GetTransitionActive()) {
 		mTransitionWait = false;
 		SetSlow(false);
-		SceneManager::getInstance().SceneChange<Result>();
+		Application::getInstance().SceneChange<Result>();
 	}
 
 	// BGMのフェードアウト処理

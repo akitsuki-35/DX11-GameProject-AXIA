@@ -4,10 +4,10 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/07
-*	@updated : 2026/09/17
+*	@updated : 2026/09/20
 *============================================================*/
 #include "TitleManager.h"
-#include "SceneManager.h"
+#include "Application.h"
 #include "Transition.h"
 #include "Title.h"
 #include "Game.h"
@@ -89,7 +89,7 @@ void TitleManager::Update(double deltaTime)
 		mTransitionWait = false;
 
 		if (mTitleItem == 0) {
-			SceneManager::getInstance().SceneChange<Game>();
+			Application::getInstance().SceneChange<Game>();
 		}
 		else if (mTitleItem == 1) {
 			System::Window::getInstance().GameQuit();
