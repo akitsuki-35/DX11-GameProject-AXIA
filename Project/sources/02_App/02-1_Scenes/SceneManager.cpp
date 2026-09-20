@@ -18,8 +18,10 @@
 /*------------------------------------------------------------
 	初期化
 ------------------------------------------------------------*/
-void SceneManager::Initialize()
+void SceneManager::Initialize(std::unique_ptr<Scene> scene)
 {
+	if (!scene) return;
+
 	// 各種初期化
 	D3D11::Graphics::getInstance().Initialize();
 
@@ -27,15 +29,10 @@ void SceneManager::Initialize()
 	Input::Initialize();
 	AudioPlayer::InitializeMaster();
 
-	// 初期シーン設定
-#if defined(DEBUG) || defined(_DEBUG)
-	SceneChange<Title>();
-#else
-	SceneChange<Title>();
-#endif
+	_mNextScene = std::move(scene);
 
-	mCurrentScene = std::move(mNextScene);
-	mCurrentScene->Initialize();
+	_mCurrentScene = std::move(_mNextScene);
+	_mCurrentScene->Initialize();
 }
 
 /*------------------------------------------------------------
@@ -43,13 +40,13 @@ void SceneManager::Initialize()
 ------------------------------------------------------------*/
 void SceneManager::Finalize()
 {
-	if (mNextScene) {
-		if (mCurrentScene) {
-			mCurrentScene->Finalize();
+	if (_mNextScene) {
+		if (_mCurrentScene) {
+			_mCurrentScene->Finalize();
 		}
 
-		mCurrentScene = std::move(mNextScene);
-		mCurrentScene->Initialize();
+		_mCurrentScene = std::move(_mNextScene);
+		_mCurrentScene->Initialize();
 	}
 
 	AudioPlayer::FinalizeMaster();
@@ -67,21 +64,21 @@ void SceneManager::Update(double deltaTime)
 	Input::Update();
 
 	// 現在シーン更新
-	if (mCurrentScene) {
-		mCurrentScene->Update(deltaTime);
+	if (_mCurrentScene) {
+		_mCurrentScene->Update(deltaTime);
 	}
 
 	// シーン遷移
-	if (mNextScene) {
-		if (mCurrentScene) {
-			mCurrentScene->Finalize();
+	if (_mNextScene) {
+		if (_mCurrentScene) {
+			_mCurrentScene->Finalize();
 		}
 
-		mCurrentScene.reset();
+		_mCurrentScene.reset();
 
-		mCurrentScene = std::move(mNextScene);
+		_mCurrentScene = std::move(_mNextScene);
 
-		mCurrentScene->Initialize();
+		_mCurrentScene->Initialize();
 
 		// ロード中の累積時間をリセット
 		System::Timer::getInstance().Refresh();
@@ -96,8 +93,8 @@ void SceneManager::Draw()
 	D3D11::Graphics::getInstance().Begin();
 
 	// 現在シーン描画
-	if (mCurrentScene) {
-		mCurrentScene->Draw();
+	if (_mCurrentScene) {
+		_mCurrentScene->Draw();
 	}
 
 	// トランジションテクスチャを最後に描画

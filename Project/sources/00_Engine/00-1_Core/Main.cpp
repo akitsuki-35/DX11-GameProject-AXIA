@@ -13,6 +13,9 @@
 
 #include "SceneManager.h"
 
+#include "Title.h"
+#include <memory>
+
 /*------------------------------------------------------------
 	メイン
 ------------------------------------------------------------*/
@@ -28,7 +31,8 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 	// ウィンドウ初期化
 	System::Window::getInstance().Initialize(hInstance);
 
-	SceneManager::getInstance().Initialize();
+	// 初期シーン設定
+	SceneManager::getInstance().Initialize(std::make_unique<Title>());
 
 	// ウィンドウ表示
 	System::Window::getInstance().Show(nCmdShow);

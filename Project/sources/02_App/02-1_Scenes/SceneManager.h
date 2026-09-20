@@ -41,13 +41,13 @@ private:
 ----------------------------------------------------*/
 private:
 	// 現在シーン
-	std::unique_ptr<Scene> mCurrentScene{};
+	std::unique_ptr<Scene> _mCurrentScene{};
 
 	// 遷移先シーン
-	std::unique_ptr<Scene> mNextScene{};
+	std::unique_ptr<Scene> _mNextScene{};
 
 public:
-	void Initialize();
+	void Initialize(std::unique_ptr<Scene> scene);
 	void Finalize();
 	void Update(double deltaTime);
 	void Draw();
@@ -55,6 +55,6 @@ public:
 	// シーン遷移
 	template <class T>
 	void SceneChange() {
-		mNextScene = std::make_unique<T>();
+		_mNextScene = std::make_unique<T>();
 	}
 };
