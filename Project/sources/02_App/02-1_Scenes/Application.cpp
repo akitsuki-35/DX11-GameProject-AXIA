@@ -1,33 +1,26 @@
 ﻿/*============================================================
-*	@file	 : SceneManager.cpp
-*	@brief	 : シーン管理
+*	@file	 : Application.cpp
+*	@brief	 : アプリケーション内部処理
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/04/21
-*	@updated : 2026/09/16
+*	@updated : 2026/09/20
 *============================================================*/
-#include "SceneManager.h"
+#include "Application.h"
+#include "Scene.h"
 #include "SystemTimer.h"
 #include "Graphics.h"
 #include "Transition.h"
 #include "Input.h"
-#include "Title.h"
-#include "Scene.h"
 #include "AudioPlayer.h"
+#include <cassert>
 
 /*------------------------------------------------------------
 	初期化
 ------------------------------------------------------------*/
-void SceneManager::Initialize(std::unique_ptr<Scene> scene)
+void Application::Initialize(std::unique_ptr<Scene> scene)
 {
-	if (!scene) return;
-
-	// 各種初期化
-	D3D11::Graphics::getInstance().Initialize();
-
-	Transition::getInstance().Initialize();
-	Input::Initialize();
-	AudioPlayer::InitializeMaster();
+	assert(scene);
 
 	_mNextScene = std::move(scene);
 
@@ -38,7 +31,7 @@ void SceneManager::Initialize(std::unique_ptr<Scene> scene)
 /*------------------------------------------------------------
 	終了
 ------------------------------------------------------------*/
-void SceneManager::Finalize()
+void Application::Finalize()
 {
 	if (_mNextScene) {
 		if (_mCurrentScene) {
@@ -48,17 +41,12 @@ void SceneManager::Finalize()
 		_mCurrentScene = std::move(_mNextScene);
 		_mCurrentScene->Initialize();
 	}
-
-	AudioPlayer::FinalizeMaster();
-	Input::Finalize();
-
-	D3D11::Graphics::getInstance().Finalize();
 }
 
 /*------------------------------------------------------------
 	更新
 ------------------------------------------------------------*/
-void SceneManager::Update(double deltaTime)
+void Application::Update(double deltaTime)
 {
 	Transition::getInstance().Update(deltaTime);
 	Input::Update();
@@ -88,7 +76,7 @@ void SceneManager::Update(double deltaTime)
 /*------------------------------------------------------------
 	描画
 ------------------------------------------------------------*/
-void SceneManager::Draw()
+void Application::Draw()
 {
 	D3D11::Graphics::getInstance().Begin();
 

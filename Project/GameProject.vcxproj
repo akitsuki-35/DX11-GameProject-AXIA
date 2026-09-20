@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sources\00_Engine\00-1_Core\Application.cpp" />
+    <ClCompile Include="sources\00_Engine\00-1_Core\AppLoop.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\Main.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\SystemTimer.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\SystemWindow.cpp" />
@@ -78,7 +78,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="sources\02_App\02-1_Scenes\Scene.cpp" />
-    <ClCompile Include="sources\02_App\02-1_Scenes\SceneManager.cpp" />
+    <ClCompile Include="sources\02_App\02-1_Scenes\Application.cpp" />
     <ClCompile Include="sources\02_App\02-1_Scenes\Title.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -152,7 +152,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sources\00_Engine\00-1_Core\Application.h" />
+    <ClInclude Include="sources\00_Engine\00-1_Core\AppLoop.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\Config.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\SystemTimer.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\SystemWindow.h" />
@@ -219,7 +219,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="sources\02_App\02-1_Scenes\Scene.h" />
-    <ClInclude Include="sources\02_App\02-1_Scenes\SceneManager.h" />
+    <ClInclude Include="sources\02_App\02-1_Scenes\Application.h" />
     <ClInclude Include="sources\02_App\02-1_Scenes\Title.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

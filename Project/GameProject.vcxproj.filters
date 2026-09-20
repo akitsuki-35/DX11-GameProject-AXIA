@@ -105,7 +105,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sources\00_Engine\00-1_Core\Application.cpp">
+    <ClCompile Include="sources\00_Engine\00-1_Core\AppLoop.cpp">
       <Filter>00_Engine\00-1_Core</Filter>
     </ClCompile>
     <ClCompile Include="sources\00_Engine\00-1_Core\Main.cpp">
@@ -189,7 +189,7 @@
     <ClCompile Include="sources\00_Engine\00-2_Graphics\Graphics.cpp">
       <Filter>00_Engine\00-2_Graphics\DirectX11</Filter>
     </ClCompile>
-    <ClCompile Include="sources\02_App\02-1_Scenes\SceneManager.cpp">
+    <ClCompile Include="sources\02_App\02-1_Scenes\Application.cpp">
       <Filter>02_App\02-1_Scenes</Filter>
     </ClCompile>
     <ClCompile Include="sources\01_Framework\01-1_Common\Transform.cpp">
@@ -362,7 +362,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sources\00_Engine\00-1_Core\Application.h">
+    <ClInclude Include="sources\00_Engine\00-1_Core\AppLoop.h">
       <Filter>00_Engine\00-1_Core</Filter>
     </ClInclude>
     <ClInclude Include="sources\00_Engine\00-1_Core\Config.h">
@@ -373,9 +373,6 @@
     </ClInclude>
     <ClInclude Include="sources\00_Engine\00-1_Core\SystemWindow.h">
       <Filter>00_Engine\00-1_Core</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\01_Framework\01-1_Common\Collision3D.h">
-      <Filter>01_Framework\01-1_Common</Filter>
     </ClInclude>
     <ClInclude Include="sources\01_Framework\01-1_Common\Input.h">
       <Filter>01_Framework\01-1_Common</Filter>
@@ -488,7 +485,7 @@
     <ClInclude Include="sources\00_Engine\00-2_Graphics\Graphics.h">
       <Filter>00_Engine\00-2_Graphics\DirectX11</Filter>
     </ClInclude>
-    <ClInclude Include="sources\02_App\02-1_Scenes\SceneManager.h">
+    <ClInclude Include="sources\02_App\02-1_Scenes\Application.h">
       <Filter>02_App\02-1_Scenes</Filter>
     </ClInclude>
     <ClInclude Include="sources\01_Framework\01-1_Common\Transform.h">
