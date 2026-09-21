@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/04/21
-*	@updated : 2026/09/20
+*	@updated : 2026/09/21
 *============================================================*/
 // System
 #include "SystemWindow.h"
@@ -27,7 +27,7 @@ int APIENTRY WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
 	SetProcessDPIAware();
 
 	// ウィンドウ初期化
-	System::Window::getInstance().Initialize(hInstance);
+	System::Window::getInstance().Initialize(hInstance, "A.X.I.A");
 
 	AppSetup::Initialize();
 
