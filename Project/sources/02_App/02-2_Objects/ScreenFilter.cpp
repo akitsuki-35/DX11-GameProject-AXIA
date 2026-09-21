@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/07
-*	@updated : 2026/09/07
+*	@updated : 2026/09/16
 *============================================================*/
 #include "ScreenFilter.h"
 #include "UIRenderer.h"
@@ -43,7 +43,6 @@ void ScreenFilter::Update(double deltaTime)
 	else {
 		GetComponent<UIRenderer>()->SetColor({ 0.0f, 0.0f, 0.0f, 1.0f });
 	}
-
 
 	GameObject::Update(deltaTime);
 }

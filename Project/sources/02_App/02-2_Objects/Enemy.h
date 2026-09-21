@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/05/19
-*	@updated : 2026/08/04
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -31,8 +31,11 @@ private:
 	// ショット間隔
 	Timer* _mShotInterval{ nullptr };
 
-	Timer* _mShakeTimer{ nullptr }; // シェイク用タイマー
-	float mShakeIntensity{}; // シェイク強度
+	// シェイク用タイマー
+	Timer* _mShakeTimer{ nullptr };
+
+	// シェイク強度
+	float mShakeIntensity{};
 
 public:
 	Enemy() = default;
@@ -49,7 +52,9 @@ public:
 	void Shake(float intensity, double shakeTime = 1.0);
 
 private:
+	// シェイク更新
 	void shakeUpdate(Vector3& position);
 
+	// ショットインターバルをセット
 	double setShotInterval(double min = 1.0, double max = 3.0);
 };

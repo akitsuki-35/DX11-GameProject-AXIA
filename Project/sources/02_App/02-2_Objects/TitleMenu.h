@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/15
-*	@updated : 2026/09/15
+*	@updated : 2026/09/17
 *============================================================*/
 #pragma once
 
@@ -23,8 +23,13 @@ class Timer;
 class TitleMenu : public GameObject
 {
 private:
+	// ゲーム開始テキスト
 	TextRenderer* _mStartRenderer{ nullptr };
+
+	// ゲーム終了テキスト
 	TextRenderer* _mQuitRenderer{ nullptr };
+
+	// テキストイージング用タイマー
 	Timer* _mEaseTimer{ nullptr };
 
 public:

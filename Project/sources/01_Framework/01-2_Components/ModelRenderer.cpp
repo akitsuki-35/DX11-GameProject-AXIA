@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/01
-*	@updated : 2026/08/04
+*	@updated : 2026/09/16
 *============================================================*/
 #include "ModelRenderer.h"
 #include "ModelManager.h"
@@ -12,6 +12,8 @@
 #include "TextureManager.h"
 #include "Texture.h"
 #include "BufferManager.h"
+#include "GameObject.h"
+#include "Utility.h"
 
 void ModelRenderer::Draw() const
 {
@@ -54,8 +56,7 @@ void ModelRenderer::Draw() const
             // パラメータ設定
             D3D11::BufferManager::getInstance().SetParameter(mParameter);
 
-            if (mTextures.Albedo)
-            {
+            if (mTextures.Albedo) {
                 // 外部テクスチャを使用して描画
                 mTextures.Albedo->Bind();
             }
@@ -68,8 +69,10 @@ void ModelRenderer::Draw() const
                 dummy->Bind();
             }
 
+            // マップテクスチャをセット
             setMapTextures();
 
+            // メッシュ描画
             mesh.Draw(subset);
         }
     }
@@ -79,6 +82,7 @@ void ModelRenderer::Draw() const
 
 DirectX::XMMATRIX ModelRenderer::getWorldMatrix() const
 {
+    // ワールド行列取得
     return _mOwner->GetTransform().GetWorldMatrix();
 }
 
@@ -94,6 +98,7 @@ ModelRenderer* ModelRenderer::LoadModel(const char* fileName)
 
 ModelRenderer* ModelRenderer::LoadTexture(std::string textureName, TextureType type)
 {
+    // 指定タイプにテクスチャをロード
     switch (type)
     {
     case TextureType::Albedo:
@@ -145,7 +150,7 @@ void ModelRenderer::setMapTextures() const
         mTextures.Metalness->Bind(3);
     }
 
-    // セルシェーディング
+    // セルシェーディング明るさ値
     if (mTextures.Rump) {
         mTextures.Rump->Bind(4);
     }

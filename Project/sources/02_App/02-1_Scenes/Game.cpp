@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/03/28
-*	@updated : 2026/08/04
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Game.h"
 
@@ -41,7 +41,7 @@ void Game::Initialize()
 	// オブジェクト
 	AddGameObject<Player>();
 
-	// 2Dオブジェクト
+	// 2Dオブジェクト群
 	AddGameObject<ScreenFilter>();
 	AddGameObject<HUDScore>();
 	AddGameObject<HUDLife>();
@@ -60,6 +60,7 @@ void Game::Finalize()
 
 void Game::Update(double deltaTime)
 {
+	// スロー中は通常の半分の時間で更新
 	if (mSlow) {
 		deltaTime *= 0.5;
 	}

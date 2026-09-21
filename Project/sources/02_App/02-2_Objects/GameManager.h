@@ -1,10 +1,10 @@
 ﻿/*============================================================
 *	@file	 : GameManager.h
-*	@brief	 : ゲーム制御用クラス
+*	@brief	 : ゲーム制御用マネージャーオブジェクト
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/07
-*	@updated : 2026/09/07
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -21,7 +21,7 @@ class GameObject;
 
 /*============================================================
 *	@class	: GameManager
-*	@brief	: ゲーム制御用クラス
+*	@brief	: ゲーム制御用マネージャーオブジェクト
 *============================================================*/
 class GameManager : public GameObject
 {
@@ -107,6 +107,7 @@ public:
 	static bool IsTransition();
 
 private:
+	// エネミーのスポーン
 	void enemySpawn();
 
 	// ステージエフェクト更新

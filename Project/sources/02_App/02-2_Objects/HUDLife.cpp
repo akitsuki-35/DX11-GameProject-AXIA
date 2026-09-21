@@ -1,10 +1,10 @@
 ﻿/*============================================================
 *	@file	 : HUDLife.cpp
-*	@brief	 : 体力表示
+*	@brief	 : プレイヤーHP表示
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/30
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #include "HUDLife.h"
 #include "TextRenderer.h"
@@ -43,6 +43,7 @@ void HUDLife::Finalize()
 
 void HUDLife::Update(double deltaTime)
 {
+	// 現在のプレイヤーHPを表示
 	int life = Game::GetGameObject<Player>()->GetLife();
 	std::string lifeText = std::format("{:0}", life);
 

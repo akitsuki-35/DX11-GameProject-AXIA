@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/28
-*	@updated : 2026/08/28
+*	@updated : 2026/09/16
 *============================================================*/
 #include "ParticleBezier.h"
 #include "ParticleBox.h"
@@ -25,6 +25,7 @@ void ParticleType::Bezier::Update(double deltaTime)
 
 void ParticleType::Bezier::Emission(ParticleDesc& desc)
 {
+	// エミッタ本体から発射数とパーティクル配列を取得
 	int count = _mEmitter->GetCount();
 	auto& particles = _mEmitter->GetParticles();
 
@@ -38,6 +39,7 @@ void ParticleType::Bezier::Emission(ParticleDesc& desc)
 	mBezier.Update();
 	_mEmitter->SetPosition(mBezier.GetBezierPoint(mBezier.GetFrame()));
 
+	// エミッタ本体の座標をセット
 	Vector3 position = _mEmitter->GetTransform().GetPosition();
 
 	// パーティクル発射
@@ -51,7 +53,7 @@ void ParticleType::Bezier::Emission(ParticleDesc& desc)
 
 			particles[i].SetParameter(position, velocity,
 				desc.Accel, { scale, scale, scale }, desc.Gravity, desc.Drag, desc.Life);
-			particles[i].Enable();
+			particles[i].SetEnable(true);
 
 			count--;
 			if (count <= 0) {
@@ -121,6 +123,7 @@ std::unique_ptr<ParticleType::Base> ParticleType::Bezier::LoadCSV(const char* fi
 
 			_mEmitter->GetComponent<ParticleRenderer>()->SetSubColor(color);
 		}
+		// ベジエ曲線用パラメータ取得
 		else if (tag == "CONTROLPOINT0") {
 			// 制御点0取得
 			Vector3 position{};
@@ -155,7 +158,7 @@ std::unique_ptr<ParticleType::Base> ParticleType::Bezier::LoadCSV(const char* fi
 			mBezier.SetControlPoint(2, _mEmitter->GetPosition() + position);
 		}
 		else if (tag == "CONTROLPOINT3") {
-			// 制御点2取得
+			// 制御点3取得
 			Vector3 position{};
 
 			position.x = CSVHandler::GetFloat(row, 1, 0.0f);

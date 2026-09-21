@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/11
-*	@updated : 2026/08/11
+*	@updated : 2026/09/16
 *============================================================*/
 #include "FontManager.h"
 #include "FontLoader.h"
@@ -74,8 +74,8 @@ Font* FontManager::Register(const std::string& keyName, const char* fontPath)
 
 void FontManager::Clear()
 {
-    mFonts.clear();
     mAtlas.clear();
+    mFonts.clear();
 }
 
 bool FontManager::generateGlyph(Glyph& glyph, const GlyphKey& key)
@@ -174,7 +174,8 @@ bool FontManager::generateGlyph(Glyph& glyph, const GlyphKey& key)
     if (!glyph.Texture) {
         glyph.Texture = std::make_shared<Texture>();
     }
-
+    
+    // パラメータ設定
     glyph.Texture->_mSRV = srv.Get();
     glyph.Texture->mSize = { static_cast<uint32_t>(width), static_cast<uint32_t>(height) };
     glyph.BearingX = static_cast<int32_t>(metrics.leftSideBearing * (fontSize / designUnitsPerEm));

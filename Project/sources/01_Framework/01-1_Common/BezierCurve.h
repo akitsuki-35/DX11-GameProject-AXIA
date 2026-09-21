@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/07/09
-*	@updated : 2026/08/19
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -18,10 +18,8 @@
 *============================================================*/
 class BezierCurve
 {
-	// Debuggerから操作可能にする
-	friend class ParticleGUI;
-
 private:
+	// 曲線上の座標
 	struct POINT {
 		Vector3 position{};
 	};
@@ -32,12 +30,16 @@ private:
 	int mFrameMax{}; // 全体フレーム
 	int mFrame{}; // 現在フレーム
 
-	std::array<POINT, 4> mControlPoints{}; // 制御点(三次ベジエ曲線)
-	std::vector<POINT> mBezierPoint{}; // フレームごとのベジエ曲線上座標
+	// 制御点(三次ベジエ曲線)
+	std::array<POINT, 4> mControlPoints{};
+
+	// フレームごとのベジエ曲線上座標
+	std::vector<POINT> mBezierPoint{};
 
 public:
 	BezierCurve();
 
+	// 更新
 	void Update();
 	
 	// ベジエ曲線上座標計算

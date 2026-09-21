@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/09
-*	@updated : 2026/08/06
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -16,10 +16,6 @@
 *============================================================*/
 class Sky : public GameObject
 {
-private:
-	Vector3 mVelocity{ 0.0f, 0.0f, 0.0f };
-	Vector3 mAccel{ 0.0f, 0.0f, 0.0f };
-
 public:
 	Sky() = default;
 

@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/30
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -23,7 +23,10 @@ class TextRenderer;
 class HUDScore : public GameObject
 {
 private:
+	// テキスト部分レンダラー
 	TextRenderer* _mTextRenderer{ nullptr };
+
+	// スコア数値レンダラー
 	TextRenderer* _mScoreRenderer{ nullptr };
 
 public:

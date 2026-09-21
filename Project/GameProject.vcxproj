@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sources\00_Engine\00-1_Core\Application.cpp" />
+    <ClCompile Include="sources\00_Engine\00-1_Core\AppLoop.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\Main.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\SystemTimer.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\SystemWindow.cpp" />
@@ -70,6 +70,7 @@
     <ClCompile Include="sources\01_Framework\01-2_Components\TextRenderer.cpp" />
     <ClCompile Include="sources\01_Framework\01-2_Components\Timer.cpp" />
     <ClCompile Include="sources\01_Framework\01-2_Components\UIRenderer.cpp" />
+    <ClCompile Include="sources\02_App\02-1_Scenes\AppSetup.cpp" />
     <ClCompile Include="sources\02_App\02-1_Scenes\Game.cpp" />
     <ClCompile Include="sources\02_App\02-1_Scenes\Result.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -78,7 +79,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="sources\02_App\02-1_Scenes\Scene.cpp" />
-    <ClCompile Include="sources\02_App\02-1_Scenes\SceneManager.cpp" />
+    <ClCompile Include="sources\02_App\02-1_Scenes\Application.cpp" />
     <ClCompile Include="sources\02_App\02-1_Scenes\Title.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -152,7 +153,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sources\00_Engine\00-1_Core\Application.h" />
+    <ClInclude Include="sources\00_Engine\00-1_Core\AppLoop.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\Config.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\SystemTimer.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\SystemWindow.h" />
@@ -188,12 +189,6 @@
     <ClInclude Include="sources\00_Engine\00-4_Importer\FontLoader.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\BezierCurve.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\BoneTransform.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\Collision3D.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="sources\01_Framework\01-1_Common\Easing.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\Transition.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -217,6 +212,7 @@
     <ClInclude Include="sources\01_Framework\01-2_Components\TextRenderer.h" />
     <ClInclude Include="sources\01_Framework\01-2_Components\Timer.h" />
     <ClInclude Include="sources\01_Framework\01-2_Components\UIRenderer.h" />
+    <ClInclude Include="sources\02_App\02-1_Scenes\AppSetup.h" />
     <ClInclude Include="sources\02_App\02-1_Scenes\Game.h" />
     <ClInclude Include="sources\02_App\02-1_Scenes\Result.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -225,7 +221,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="sources\02_App\02-1_Scenes\Scene.h" />
-    <ClInclude Include="sources\02_App\02-1_Scenes\SceneManager.h" />
+    <ClInclude Include="sources\02_App\02-1_Scenes\Application.h" />
     <ClInclude Include="sources\02_App\02-1_Scenes\Title.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -422,13 +418,13 @@
     <OutDir>$(SolutionDir)\_bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>_obj\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(ProjectDir)sources\00_Engine\00-1_Core;$(ProjectDir)sources\00_Engine\00-2_Graphics;$(ProjectDir)sources\00_Engine\00-3_Resource;$(ProjectDir)sources\00_Engine\00-4_Importer;$(ProjectDir)sources\01_Framework\01-1_Common;$(ProjectDir)sources\01_Framework\01-2_Components;$(ProjectDir)sources\02_App\02-1_Scenes;$(ProjectDir)sources\02_App\02-2_Objects;$(ProjectDir)sources\03_HLSL;$(ProjectDir)sources\99_Debug;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>C:\Users\asuka\Documents\VSProjects\_frameworks\3DGame_Framework\GameProject3D\Project\sources\04_External\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>$(ProjectDir)sources\04_External\include</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\_bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>_obj\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(ProjectDir)sources\00_Engine\00-1_Core;$(ProjectDir)sources\00_Engine\00-2_Graphics;$(ProjectDir)sources\00_Engine\00-3_Resource;$(ProjectDir)sources\00_Engine\00-4_Importer;$(ProjectDir)sources\01_Framework\01-1_Common;$(ProjectDir)sources\01_Framework\01-2_Components;$(ProjectDir)sources\02_App\02-1_Scenes;$(ProjectDir)sources\02_App\02-2_Objects;$(ProjectDir)sources\03_HLSL;$(ProjectDir)sources\99_Debug;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>C:\Users\asuka\Documents\VSProjects\_frameworks\3DGame_Framework\GameProject3D\Project\sources\04_External\include;$(ExternalIncludePath)</ExternalIncludePath>
+    <ExternalIncludePath>$(ProjectDir)sources\04_External\include</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)sources\00_Engine\00-1_Core;$(ProjectDir)sources\00_Engine\00-2_Graphics;$(ProjectDir)sources\01_Framework\01-1_Common;$(ProjectDir)sources\01_Framework\01-2_Components;$(ProjectDir)sources\02_App\02-1_Scenes;$(ProjectDir)sources\02_App\02-2_Objects;$(ProjectDir)sources\03_HLSL;$(ProjectDir)sources\99_Debug;$(IncludePath)</IncludePath>

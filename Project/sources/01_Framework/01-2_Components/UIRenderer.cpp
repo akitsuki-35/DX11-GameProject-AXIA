@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/13
-*	@updated : 2026/08/13
+*	@updated : 2026/09/16
 *============================================================*/
 #include "UIRenderer.h"
 #include "Texture.h"
@@ -39,6 +39,7 @@ void UIRenderer::Draw() const
 		_mTexture->Bind();
 	}
 
+	// UI描画
 	mCanvas.Draw();
 
 	Renderer::End();
@@ -72,11 +73,13 @@ void UIRenderer::Draw(const Transform& transform)
 
 DirectX::XMMATRIX UIRenderer::getWorldMatrix() const
 {
+	// ワールド行列取得
 	return _mOwner->GetTransform().GetWorldMatrix();
 }
 
 UIRenderer* UIRenderer::LoadTexture(const char* fileName)
 {
+	// テクスチャ読み込み
 	_mTexture = TextureManager::getInstance().Load(fileName);
 	return this;
 }

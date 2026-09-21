@@ -1,10 +1,10 @@
 ﻿/*============================================================
 *	@file	 : Transition.h
-*	@brief	 : フェード制御
+*	@brief	 : トランジション
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/03/29
-*	@updated : 2026/08/15
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -17,7 +17,7 @@
 
 /*============================================================
 *	@class	: Transition
-*	@brief	: フェード制御
+*	@brief	: トランジション
 *============================================================*/
 class Transition
 {
@@ -57,12 +57,12 @@ private:
 	bool mFadeIn{};
 
 public:
-	void Initialize();
+	void Initialize(const char* texturePath, std::string shaderName);
 	void Finalize();
 	void Update(double deltaTime);
 	void Draw() const;
 
-	// フェード開始
+	// トランジション開始
 	void Start(const double& fadeTime, const bool& isFadeIn,
 		const Color::Index& color = Color::Index::Black);
 

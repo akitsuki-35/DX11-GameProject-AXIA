@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/03/29
-*	@updated : 2026/09/10
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Title.h"
 #include "TitleManager.h"
@@ -16,10 +16,12 @@ void Title::Initialize()
 {
 	_mGameObjects.clear();
 
+	// 背景テクスチャ
 	AddGameObject<BackGroundTexture>()->LoadTexture("assets\\textures\\title.jpg");
 	AddGameObject<BackGroundTexture>()->LoadTexture("assets\\textures\\white.jpg")->
 		SetColor({ 0.0f, 0.0f, 0.0f, 0.25f });
 
+	// テキスト
 	AddGameObject<GameTitle>();
 	AddGameObject<TitleMenu>();
 

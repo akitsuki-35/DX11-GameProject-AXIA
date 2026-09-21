@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/20
-*	@updated : 2026/08/20
+*	@updated : 2026/09/16
 *============================================================*/
 #include "GridRenderer.h"
 #include "Texture.h"
@@ -102,6 +102,7 @@ void GridRenderer::Draw() const
 		_mTexture->Bind();
 	}
 
+	// 描画命令発行
 	D3D11::DeviceManager::getInstance().GetContext()->Draw(mVertexCount, 0);
 
 	Renderer::End();
@@ -109,5 +110,6 @@ void GridRenderer::Draw() const
 
 DirectX::XMMATRIX GridRenderer::getWorldMatrix() const
 {
+	// ワールド行列取得
 	return _mOwner->GetTransform().GetWorldMatrix();
 }

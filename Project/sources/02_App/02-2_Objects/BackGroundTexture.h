@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/10
-*	@updated : 2026/09/10
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
@@ -23,6 +23,7 @@ class UIRenderer;
 class BackGroundTexture : public GameObject
 {
 private:
+	// レンダラー
 	UIRenderer* _mRenderer{ nullptr };
 
 public:
@@ -34,7 +35,12 @@ public:
 	void Update(double deltaTime) override;
 	void Draw() const override;
 
+	// テクスチャ読み込み
 	BackGroundTexture* LoadTexture(const char* fileName);
+
+	// テクスチャサイズ設定
 	BackGroundTexture* SetSize(const Vector2& size);
+
+	// カラー設定
 	BackGroundTexture* SetColor(const DirectX::XMFLOAT4& color);
 };

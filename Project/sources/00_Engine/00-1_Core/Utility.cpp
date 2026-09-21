@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/07/30
-*	@updated : 2026/08/04
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Utility.h"
 #include "Easing.h"
@@ -105,6 +105,8 @@ std::wstring Utility::String::toWideString(const std::string& string)
 
 double Utility::Easing::CalculateRatio(double current, double duration)
 {
+	// イージング用ratio算出
+
 	if (duration <= 0.0) return 1.0;
 
 	double elapsed = duration - current;
@@ -116,6 +118,8 @@ double Utility::Easing::CalculateRatio(double current, double duration)
 
 float Utility::Easing::CalculateEase(double current, double duration, easing_functions easeType)
 {
+	// イージング用ease算出
+
 	double ratio = CalculateRatio(current, duration);
 
 	float ease = static_cast<float>(getEasingFunction(easeType)(ratio));

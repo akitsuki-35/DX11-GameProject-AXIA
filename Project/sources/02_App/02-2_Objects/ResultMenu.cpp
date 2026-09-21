@@ -1,16 +1,15 @@
 ﻿/*============================================================
 *	@file	 : ResultMenu.cpp
-*	@brief	 : タイトルメニュー
+*	@brief	 : リザルトメニュー
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/15
-*	@updated : 2026/09/15
+*	@updated : 2026/09/17
 *============================================================*/
 #include "ResultMenu.h"
 #include "TextRenderer.h"
 #include "ResultManager.h"
 #include "Timer.h"
-#include "Input.h"
 #include "Utility.h"
 #include "Easing.h"
 
@@ -36,7 +35,7 @@ void ResultMenu::Initialize()
 		->SetTextSize(80)->SetShadowColor({ 0.0f, 0.0f, 0.0f, 1.0f })->SetColor({ 1.0f, 1.0f, 1.0f, 1.0f })
 		->LoadShader("Font");
 
-	// タイマーのセット
+	// タイマーの設定
 	_mEaseTimer = AddComponent<Timer>(this);
 }
 
@@ -87,6 +86,7 @@ void ResultMenu::Draw() const
 
 void ResultMenu::SetEaseTimer(double time)
 {
+	// イージング用タイマーをセット
 	_mEaseTimer->Start(time);
 }
 
@@ -124,5 +124,6 @@ void ResultMenu::easeItem(TextRenderer* renderer, float ease, bool isCurrent)
 		}
 	}
 
+	// オフセット移動
 	renderer->SetOffset(itemOffset);
 }

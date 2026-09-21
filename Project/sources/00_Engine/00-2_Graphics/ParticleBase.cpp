@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/19
-*	@updated : 2026/08/27
+*	@updated : 2026/09/16
 *============================================================*/
 #include "ParticleBase.h"
 #include "ParticleBox.h"
@@ -17,6 +17,7 @@ using namespace DirectX;
 
 void ParticleType::Base::Update(double deltaTime)
 {
+	// 発射後パーティクル更新
 	auto& particles = _mEmitter->GetParticles();
 	for (int i = 0; i < _mEmitter->GetParticleMax(); i++) {
 		particles[i].Update(deltaTime);
@@ -25,6 +26,8 @@ void ParticleType::Base::Update(double deltaTime)
 
 std::unique_ptr<ParticleType::Base> ParticleType::Base::LoadCSV(const char* filePath)
 {
+	// CSVファイルからパラメータ読み込み
+
 	CSVHandler::Data data{};
 
 	// ロード失敗時はreturn
@@ -35,9 +38,12 @@ std::unique_ptr<ParticleType::Base> ParticleType::Base::LoadCSV(const char* file
 	std::unique_ptr<ParticleType::Base> newType = nullptr;
 
 	for (const auto& row : data){
+		// 分岐用タグ
 		std::string tag = CSVHandler::GetString(row, 0);
 
 		if (tag == "TYPE") {
+			// パーティクルタイプ取得
+			// 戻り値として代入
 			std::string type = CSVHandler::GetString(row, 1);
 			if (type == "Box") {
 				newType = std::make_unique<ParticleType::Box>(_mEmitter);

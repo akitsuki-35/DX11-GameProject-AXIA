@@ -1,10 +1,10 @@
 ﻿/*============================================================
 *	@file	 : HUDEnemyCount.cpp
-*	@brief	 : ウェーブ数表示
+*	@brief	 : エネミー数表示
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/13
-*	@updated : 2026/09/13
+*	@updated : 2026/09/16
 *============================================================*/
 #include "HUDEnemyCount.h"
 #include "TextRenderer.h"
@@ -27,7 +27,7 @@ void HUDEnemyCount::Initialize()
 		->SetTextSize(32)->SetShadowColor({ 0.0f, 0.5f, 1.0f, 1.0f })->SetColor({ 0.5f, 1.0f, 0.3f, 1.0f })
 		->LoadShader("Font");
 
-	// エネミー数レンダラーの設定
+	// エネミー数表示レンダラーの設定
 	_mEnemyCountRenderer = AddComponent<TextRenderer>(this);
 	_mEnemyCountRenderer->SetFont("Kaisotai")->SetOffset({ 100.0f, -10.0f })
 		->SetTextSize(48)->SetShadowColor({ 0.0f, 0.5f, 1.0f, 1.0f })->SetColor({ 0.5f, 1.0f, 0.3f, 1.0f })
@@ -41,6 +41,7 @@ void HUDEnemyCount::Finalize()
 
 void HUDEnemyCount::Update(double deltaTime)
 {
+	// そのウェーブの残り敵数/最大敵数を表示
 	if (GameManager::GetWave() == 0) {
 		_mEnemyCountRenderer->SetText("- / -");
 	}

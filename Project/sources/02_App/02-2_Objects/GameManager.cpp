@@ -1,13 +1,13 @@
 ﻿/*============================================================
 *	@file	 : GameManager.cpp
-*	@brief	 : ゲーム制御用ダミーオブジェクト
+*	@brief	 : ゲーム制御用マネージャーオブジェクト
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/07
-*	@updated : 2026/09/07
+*	@updated : 2026/09/20
 *============================================================*/
 #include "GameManager.h"
-#include "SceneManager.h"
+#include "Application.h"
 #include "Transition.h"
 #include "Game.h"
 #include "Result.h"
@@ -60,7 +60,6 @@ void GameManager::Initialize()
 	_mEffect = Game::AddGameObject<ParticleEmitter>()->LoadCSV("assets\\csv\\Effect.csv");
 
 	_mWaveInterval->Start(2.0);
-	//enemySpawn();
 
 	_mGameAudios["BGM"]->Play(true);
 }
@@ -75,6 +74,7 @@ void GameManager::Update(double deltaTime)
 	// ステージエフェクト更新
 	stageEffectUpdate();
 
+	// 最終ウェーブかどうか
 	bool isMaxWave = false;
 
 	// そのウェーブの敵が全滅しているならスロー演出とインターバルの後、次ウェーブへ移行
@@ -116,7 +116,7 @@ void GameManager::Update(double deltaTime)
 	if (mTransitionWait && !Transition::getInstance().GetTransitionActive()) {
 		mTransitionWait = false;
 		SetSlow(false);
-		SceneManager::getInstance().SceneChange<Result>();
+		Application::getInstance().SceneChange<Result>();
 	}
 
 	// BGMのフェードアウト処理
@@ -220,11 +220,13 @@ void GameManager::SetSlow(bool isSlow)
 
 bool GameManager::IsTransition()
 {
+	// シーン遷移中か
 	return mTransitionWait || _mSceneChangeTimer->GetEnable();
 }
 
 void GameManager::enemySpawn()
 {
+	// ウェーブごとにエネミーを配置
 	switch (mWave)
 	{
 	case 1:
@@ -287,6 +289,8 @@ void GameManager::enemySpawn()
 
 void GameManager::stageEffectUpdate()
 {
+	// フィールド上のエフェクト
+
 	// カメラ座標取得
 	auto camera = Game::GetGameObject<Camera>();
 	Vector3 position = camera->GetPosition();

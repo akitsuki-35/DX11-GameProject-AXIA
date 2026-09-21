@@ -4,23 +4,31 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/03/29
-*	@updated : 2026/08/16
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Transition.h"
+#include <cassert>
 
 using namespace::DirectX;
 
-void Transition::Initialize()
+void Transition::Initialize(const char* texturePath, std::string shaderName)
 {
+	// タイマー初期化
 	_mTimer = std::make_unique<Timer>();
 
+	// レンダラー初期化
 	_mRenderer = std::make_unique<UIRenderer>();
 	_mRenderer->GetCanvas().CreateCanvas(UIStyle::Pivot::LeftTop);
 
+	// トランスフォーム初期化
 	mTransform.SetPosition({ 0.0f, 0.0f, 0.0f });
 	mTransform.SetScale({ Screen::WIDTH, Screen::HEIGHT, 0.0f });
 
-	_mRenderer->LoadShader("UI");
+	// テクスチャ読み込み
+	_mRenderer->LoadTexture(texturePath);
+
+	// シェーダー読み込み
+	_mRenderer->LoadShader(shaderName);
 }
 
 void Transition::Finalize()
@@ -55,10 +63,7 @@ void Transition::Draw() const
 {
 	if (!_mTimer->GetEnable()) return;
 
-	// テクスチャが存在しない場合は白テクスチャを使用
-	if (!_mRenderer->GetTexture()) {
-		_mRenderer->LoadTexture("assets\\textures\\white.png");
-	}
+	assert(_mRenderer->GetTexture());
 
 	_mRenderer->Draw(mTransform);
 }
@@ -78,10 +83,12 @@ void Transition::Start(const double& fadeTime, const bool& isFadeIn, const Color
 
 bool Transition::GetTransitionActive()
 {
+	// トランジション中かを判定
 	return _mTimer->GetEnable();
 }
 
 float Transition::GetTransitionProgress()
 {
+	// トランジション進行度を取得
 	return _mTimer->GetProgress();
 }

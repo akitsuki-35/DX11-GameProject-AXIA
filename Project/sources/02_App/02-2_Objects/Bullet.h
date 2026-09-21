@@ -1,15 +1,14 @@
 ﻿/*============================================================
 *	@file	 : Bullet.h
-*	@brief	 : 弾
+*	@brief	 : プレイヤーの弾
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/06/02
-*	@updated : 2026/09/02
+*	@updated : 2026/09/16
 *============================================================*/
 #pragma once
 
 #include "GameObject.h"
-#include <memory>
 
 /*------------------------------------------------------------
 	前方宣言
@@ -19,7 +18,7 @@ class Enemy;
 
 /*============================================================
 *	@class	: Bullet
-*	@brief	: 弾
+*	@brief	: プレイヤーの弾
 *============================================================*/
 class Bullet : public GameObject
 {
@@ -44,5 +43,6 @@ public:
 	void SetVelocity(const Vector3& velocity) { mVelocity = velocity; }
 
 private:
+	// ヒット演出
 	void hitEffect(Enemy* enemy);
 };

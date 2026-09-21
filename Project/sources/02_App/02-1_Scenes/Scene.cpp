@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/08/15
-*	@updated : 2026/08/15
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Scene.h"
 #include "DeviceManager.h"
@@ -33,6 +33,7 @@ void Scene::Update(double deltaTime)
 		obj->Update(deltaTime);
 	}
 
+	// ヒットストップ中はオブジェクトを削除しない
 	if (!mHitStop) {
 		// ゲームオブジェクト削除
 		_mGameObjects.remove_if([](const auto& object) {

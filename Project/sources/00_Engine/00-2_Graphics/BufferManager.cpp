@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/07/14
-*	@updated : 2026/07/14
+*	@updated : 2026/09/16
 *============================================================*/
 #include "BufferManager.h"
 #include "DeviceManager.h"
@@ -39,7 +39,7 @@ void D3D11::BufferManager::Initialize()
 	material.Ambient = XMFLOAT4(1.0f, 1.0f, 1.0f, 1.0f);
 	SetMaterial(material);
 
-	// パラメータ初期化
+	// 汎用パラメータ初期化
 	DirectX::XMFLOAT4 parameter{ 0.0f, 0.0f, 0.0f, 0.0f };
 	SetParameter(parameter);
 }
@@ -140,6 +140,7 @@ void D3D11::BufferManager::SetLight(const Element::LIGHT& light)
 
 void D3D11::BufferManager::SetBoneMatrices(const Skeleton& skeleton)
 {
+	// ボーン行列設定
 	Element::BONE buffer{};
 
 	const auto& matrices = skeleton.GetSkinningMatrices();

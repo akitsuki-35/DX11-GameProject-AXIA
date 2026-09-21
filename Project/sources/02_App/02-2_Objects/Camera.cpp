@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/04/26
-*	@updated : 2026/08/06
+*	@updated : 2026/09/16
 *============================================================*/
 #include "Camera.h"
 #include "Game.h"
@@ -20,9 +20,9 @@ using namespace DirectX;
 void Camera::Initialize()
 {
 	mTransform.SetPosition({ 0.0f, 5.0f, 5.0f });
-
 	mTarget = Vector3(0.0f, 0.0f, 0.0f);
 
+	// シェイク用タイマー
 	_mShakeTimer = AddComponent<Timer>(this);
 }
 
@@ -35,11 +35,14 @@ void Camera::Update(double deltaTime)
 {
 	float dt = static_cast<float>(deltaTime);
 
+	// プレイヤー座標取得
 	Player* player = Game::GetGameObject<Player>();
 	Vector3 playerPos = player->GetTransform().GetPosition();
 
+	// カメラ回転行列取得
 	Vector3 rotation = mTransform.GetRotation();
 
+	// 左右キーでカメラ回転
 	if (!GameManager::IsHitStop()) {
 		if (Input::GetKeyPress(VK_LEFT) && !Input::GetKeyPress(VK_RIGHT)) {
 			mTransform.SetRotation({ rotation.x, rotation.y -= 3.0f * dt, rotation.z });
@@ -49,8 +52,10 @@ void Camera::Update(double deltaTime)
 		}
 	}
 
+	// 回転行列をセット
 	rotation = mTransform.GetRotation();
 
+	// プレイヤーを追従する
 	float t = 0.1f;
 	mTarget = mTarget * (1.0f - t) + (playerPos + Vector3(0.0f, 1.25f, 0.0f)) * t;
 	mTransform.SetPosition(mTarget + Vector3(-sinf(rotation.y) * 5.0f, 1.25f, -cosf(rotation.y) * 5.0f));
@@ -60,6 +65,7 @@ void Camera::Update(double deltaTime)
 		shakeUpdate();
 	}
 
+	// ビュー行列をセット
 	XMFLOAT3 up = XMFLOAT3(0.0f, 1.0f, 0.0f);
 	mViewMatrix = XMMatrixLookAtLH(XMLoadFloat3((XMFLOAT3*)&mTransform.GetPosition()),
 		XMLoadFloat3((XMFLOAT3*)&mTarget), XMLoadFloat3(&up));
@@ -69,6 +75,7 @@ void Camera::Update(double deltaTime)
 
 Vector3 Camera::GetForward() const
 {
+	// カメラ前方取得
 	Vector3 forward = mTarget - mTransform.GetPosition();
 	forward.Normalize();
 
@@ -77,6 +84,7 @@ Vector3 Camera::GetForward() const
 
 Vector3 Camera::GetRight() const
 {
+	// カメラ右方向取得
 	Vector3 forward = GetForward();
 	Vector3 up = Vector3(0.0f, 1.0f, 0.0f);
 	Vector3 right = Vector3::Cross(up, forward);
