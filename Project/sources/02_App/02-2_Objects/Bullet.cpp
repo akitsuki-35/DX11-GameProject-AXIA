@@ -11,7 +11,7 @@
 #include "Game.h"
 #include "GameManager.h"
 #include "Enemy.h"
-#include "Camera.h"
+#include "GameCamera.h"
 #include "ParticleEmitter.h"
 
 void Bullet::Initialize()
@@ -160,7 +160,7 @@ void Bullet::hitEffect(Enemy* enemy)
 
 	// シェイク
 	enemy->Shake(shake);
-	auto camera = Game::GetGameObject<Camera>();
+	auto camera = Game::GetGameObject<GameCamera>();
 	camera->Shake(shake);
 
 	// ヒットストップ

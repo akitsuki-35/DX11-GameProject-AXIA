@@ -12,7 +12,7 @@
 #include "GameManager.h"
 
 // オブジェクト群
-#include "Camera.h"
+#include "GameCamera.h"
 #include "Grid.h"
 #include "Player.h"
 #include "Bullet.h"
@@ -30,7 +30,7 @@ void Game::Initialize()
 	_mGameObjects.clear();
 
 	// カメラ
-	AddGameObject<Camera>();
+	AddGameObject<GameCamera>();
 
 	// スカイドーム
 	AddGameObject<Sky>();

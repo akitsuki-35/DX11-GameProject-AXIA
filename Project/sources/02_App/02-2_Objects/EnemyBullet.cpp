@@ -10,7 +10,7 @@
 #include "Game.h"
 #include "GameManager.h"
 #include "Player.h"
-#include "Camera.h"
+#include "GameCamera.h"
 #include "ParticleEmitter.h"
 #include "ModelRenderer.h"
 
@@ -138,7 +138,7 @@ void EnemyBullet::hitEffect(Player* player)
 
 	// シェイク
 	player->Shake(shake);
-	auto camera = Game::GetGameObject<Camera>();
+	auto camera = Game::GetGameObject<GameCamera>();
 	camera->Shake(shake);
 
 	// ヒットストップ

@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="sources\00_Engine\00-1_Core\Application.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\AppLoop.cpp" />
-    <ClCompile Include="sources\00_Engine\00-1_Core\Main.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\SystemTimer.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\SystemWindow.cpp" />
     <ClCompile Include="sources\00_Engine\00-1_Core\Utility.cpp" />
@@ -51,7 +51,10 @@
     <ClCompile Include="sources\00_Engine\00-4_Importer\FontLoader.cpp" />
     <ClCompile Include="sources\01_Framework\01-1_Common\BezierCurve.cpp" />
     <ClCompile Include="sources\01_Framework\01-1_Common\BoneTransform.cpp" />
+    <ClCompile Include="sources\01_Framework\01-1_Common\Camera.cpp" />
     <ClCompile Include="sources\01_Framework\01-1_Common\Easing.cpp" />
+    <ClCompile Include="sources\01_Framework\01-1_Common\GameObject.cpp" />
+    <ClCompile Include="sources\01_Framework\01-1_Common\ParticleEmitter..cpp" />
     <ClCompile Include="sources\01_Framework\01-1_Common\Transition.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -72,6 +75,7 @@
     <ClCompile Include="sources\01_Framework\01-2_Components\UIRenderer.cpp" />
     <ClCompile Include="sources\02_App\02-1_Scenes\AppSetup.cpp" />
     <ClCompile Include="sources\02_App\02-1_Scenes\Game.cpp" />
+    <ClCompile Include="sources\02_App\02-1_Scenes\Main.cpp" />
     <ClCompile Include="sources\02_App\02-1_Scenes\Result.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -79,7 +83,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="sources\02_App\02-1_Scenes\Scene.cpp" />
-    <ClCompile Include="sources\02_App\02-1_Scenes\Application.cpp" />
     <ClCompile Include="sources\02_App\02-1_Scenes\Title.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -92,7 +95,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\Camera.cpp">
+    <ClCompile Include="sources\02_App\02-2_Objects\GameCamera.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -106,14 +109,12 @@
     </ClCompile>
     <ClCompile Include="sources\02_App\02-2_Objects\EnemyBullet.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\GameManager.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\GameObject.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\GameTitle.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\Grid.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDEnemyCount.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDGuide.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDLife.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDWave.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\ParticleEmitter..cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\Player.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\ResultManager.cpp" />
     <ClCompile Include="sources\02_App\02-2_Objects\HUDScore.cpp">
@@ -153,6 +154,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="sources\00_Engine\00-1_Core\Application.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\AppLoop.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\Config.h" />
     <ClInclude Include="sources\00_Engine\00-1_Core\SystemTimer.h" />
@@ -189,7 +191,10 @@
     <ClInclude Include="sources\00_Engine\00-4_Importer\FontLoader.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\BezierCurve.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\BoneTransform.h" />
+    <ClInclude Include="sources\01_Framework\01-1_Common\Camera.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\Easing.h" />
+    <ClInclude Include="sources\01_Framework\01-1_Common\GameObject.h" />
+    <ClInclude Include="sources\01_Framework\01-1_Common\ParticleEmitter.h" />
     <ClInclude Include="sources\01_Framework\01-1_Common\Transition.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -221,7 +226,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="sources\02_App\02-1_Scenes\Scene.h" />
-    <ClInclude Include="sources\02_App\02-1_Scenes\Application.h" />
     <ClInclude Include="sources\02_App\02-1_Scenes\Title.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -235,7 +239,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\Camera.h">
+    <ClInclude Include="sources\02_App\02-2_Objects\GameCamera.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -249,19 +253,12 @@
     </ClInclude>
     <ClInclude Include="sources\02_App\02-2_Objects\EnemyBullet.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\GameManager.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\GameObject.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
     <ClInclude Include="sources\02_App\02-2_Objects\GameTitle.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\Grid.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDEnemyCount.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDGuide.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDLife.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDWave.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\ParticleEmitter.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\Player.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\ResultManager.h" />
     <ClInclude Include="sources\02_App\02-2_Objects\HUDScore.h">
@@ -494,7 +491,7 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(ProjectDir)Assets" "$(TargetDir)Assets" /e /i /h /y
+      <Command>xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /e /i /h /y
 xcopy /Y "$(ProjectDir)assimp-vc143-mt.dll" "$(TargetDir)"</Command>
     </PostBuildEvent>
     <FxCompile>
@@ -529,7 +526,7 @@ xcopy /Y "$(ProjectDir)assimp-vc143-mt.dll" "$(TargetDir)"</Command>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(ProjectDir)Assets" "$(TargetDir)Assets" /e /i /h /y
+      <Command>xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /e /i /h /y
 xcopy /Y "$(ProjectDir)assimp-vc143-mt.dll" "$(TargetDir)"</Command>
     </PostBuildEvent>
     <FxCompile>

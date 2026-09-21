@@ -108,9 +108,6 @@
     <ClCompile Include="sources\00_Engine\00-1_Core\AppLoop.cpp">
       <Filter>00_Engine\00-1_Core</Filter>
     </ClCompile>
-    <ClCompile Include="sources\00_Engine\00-1_Core\Main.cpp">
-      <Filter>00_Engine\00-1_Core</Filter>
-    </ClCompile>
     <ClCompile Include="sources\00_Engine\00-1_Core\Systemtimer.cpp">
       <Filter>00_Engine\00-1_Core</Filter>
     </ClCompile>
@@ -189,9 +186,6 @@
     <ClCompile Include="sources\00_Engine\00-2_Graphics\Graphics.cpp">
       <Filter>00_Engine\00-2_Graphics\DirectX11</Filter>
     </ClCompile>
-    <ClCompile Include="sources\02_App\02-1_Scenes\Application.cpp">
-      <Filter>02_App\02-1_Scenes</Filter>
-    </ClCompile>
     <ClCompile Include="sources\01_Framework\01-1_Common\Transform.cpp">
       <Filter>01_Framework\01-1_Common</Filter>
     </ClCompile>
@@ -264,7 +258,7 @@
     <ClCompile Include="sources\02_App\02-2_Objects\Bullet.cpp">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\Camera.cpp">
+    <ClCompile Include="sources\02_App\02-2_Objects\GameCamera.cpp">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClCompile>
     <ClCompile Include="sources\02_App\02-2_Objects\Enemy.cpp">
@@ -284,9 +278,6 @@
     </ClCompile>
     <ClCompile Include="sources\01_Framework\01-2_Components\ParticleRenderer.cpp">
       <Filter>01_Framework\01-2_Components\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\ParticleEmitter..cpp">
-      <Filter>02_App\02-2_Objects\Common</Filter>
     </ClCompile>
     <ClCompile Include="sources\01_Framework\01-1_Common\BezierCurve.cpp">
       <Filter>01_Framework\01-1_Common</Filter>
@@ -314,9 +305,6 @@
     </ClCompile>
     <ClCompile Include="sources\01_Framework\01-2_Components\Timer.cpp">
       <Filter>01_Framework\01-2_Components</Filter>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\GameObject.cpp">
-      <Filter>02_App\02-2_Objects\Common</Filter>
     </ClCompile>
     <ClCompile Include="sources\02_App\02-2_Objects\BackGroundTexture.cpp">
       <Filter>02_App\02-2_Objects\Common</Filter>
@@ -362,6 +350,21 @@
     </ClCompile>
     <ClCompile Include="sources\02_App\02-1_Scenes\AppSetup.cpp">
       <Filter>02_App\02-1_Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\00_Engine\00-1_Core\Application.cpp">
+      <Filter>00_Engine\00-1_Core</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\02_App\02-1_Scenes\Main.cpp">
+      <Filter>02_App\02-1_Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\01_Framework\01-1_Common\GameObject.cpp">
+      <Filter>02_App\02-2_Objects\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\01_Framework\01-1_Common\ParticleEmitter..cpp">
+      <Filter>02_App\02-2_Objects\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="sources\01_Framework\01-1_Common\Camera.cpp">
+      <Filter>01_Framework\01-1_Common</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -488,9 +491,6 @@
     <ClInclude Include="sources\00_Engine\00-2_Graphics\Graphics.h">
       <Filter>00_Engine\00-2_Graphics\DirectX11</Filter>
     </ClInclude>
-    <ClInclude Include="sources\02_App\02-1_Scenes\Application.h">
-      <Filter>02_App\02-1_Scenes</Filter>
-    </ClInclude>
     <ClInclude Include="sources\01_Framework\01-1_Common\Transform.h">
       <Filter>01_Framework\01-1_Common</Filter>
     </ClInclude>
@@ -557,7 +557,7 @@
     <ClInclude Include="sources\02_App\02-2_Objects\Bullet.h">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\Camera.h">
+    <ClInclude Include="sources\02_App\02-2_Objects\GameCamera.h">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClInclude>
     <ClInclude Include="sources\02_App\02-2_Objects\Enemy.h">
@@ -572,17 +572,11 @@
     <ClInclude Include="sources\02_App\02-2_Objects\Sky.h">
       <Filter>02_App\02-2_Objects\Game</Filter>
     </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\GameObject.h">
-      <Filter>02_App\02-2_Objects\Common</Filter>
-    </ClInclude>
     <ClInclude Include="sources\00_Engine\00-2_Graphics\Particle.h">
       <Filter>00_Engine\00-2_Graphics\Effects</Filter>
     </ClInclude>
     <ClInclude Include="sources\01_Framework\01-2_Components\ParticleRenderer.h">
       <Filter>01_Framework\01-2_Components\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\ParticleEmitter.h">
-      <Filter>02_App\02-2_Objects\Common</Filter>
     </ClInclude>
     <ClInclude Include="sources\01_Framework\01-1_Common\BezierCurve.h">
       <Filter>01_Framework\01-1_Common</Filter>
@@ -655,6 +649,18 @@
     </ClInclude>
     <ClInclude Include="sources\02_App\02-1_Scenes\AppSetup.h">
       <Filter>02_App\02-1_Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\00_Engine\00-1_Core\Application.h">
+      <Filter>00_Engine\00-1_Core</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\01_Framework\01-1_Common\GameObject.h">
+      <Filter>02_App\02-2_Objects\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\01_Framework\01-1_Common\ParticleEmitter.h">
+      <Filter>02_App\02-2_Objects\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="sources\01_Framework\01-1_Common\Camera.h">
+      <Filter>01_Framework\01-1_Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

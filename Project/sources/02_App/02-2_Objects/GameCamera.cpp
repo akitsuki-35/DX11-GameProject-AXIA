@@ -1,12 +1,12 @@
 ﻿/*============================================================
-*	@file	 : Camera.cpp
-*	@brief	 : カメラオブジェクト
+*	@file	 : GameCamera.cpp
+*	@brief	 : ゲーム用カメラオブジェクト
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
-* 　@date	 : 2026/04/26
-*	@updated : 2026/09/16
+* 　@date	 : 2026/09/21
+*	@updated : 2026/09/21
 *============================================================*/
-#include "Camera.h"
+#include "GameCamera.h"
 #include "Game.h"
 #include "GameManager.h"
 #include "Timer.h"
@@ -17,7 +17,7 @@
 
 using namespace DirectX;
 
-void Camera::Initialize()
+void GameCamera::Initialize()
 {
 	mTransform.SetPosition({ 0.0f, 5.0f, 5.0f });
 	mTarget = Vector3(0.0f, 0.0f, 0.0f);
@@ -26,12 +26,12 @@ void Camera::Initialize()
 	_mShakeTimer = AddComponent<Timer>(this);
 }
 
-void Camera::Finalize()
+void GameCamera::Finalize()
 {
-	GameObject::Finalize();
+	Camera::Finalize();
 }
 
-void Camera::Update(double deltaTime)
+void GameCamera::Update(double deltaTime)
 {
 	float dt = static_cast<float>(deltaTime);
 
@@ -65,46 +65,17 @@ void Camera::Update(double deltaTime)
 		shakeUpdate();
 	}
 
-	// ビュー行列をセット
-	XMFLOAT3 up = XMFLOAT3(0.0f, 1.0f, 0.0f);
-	mViewMatrix = XMMatrixLookAtLH(XMLoadFloat3((XMFLOAT3*)&mTransform.GetPosition()),
-		XMLoadFloat3((XMFLOAT3*)&mTarget), XMLoadFloat3(&up));
+	Camera::Update(deltaTime);
 
-	GameObject::Update(deltaTime);
+	//// ビュー行列をセット
+	//XMFLOAT3 up = XMFLOAT3(0.0f, 1.0f, 0.0f);
+	//mViewMatrix = XMMatrixLookAtLH(XMLoadFloat3((XMFLOAT3*)&mTransform.GetPosition()),
+	//	XMLoadFloat3((XMFLOAT3*)&mTarget), XMLoadFloat3(&up));
+
+	//GameObject::Update(deltaTime);
 }
 
-Vector3 Camera::GetForward() const
-{
-	// カメラ前方取得
-	Vector3 forward = mTarget - mTransform.GetPosition();
-	forward.Normalize();
-
-	return forward;
-}
-
-Vector3 Camera::GetRight() const
-{
-	// カメラ右方向取得
-	Vector3 forward = GetForward();
-	Vector3 up = Vector3(0.0f, 1.0f, 0.0f);
-	Vector3 right = Vector3::Cross(up, forward);
-	right.Normalize();
-
-	return right;
-}
-
-void Camera::SetMatrix() const
-{
-	// プロジェクション行列設定
-	XMMATRIX projection = XMMatrixPerspectiveFovLH(1.0f,
-		static_cast<float>(Screen::WIDTH) / static_cast<float>(Screen::HEIGHT), 1.0f, 1000.0f);
-	D3D11::BufferManager::getInstance().SetProjectionMatrix(projection);
-
-	// ビュー行列設定
-	D3D11::BufferManager::getInstance().SetViewMatrix(mViewMatrix);
-}
-
-void Camera::Shake(float intensity, double shakeTime)
+void GameCamera::Shake(float intensity, double shakeTime)
 {
 	// 揺れの強さをセット
 	mShakeIntensity = intensity;
@@ -113,7 +84,7 @@ void Camera::Shake(float intensity, double shakeTime)
 	_mShakeTimer->Start(shakeTime);
 }
 
-void Camera::shakeUpdate()
+void GameCamera::shakeUpdate()
 {
 	// 現在位置とターゲットを取得
 	Vector3 target = mTarget;
