@@ -1,0 +1,3 @@
+[submodule "IgniteFramework"]
+	path = IgniteFramework
+	url = https://github.com/akitsuki-35/DX11-Ignite-Framework
