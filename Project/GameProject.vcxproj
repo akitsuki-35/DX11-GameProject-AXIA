@@ -19,348 +19,111 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="sources\00_Engine\00-1_Core\AppLoop.cpp" />
-    <ClCompile Include="sources\00_Engine\00-1_Core\Main.cpp" />
-    <ClCompile Include="sources\00_Engine\00-1_Core\SystemTimer.cpp" />
-    <ClCompile Include="sources\00_Engine\00-1_Core\SystemWindow.cpp" />
-    <ClCompile Include="sources\00_Engine\00-1_Core\Utility.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\BufferManager.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\DeviceManager.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\Mesh.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\MeshTypes.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\ModelMesh.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\Graphics.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\Particle.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\ParticleBase.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\ParticleBezier.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\ParticleBox.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\Skeleton.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\UICanvas.cpp" />
-    <ClCompile Include="sources\00_Engine\00-2_Graphics\UIStyle.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\Animation.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\AnimationManager.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\AudioManager.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\FontManager.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\Model.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\ModelManager.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\ShaderManager.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\Texture.cpp" />
-    <ClCompile Include="sources\00_Engine\00-3_Resource\TextureManager.cpp" />
-    <ClCompile Include="sources\00_Engine\00-4_Importer\AssimpLoader.cpp" />
-    <ClCompile Include="sources\00_Engine\00-4_Importer\CSVHandler.cpp" />
-    <ClCompile Include="sources\00_Engine\00-4_Importer\FontLoader.cpp" />
-    <ClCompile Include="sources\01_Framework\01-1_Common\BezierCurve.cpp" />
-    <ClCompile Include="sources\01_Framework\01-1_Common\BoneTransform.cpp" />
-    <ClCompile Include="sources\01_Framework\01-1_Common\Easing.cpp" />
-    <ClCompile Include="sources\01_Framework\01-1_Common\Transition.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="sources\01_Framework\01-1_Common\Input.cpp" />
-    <ClCompile Include="sources\01_Framework\01-1_Common\Transform.cpp" />
-    <ClCompile Include="sources\01_Framework\01-1_Common\WICTextureLoader11.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\Animator.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\AudioPlayer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\BillboardRenderer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\GridRenderer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\ModelRenderer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\ParticleRenderer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\Renderer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\SpriteRenderer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\TextRenderer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\Timer.cpp" />
-    <ClCompile Include="sources\01_Framework\01-2_Components\UIRenderer.cpp" />
-    <ClCompile Include="sources\02_App\02-1_Scenes\AppSetup.cpp" />
-    <ClCompile Include="sources\02_App\02-1_Scenes\Game.cpp" />
-    <ClCompile Include="sources\02_App\02-1_Scenes\Result.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-1_Scenes\Scene.cpp" />
-    <ClCompile Include="sources\02_App\02-1_Scenes\Application.cpp" />
-    <ClCompile Include="sources\02_App\02-1_Scenes\Title.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\Bullet.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\Camera.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\Enemy.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\EnemyBullet.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\GameManager.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\GameObject.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\GameTitle.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\Grid.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\HUDEnemyCount.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\HUDGuide.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\HUDLife.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\HUDWave.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\ParticleEmitter..cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\Player.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\ResultManager.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\HUDScore.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\ResultMenu.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\ResultScore.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\ResultText.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\ScreenFilter.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\Sky.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="sources\02_App\02-2_Objects\BackGroundTexture.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\TitleManager.cpp" />
-    <ClCompile Include="sources\02_App\02-2_Objects\TitleMenu.cpp" />
-    <ClCompile Include="sources\04_External\include\ImGui\imgui.cpp" />
-    <ClCompile Include="sources\04_External\include\ImGui\imgui_demo.cpp" />
-    <ClCompile Include="sources\04_External\include\ImGui\imgui_draw.cpp" />
-    <ClCompile Include="sources\04_External\include\ImGui\imgui_impl_dx11.cpp" />
-    <ClCompile Include="sources\04_External\include\ImGui\imgui_impl_win32.cpp" />
-    <ClCompile Include="sources\04_External\include\ImGui\imgui_tables.cpp" />
-    <ClCompile Include="sources\04_External\include\ImGui\imgui_widgets.cpp" />
-    <ClCompile Include="sources\04_External\include\stb_vorbis\stb_vorbis.c">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-      <TreatWarningAsError Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</TreatWarningAsError>
-      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">TurnOffAllWarnings</WarningLevel>
-      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">TurnOffAllWarnings</WarningLevel>
-    </ClCompile>
+    <ClCompile Include="src\objects\BackGroundTexture.cpp" />
+    <ClCompile Include="src\objects\Bullet.cpp" />
+    <ClCompile Include="src\objects\Enemy.cpp" />
+    <ClCompile Include="src\objects\EnemyBullet.cpp" />
+    <ClCompile Include="src\objects\GameCamera.cpp" />
+    <ClCompile Include="src\objects\GameManager.cpp" />
+    <ClCompile Include="src\objects\GameTitle.cpp" />
+    <ClCompile Include="src\objects\Grid.cpp" />
+    <ClCompile Include="src\objects\HUDEnemyCount.cpp" />
+    <ClCompile Include="src\objects\HUDGuide.cpp" />
+    <ClCompile Include="src\objects\HUDLife.cpp" />
+    <ClCompile Include="src\objects\HUDScore.cpp" />
+    <ClCompile Include="src\objects\HUDWave.cpp" />
+    <ClCompile Include="src\objects\Player.cpp" />
+    <ClCompile Include="src\objects\ResultManager.cpp" />
+    <ClCompile Include="src\objects\ResultMenu.cpp" />
+    <ClCompile Include="src\objects\ResultScore.cpp" />
+    <ClCompile Include="src\objects\ResultText.cpp" />
+    <ClCompile Include="src\objects\ScreenFilter.cpp" />
+    <ClCompile Include="src\objects\Sky.cpp" />
+    <ClCompile Include="src\objects\TitleManager.cpp" />
+    <ClCompile Include="src\objects\TitleMenu.cpp" />
+    <ClCompile Include="src\scenes\Game.cpp" />
+    <ClCompile Include="src\scenes\Result.cpp" />
+    <ClCompile Include="src\scenes\Title.cpp" />
+    <ClCompile Include="src\setting\AppSetup.cpp" />
+    <ClCompile Include="src\setting\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="sources\00_Engine\00-1_Core\AppLoop.h" />
-    <ClInclude Include="sources\00_Engine\00-1_Core\Config.h" />
-    <ClInclude Include="sources\00_Engine\00-1_Core\SystemTimer.h" />
-    <ClInclude Include="sources\00_Engine\00-1_Core\SystemWindow.h" />
-    <ClInclude Include="sources\00_Engine\00-1_Core\Utility.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\BufferManager.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\DeviceManager.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\D3D11Config.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\Elements.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\Mesh.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\MeshTypes.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\ModelMesh.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\Graphics.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\Particle.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\ParticleBase.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\ParticleBezier.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\ParticleBox.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\Skeleton.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\UICanvas.h" />
-    <ClInclude Include="sources\00_Engine\00-2_Graphics\UIStyle.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\Animation.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\AnimationManager.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\Audio.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\AudioManager.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\FontManager.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\Model.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\ModelManager.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\Shader.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\ShaderManager.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\Texture.h" />
-    <ClInclude Include="sources\00_Engine\00-3_Resource\TextureManager.h" />
-    <ClInclude Include="sources\00_Engine\00-4_Importer\AssimpLoader.h" />
-    <ClInclude Include="sources\00_Engine\00-4_Importer\CSVHandler.h" />
-    <ClInclude Include="sources\00_Engine\00-4_Importer\FontLoader.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\BezierCurve.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\BoneTransform.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\Easing.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\Transition.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\01_Framework\01-1_Common\Input.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\Quaternion.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\Transform.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\Vector2.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\Vector3.h" />
-    <ClInclude Include="sources\01_Framework\01-1_Common\WICTextureLoader11.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\Animator.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\AudioPlayer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\BillboardRenderer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\Component.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\GridRenderer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\ParticleRenderer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\Renderer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\ModelRenderer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\SpriteRenderer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\TextRenderer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\Timer.h" />
-    <ClInclude Include="sources\01_Framework\01-2_Components\UIRenderer.h" />
-    <ClInclude Include="sources\02_App\02-1_Scenes\AppSetup.h" />
-    <ClInclude Include="sources\02_App\02-1_Scenes\Game.h" />
-    <ClInclude Include="sources\02_App\02-1_Scenes\Result.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-1_Scenes\Scene.h" />
-    <ClInclude Include="sources\02_App\02-1_Scenes\Application.h" />
-    <ClInclude Include="sources\02_App\02-1_Scenes\Title.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\BackGroundTexture.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\Bullet.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\Camera.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\Enemy.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\EnemyBullet.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\GameManager.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\GameObject.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\GameTitle.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\Grid.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\HUDEnemyCount.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\HUDGuide.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\HUDLife.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\HUDWave.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\ParticleEmitter.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\Player.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\ResultManager.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\HUDScore.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\ResultMenu.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\ResultScore.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\ResultText.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\ScreenFilter.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\Sky.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\02_App\02-2_Objects\TitleManager.h" />
-    <ClInclude Include="sources\02_App\02-2_Objects\TitleMenu.h" />
-    <ClInclude Include="sources\04_External\include\ImGui\imconfig.h" />
-    <ClInclude Include="sources\04_External\include\ImGui\imgui.h" />
-    <ClInclude Include="sources\04_External\include\ImGui\imgui_impl_dx11.h" />
-    <ClInclude Include="sources\04_External\include\ImGui\imgui_impl_win32.h" />
-    <ClInclude Include="sources\04_External\include\ImGui\imgui_internal.h" />
-    <ClInclude Include="sources\04_External\include\ImGui\imstb_rectpack.h" />
-    <ClInclude Include="sources\04_External\include\ImGui\imstb_textedit.h" />
-    <ClInclude Include="sources\04_External\include\ImGui\imstb_truetype.h" />
-    <ClInclude Include="sources\04_External\include\minimp3\minimp3.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\04_External\include\minimp3\minimp3_ex.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
-    <ClInclude Include="sources\99_Debug\DebugMemoryleak.h">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
-    </ClInclude>
+    <ClInclude Include="src\objects\BackGroundTexture.h" />
+    <ClInclude Include="src\objects\Bullet.h" />
+    <ClInclude Include="src\objects\Enemy.h" />
+    <ClInclude Include="src\objects\EnemyBullet.h" />
+    <ClInclude Include="src\objects\GameCamera.h" />
+    <ClInclude Include="src\objects\GameManager.h" />
+    <ClInclude Include="src\objects\GameTitle.h" />
+    <ClInclude Include="src\objects\Grid.h" />
+    <ClInclude Include="src\objects\HUDEnemyCount.h" />
+    <ClInclude Include="src\objects\HUDGuide.h" />
+    <ClInclude Include="src\objects\HUDLife.h" />
+    <ClInclude Include="src\objects\HUDScore.h" />
+    <ClInclude Include="src\objects\HUDWave.h" />
+    <ClInclude Include="src\objects\Player.h" />
+    <ClInclude Include="src\objects\ResultManager.h" />
+    <ClInclude Include="src\objects\ResultMenu.h" />
+    <ClInclude Include="src\objects\ResultScore.h" />
+    <ClInclude Include="src\objects\ResultText.h" />
+    <ClInclude Include="src\objects\ScreenFilter.h" />
+    <ClInclude Include="src\objects\Sky.h" />
+    <ClInclude Include="src\objects\TitleManager.h" />
+    <ClInclude Include="src\objects\TitleMenu.h" />
+    <ClInclude Include="src\scenes\Game.h" />
+    <ClInclude Include="src\scenes\Result.h" />
+    <ClInclude Include="src\scenes\Title.h" />
+    <ClInclude Include="src\setting\AppSetup.h" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="sources\03_HLSL\Common.hlsl">
+    <FxCompile Include="src\hlsl\Common.hlsl">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="src\hlsl\CookTranceSub.hlsl">
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="sources\03_HLSL\CookTranceSub.hlsl">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="sources\03_HLSL\FontPS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="sources\03_HLSL\PBRPS.hlsl">
+    <FxCompile Include="src\hlsl\FontPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="sources\03_HLSL\PhongVS.hlsl">
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-    </FxCompile>
-    <FxCompile Include="sources\03_HLSL\UISpriteVS.hlsl">
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
-      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="sources\03_HLSL\UnlitPS.hlsl">
+    <FxCompile Include="src\hlsl\PBRPS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-    <FxCompile Include="sources\03_HLSL\UnlitVS.hlsl">
+    <FxCompile Include="src\hlsl\PhongVS.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
     </FxCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="sources\04_External\include\ImGui\imgui.ini" />
+    <FxCompile Include="src\hlsl\UISpriteVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="src\hlsl\UnlitPS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
+    <FxCompile Include="src\hlsl\UnlitVS.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
+      <ObjectFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)assets\shaders\%(Filename).cso</ObjectFileOutput>
+    </FxCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -400,6 +163,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\IgniteFramework\IgniteFramework.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -417,20 +181,22 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)\_bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>_obj\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)sources\00_Engine\00-1_Core;$(ProjectDir)sources\00_Engine\00-2_Graphics;$(ProjectDir)sources\00_Engine\00-3_Resource;$(ProjectDir)sources\00_Engine\00-4_Importer;$(ProjectDir)sources\01_Framework\01-1_Common;$(ProjectDir)sources\01_Framework\01-2_Components;$(ProjectDir)sources\02_App\02-1_Scenes;$(ProjectDir)sources\02_App\02-2_Objects;$(ProjectDir)sources\03_HLSL;$(ProjectDir)sources\99_Debug;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(ProjectDir)sources\04_External\include</ExternalIncludePath>
+    <IncludePath>$(ProjectDir)src\hlsl;$(ProjectDir)src\objects;$(ProjectDir)src\scenes;$(ProjectDir)src\setting;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(MSBuildThisFileDirectory)..\IgniteFramework\external\include</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\_bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>_obj\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>$(ProjectDir)sources\00_Engine\00-1_Core;$(ProjectDir)sources\00_Engine\00-2_Graphics;$(ProjectDir)sources\00_Engine\00-3_Resource;$(ProjectDir)sources\00_Engine\00-4_Importer;$(ProjectDir)sources\01_Framework\01-1_Common;$(ProjectDir)sources\01_Framework\01-2_Components;$(ProjectDir)sources\02_App\02-1_Scenes;$(ProjectDir)sources\02_App\02-2_Objects;$(ProjectDir)sources\03_HLSL;$(ProjectDir)sources\99_Debug;$(IncludePath)</IncludePath>
-    <ExternalIncludePath>$(ProjectDir)sources\04_External\include</ExternalIncludePath>
+    <IncludePath>$(ProjectDir)src\hlsl;$(ProjectDir)src\objects;$(ProjectDir)src\scenes;$(ProjectDir)src\setting;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(MSBuildThisFileDirectory)..\IgniteFramework\external\include</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)sources\00_Engine\00-1_Core;$(ProjectDir)sources\00_Engine\00-2_Graphics;$(ProjectDir)sources\01_Framework\01-1_Common;$(ProjectDir)sources\01_Framework\01-2_Components;$(ProjectDir)sources\02_App\02-1_Scenes;$(ProjectDir)sources\02_App\02-2_Objects;$(ProjectDir)sources\03_HLSL;$(ProjectDir)sources\99_Debug;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)src\hlsl;$(ProjectDir)src\objects;$(ProjectDir)src\scenes;$(ProjectDir)src\setting;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(MSBuildThisFileDirectory)..\IgniteFramework\external\include</ExternalIncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)sources\00_Engine\00-1_Core;$(ProjectDir)sources\00_Engine\00-2_Graphics;$(ProjectDir)sources\01_Framework\01-1_Common;$(ProjectDir)sources\01_Framework\01-2_Components;$(ProjectDir)sources\02_App\02-1_Scenes;$(ProjectDir)sources\02_App\02-2_Objects;$(ProjectDir)sources\03_HLSL;$(ProjectDir)sources\99_Debug;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)src\hlsl;$(ProjectDir)src\objects;$(ProjectDir)src\scenes;$(ProjectDir)src\setting;$(IncludePath)</IncludePath>
+    <ExternalIncludePath>$(MSBuildThisFileDirectory)..\IgniteFramework\external\include</ExternalIncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -440,12 +206,13 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)$(ProjectDir)sources\04_External\include\ImGui;$(ProjectDir)$(ProjectDir)sources\04_External\include\DirectXTex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\IgniteFramework\src\app;$(MSBuildThisFileDirectory)..\IgniteFramework\src\components;$(MSBuildThisFileDirectory)..\IgniteFramework\src\core;$(MSBuildThisFileDirectory)..\IgniteFramework\src\geometry;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\common;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\d3d11;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\particle;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\UI;$(MSBuildThisFileDirectory)..\IgniteFramework\src\importer;$(MSBuildThisFileDirectory)..\IgniteFramework\src\input;$(MSBuildThisFileDirectory)..\IgniteFramework\src\math;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\animation;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\audio;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\font;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\model;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\shader;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\texture;$(MSBuildThisFileDirectory)..\IgniteFramework\src\utility;$(MSBuildThisFileDirectory)..\IgniteFramework\src\debug</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d11.lib;$(MSBuildThisFileDirectory)..\IgniteFramework\external\lib\Debug\DirectXTex_Debug.lib;$(MSBuildThisFileDirectory)..\IgniteFramework\external\lib\Debug\assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
@@ -461,12 +228,13 @@
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <AdditionalIncludeDirectories>$(ProjectDir)$(ProjectDir)sources\04_External\include\ImGui;$(ProjectDir)$(ProjectDir)sources\04_External\include\DirectXTex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\IgniteFramework\src\app;$(MSBuildThisFileDirectory)..\IgniteFramework\src\components;$(MSBuildThisFileDirectory)..\IgniteFramework\src\core;$(MSBuildThisFileDirectory)..\IgniteFramework\src\geometry;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\common;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\d3d11;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\particle;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\UI;$(MSBuildThisFileDirectory)..\IgniteFramework\src\importer;$(MSBuildThisFileDirectory)..\IgniteFramework\src\input;$(MSBuildThisFileDirectory)..\IgniteFramework\src\math;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\animation;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\audio;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\font;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\model;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\shader;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\texture;$(MSBuildThisFileDirectory)..\IgniteFramework\src\utility;$(MSBuildThisFileDirectory)..\IgniteFramework\src\debug</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>d3d11.lib;$(MSBuildThisFileDirectory)..\IgniteFramework\external\lib\Release\DirectXTex_Release.lib;$(MSBuildThisFileDirectory)..\IgniteFramework\external\lib\Release\assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <FxCompile>
       <ShaderModel>5.0</ShaderModel>
@@ -481,7 +249,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <TreatWarningAsError>false</TreatWarningAsError>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\IgniteFramework\src\app;$(MSBuildThisFileDirectory)..\IgniteFramework\src\components;$(MSBuildThisFileDirectory)..\IgniteFramework\src\core;$(MSBuildThisFileDirectory)..\IgniteFramework\src\geometry;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\common;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\d3d11;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\particle;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\UI;$(MSBuildThisFileDirectory)..\IgniteFramework\src\importer;$(MSBuildThisFileDirectory)..\IgniteFramework\src\input;$(MSBuildThisFileDirectory)..\IgniteFramework\src\math;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\animation;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\audio;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\font;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\model;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\shader;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\texture;$(MSBuildThisFileDirectory)..\IgniteFramework\src\utility;$(MSBuildThisFileDirectory)..\IgniteFramework\src\debug</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
       <ExternalTemplatesDiagnostics>true</ExternalTemplatesDiagnostics>
@@ -490,11 +258,11 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d11.lib;sources\04_External\lib\Debug\DirectXTex_Debug.lib;sources\04_External\lib\Debug\assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;$(MSBuildThisFileDirectory)..\IgniteFramework\external\lib\Debug\DirectXTex_Debug.lib;$(MSBuildThisFileDirectory)..\IgniteFramework\external\lib\Debug\assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(ProjectDir)Assets" "$(TargetDir)Assets" /e /i /h /y
+      <Command>xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /e /i /h /y
 xcopy /Y "$(ProjectDir)assimp-vc143-mt.dll" "$(TargetDir)"</Command>
     </PostBuildEvent>
     <FxCompile>
@@ -513,7 +281,7 @@ xcopy /Y "$(ProjectDir)assimp-vc143-mt.dll" "$(TargetDir)"</Command>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)..\IgniteFramework\src\app;$(MSBuildThisFileDirectory)..\IgniteFramework\src\components;$(MSBuildThisFileDirectory)..\IgniteFramework\src\core;$(MSBuildThisFileDirectory)..\IgniteFramework\src\geometry;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\common;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\d3d11;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\particle;$(MSBuildThisFileDirectory)..\IgniteFramework\src\graphics\UI;$(MSBuildThisFileDirectory)..\IgniteFramework\src\importer;$(MSBuildThisFileDirectory)..\IgniteFramework\src\input;$(MSBuildThisFileDirectory)..\IgniteFramework\src\math;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\animation;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\audio;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\font;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\model;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\shader;$(MSBuildThisFileDirectory)..\IgniteFramework\src\resource\texture;$(MSBuildThisFileDirectory)..\IgniteFramework\src\utility;$(MSBuildThisFileDirectory)..\IgniteFramework\src\debug</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -524,12 +292,12 @@ xcopy /Y "$(ProjectDir)assimp-vc143-mt.dll" "$(TargetDir)"</Command>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>d3d11.lib;sources\04_External\lib\Release\DirectXTex_Release.lib;sources\04_External\lib\Release\assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;$(MSBuildThisFileDirectory)..\IgniteFramework\external\lib\Release\DirectXTex_Release.lib;$(MSBuildThisFileDirectory)..\IgniteFramework\external\lib\Release\assimp-vc143-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(ProjectDir)Assets" "$(TargetDir)Assets" /e /i /h /y
+      <Command>xcopy "$(ProjectDir)assets" "$(TargetDir)assets" /e /i /h /y
 xcopy /Y "$(ProjectDir)assimp-vc143-mt.dll" "$(TargetDir)"</Command>
     </PostBuildEvent>
     <FxCompile>
