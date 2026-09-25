@@ -1,9 +1,16 @@
 # DirectX11による3Dゲーム制作プロジェクト
 
 DirectX11 3Dアクションゲーム開発<br>
-開発環境：Visual Studio 2026
+開発環境：Visual Studio 2026<br>
+言語：C++20
 
----
+## 概要
+DirectX11 / C++20を用いて開発中のアクションゲーム。自作フレームワークを土台に、ヒット演出等の手触りを重視して制作しています。
+
+本プロジェクトのサブモジュールとして自作フレームワーク"IGNITE"を用いています。 → [https://github.com/akitsuki-35/DX11-Ignite-Framework]
+
+本プロジェクトの制作にあたり、自作のパーティクルシミュレーターを用いています。 → [https://github.com/akitsuki-35/DX11-Particle-Simulator]
+
 ## ブランチ
 * master　…　安定版のdevelopをマージ
 * develop　…　futureの内容をマージ
@@ -31,25 +38,20 @@ DirectX11 3Dアクションゲーム開発<br>
 | メンバ変数 | m + PascalCase | mClassValue |
 | publicメンバ関数 | PascalCase | FunctionName |
 | privateメンバ関数 | camelCase | functionName |
-| privateメンバ関数 | camelCase | functionName |
 
 ### 構造体
 | Type | Style | Sample |
 | ---- | ---- | ---- |
 | 構造体 | PascalCase | StructName |
-| 構造体変数 | camelCase | structValue |
+| 構造体変数 | PascalCase | StructValue |
 
 ---
 
 ## ディレクトリ
 ### フォルダ
-* hlsl
-   * hlslファイル
-* include
-   * 外部インクルード
-* lib
-   * 外部ライブラリ
-* Resources
+* src
+   * ソースファイル
+* assets
    * オーディオ・テクスチャ・シェーダーファイル
 * _bin
    * 実行ファイル
