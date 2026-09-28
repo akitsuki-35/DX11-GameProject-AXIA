@@ -14,6 +14,7 @@
 #include "Input.h"
 #include "ModelRenderer.h"
 #include "Timer.h"
+#include "Shaker.h"
 
 void Player::Initialize()
 {
@@ -37,7 +38,7 @@ void Player::Initialize()
 
 	// タイマーの設定
 	_mShotInterval = AddComponent<Timer>(this);
-	_mShakeTimer = AddComponent<Timer>(this);
+	_mShaker = AddComponent<Shaker>(this);
 }
 
 void Player::Finalize()
@@ -110,6 +111,10 @@ void Player::Update(double deltaTime)
 	// 敵との衝突処理
 	GameManager::EnemyCollision(*this, position, dt);
 
+	if (_mShaker->IsSeeking()) {
+		position += _mShaker->GetShakeOffset();
+	}
+
 	// 座標クランプ
 	GameManager::ClampPosition(position);
 
@@ -152,30 +157,8 @@ void Player::Damage(int damage)
 	}
 }
 
-void Player::Shake(float intensity, double shakeTime)
+void Player::Shake(float power, double shakeTime)
 {
-	// 揺れの強さをセット
-	mShakeIntensity = intensity;
-
-	// タイマーをセット
-	_mShakeTimer->Start(shakeTime);
-}
-
-void Player::shakeUpdate(Vector3& position)
-{
-	// タイマーの進行度に応じて揺れの強さを算出
-	float progress = _mShakeTimer->GetProgress();
-	float intensity = mShakeIntensity * progress;
-	float angle = static_cast<float>(_mShakeTimer->GetTime()) * 50.0f;
-	float shakeX = intensity * cosf(angle);
-	float shakeY = intensity * sinf(angle);
-
-	// 座標に揺れを加算
-	position.x += shakeX;
-	position.y += shakeY;
-
-	// 現在時間が0なら揺れの強さを0にする
-	if (_mShakeTimer->IsTimeUp()) {
-		mShakeIntensity = 0.0f;
-	}
+	// 揺れの強さとタイマーをセット
+	_mShaker->Shake(power, shakeTime);
 }

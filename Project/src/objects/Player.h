@@ -15,6 +15,7 @@
 ------------------------------------------------------------*/
 class AudioPlayer;
 class Timer;
+class Shaker;
 
 /*============================================================
 *	@class	: Player
@@ -35,11 +36,8 @@ private:
 	// そのフレームでダメージを受けたか
 	bool mIsDamage{ false };
 
-	// シェイク用タイマー
-	Timer* _mShakeTimer{ nullptr };
-
-	// シェイク強度
-	float mShakeIntensity{};
+	// シェイクコンポーネント
+	Shaker* _mShaker{ nullptr };
 
 public:
 	Player() = default;
@@ -53,7 +51,7 @@ public:
 	void Damage(int damage);
 
 	// シェイク
-	void Shake(float intensity, double shakeTime = 1.0);
+	void Shake(float power, double shakeTime = 1.0);
 
 	// HP取得
 	int GetLife() const { return mLife; }
@@ -64,8 +62,4 @@ public:
 
 	// ダメージ判定
 	const bool IsDamage() const { return mIsDamage; }
-
-private:
-	// シェイク更新
-	void shakeUpdate(Vector3& position);
 };
