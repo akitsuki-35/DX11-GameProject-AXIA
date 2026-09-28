@@ -113,7 +113,7 @@ void EnemyBullet::hitEffect(Player* player)
 	Vector3 effectPosition = mTransform.GetPosition();
 
 	// シェイクの強さ
-	float shake = 0.3f;
+	float shake = 0.1f;
 
 	// ヒットストップの長さ
 	double hitStop = 0.025;
@@ -123,7 +123,7 @@ void EnemyBullet::hitEffect(Player* player)
 		audio = "Destroy";
 		emitterLife = 3.0;
 		effectPosition = player->GetPosition();
-		shake = 0.5f;
+		shake = 0.3f;
 		hitStop = 0.75;
 	}
 

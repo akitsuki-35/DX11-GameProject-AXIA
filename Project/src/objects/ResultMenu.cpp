@@ -4,13 +4,13 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/15
-*	@updated : 2026/09/17
+*	@updated : 2026/09/28
 *============================================================*/
 #include "ResultMenu.h"
 #include "TextRenderer.h"
 #include "ResultManager.h"
 #include "Timer.h"
-#include "Utility.h"
+#include "EasingUtility.h"
 #include "Easing.h"
 
 using namespace DirectX;
