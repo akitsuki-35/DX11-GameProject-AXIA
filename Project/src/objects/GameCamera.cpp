@@ -4,12 +4,12 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/21
-*	@updated : 2026/09/21
+*	@updated : 2026/09/28
 *============================================================*/
 #include "GameCamera.h"
 #include "Game.h"
 #include "GameManager.h"
-#include "Timer.h"
+#include "Shaker.h"
 #include "Input.h"
 #include "Player.h"
 #include "BufferManager.h"
@@ -23,7 +23,7 @@ void GameCamera::Initialize()
 	mTarget = Vector3(0.0f, 0.0f, 0.0f);
 
 	// シェイク用タイマー
-	_mShakeTimer = AddComponent<Timer>(this);
+	_mShaker = AddComponent<Shaker>(this);
 }
 
 void GameCamera::Finalize()
@@ -61,54 +61,26 @@ void GameCamera::Update(double deltaTime)
 	mTransform.SetPosition(mTarget + Vector3(-sinf(rotation.y) * 5.0f, 1.25f, -cosf(rotation.y) * 5.0f));
 	
 	// カメラのシェイク処理
-	if (_mShakeTimer->GetEnable()) {
-		shakeUpdate();
+	if (_mShaker->IsSeeking()) {
+		// シェイク座標オフセット取得
+		Vector3 shake = _mShaker->GetShakeOffset();
+
+		// カメラ座標にシェイクを適用
+		Vector3 position = mTransform.GetPosition();
+		position += shake;
+		mTransform.SetPosition(position);
+
+		// 注視点にシェイクを適用
+		Vector3 target = mTarget;
+		target += shake;
+		mTarget = target;
 	}
 
 	Camera::Update(deltaTime);
-
-	//// ビュー行列をセット
-	//XMFLOAT3 up = XMFLOAT3(0.0f, 1.0f, 0.0f);
-	//mViewMatrix = XMMatrixLookAtLH(XMLoadFloat3((XMFLOAT3*)&mTransform.GetPosition()),
-	//	XMLoadFloat3((XMFLOAT3*)&mTarget), XMLoadFloat3(&up));
-
-	//GameObject::Update(deltaTime);
 }
 
-void GameCamera::Shake(float intensity, double shakeTime)
+void GameCamera::Shake(float power, double shakeTime)
 {
-	// 揺れの強さをセット
-	mShakeIntensity = intensity;
-
-	// タイマーをセット
-	_mShakeTimer->Start(shakeTime);
-}
-
-void GameCamera::shakeUpdate()
-{
-	// 現在位置とターゲットを取得
-	Vector3 target = mTarget;
-	Vector3 position = mTransform.GetPosition();
-
-	// タイマーの進行度に応じて揺れの強さを算出
-	float progress = _mShakeTimer->GetProgress();
-	float intensity = mShakeIntensity * progress;
-	float angle = static_cast<float>(_mShakeTimer->GetTime()) * 50.0f;
-	float shakeX = intensity * cosf(angle);
-	float shakeY = intensity * sinf(angle);
-
-	// 座標とターゲットに揺れを加算
-	position.x += shakeX;
-	position.y += shakeY;
-	target.x += shakeX;
-	target.y += shakeY;
-
-	// 現在時間が0なら揺れの強さを0にする
-	if (_mShakeTimer->IsTimeUp()) {
-		mShakeIntensity = 0.0f;
-	}
-
-	// 座標とターゲットを差し戻し
-	mTransform.SetPosition(position);
-	mTarget = target;
+	// 揺れの強さとタイマーをセット
+	_mShaker->Shake(power, shakeTime);
 }

@@ -4,13 +4,14 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/05/19
-*	@updated : 2026/09/16
+*	@updated : 2026/09/28
 *============================================================*/
 #include "Enemy.h"
 #include "Game.h"
 #include "Player.h"
 #include "EnemyBullet.h"
 #include "Timer.h"
+#include "Shaker.h"
 #include "GameManager.h"
 #include "ModelRenderer.h"
 
@@ -37,8 +38,8 @@ void Enemy::Initialize()
 	_mShotInterval = AddComponent<Timer>(this);
 	_mShotInterval->Start(setShotInterval());
 
-	// シェイク用タイマー
-	_mShakeTimer = AddComponent<Timer>(this);
+	// シェイクコンポーネント
+	_mShaker = AddComponent<Shaker>(this);
 
 	// エネミーカウントを増加
 	GameManager::AddEnemy();
@@ -121,8 +122,8 @@ void Enemy::Update(double deltaTime)
 	GameManager::EnemyCollision(*this, position, dt);
 
 	// シェイク処理
-	if (_mShakeTimer->GetEnable()) {
-		shakeUpdate(position);
+	if (_mShaker->IsSeeking()) {
+		position += _mShaker->GetShakeOffset();
 	}
 
 	// 座標クランプ
@@ -162,32 +163,10 @@ void Enemy::Damage()
 	}
 }
 
-void Enemy::Shake(float intensity, double shakeTime)
+void Enemy::Shake(float power, double shakeTime)
 {
-	// 揺れの強さをセット
-	mShakeIntensity = intensity;
-
-	// タイマーをセット
-	_mShakeTimer->Start(shakeTime);
-}
-
-void Enemy::shakeUpdate(Vector3& position)
-{
-	// タイマーの進行度に応じて揺れの強さを算出
-	float progress = _mShakeTimer->GetProgress();
-	float intensity = mShakeIntensity * progress;
-	float angle = static_cast<float>(_mShakeTimer->GetTime()) * 50.0f;
-	float shakeX = intensity * cosf(angle);
-	float shakeY = intensity * sinf(angle);
-
-	// 座標に揺れを加算
-	position.x += shakeX;
-	position.y += shakeY;
-
-	// 現在時間が0なら揺れの強さを0にする
-	if (_mShakeTimer->IsTimeUp()) {
-		mShakeIntensity = 0.0f;
-	}
+	// 揺れの強さとタイマーをセット
+	_mShaker->Shake(power, shakeTime);
 }
 
 double Enemy::setShotInterval(double min, double max)

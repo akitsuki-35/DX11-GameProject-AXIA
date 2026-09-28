@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/05/19
-*	@updated : 2026/09/16
+*	@updated : 2026/09/28
 *============================================================*/
 #pragma once
 
@@ -14,6 +14,7 @@
 	前方宣言
 ------------------------------------------------------------*/
 class Timer;
+class Shaker;
 
 /*============================================================
 *	@class	: Enemy
@@ -31,11 +32,8 @@ private:
 	// ショット間隔
 	Timer* _mShotInterval{ nullptr };
 
-	// シェイク用タイマー
-	Timer* _mShakeTimer{ nullptr };
-
-	// シェイク強度
-	float mShakeIntensity{};
+	// シェイクコンポーネント
+	Shaker* _mShaker{ nullptr };
 
 public:
 	Enemy() = default;
@@ -49,12 +47,9 @@ public:
 	void Damage();
 
 	// シェイク
-	void Shake(float intensity, double shakeTime = 1.0);
+	void Shake(float power, double shakeTime = 1.0);
 
 private:
-	// シェイク更新
-	void shakeUpdate(Vector3& position);
-
 	// ショットインターバルをセット
 	double setShotInterval(double min = 1.0, double max = 3.0);
 };

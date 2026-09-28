@@ -4,7 +4,7 @@
 *
 * 　@author  : @akitsuki-35（https://github.com/akitsuki-35）
 * 　@date	 : 2026/09/21
-*	@updated : 2026/09/21
+*	@updated : 2026/09/28
 *============================================================*/
 #pragma once
 
@@ -14,7 +14,7 @@
 /*------------------------------------------------------------
 	前方宣言
 ------------------------------------------------------------*/
-class Timer;
+class Shaker;
 
 /*============================================================
 *	@class	: GameCamera
@@ -22,12 +22,9 @@ class Timer;
 *============================================================*/
 class GameCamera final : public Camera
 {
-protected:
-	// カメラシェイク用タイマー
-	Timer* _mShakeTimer{ nullptr };
-
-	// シェイク強度
-	float mShakeIntensity{};
+private:
+	// シェイクコンポーネント
+	Shaker* _mShaker{ nullptr };
 
 public:
 	virtual ~GameCamera() = default;
@@ -36,9 +33,5 @@ public:
 	void Update(double deltaTime) override;
 
 	// カメラシェイク
-	void Shake(float intensity, double shakeTime = 1.0);
-
-private:
-	// シェイク更新
-	void shakeUpdate();
+	void Shake(float power, double shakeTime = 1.0);
 };
