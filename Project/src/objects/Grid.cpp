@@ -16,7 +16,7 @@ void Grid::Initialize()
 	GridRenderer* renderer = AddComponent<GridRenderer>(this);
 
 	// グリッドサイズ設定
-	renderer->Set(20, 20, 5.0f);
+	renderer->Set(20, 20, 5.0f, "assets\\textures\\white.png");
 
 	// カラー設定
 	renderer->SetColor({ 0.2f, 0.4f, 1.0f, 1.0f });
