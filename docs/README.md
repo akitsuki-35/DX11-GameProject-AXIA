@@ -7,9 +7,9 @@ DirectX11 3Dアクションゲーム開発<br>
 ## 概要
 DirectX11 / C++20を用いて開発中のアクションゲーム。自作フレームワークを土台に、ヒット演出等の手触りを重視して制作しています。
 
-本プロジェクトのサブモジュールとして自作フレームワーク"IGNITE"を用いています。 → [https://github.com/akitsuki-35/DX11-Ignite-Framework]
+本プロジェクトのサブモジュールとして自作フレームワーク"IGNITE"を用いています。 → [ https://github.com/akitsuki-35/DX11-Ignite-Framework ]
 
-本プロジェクトの制作にあたり、自作のパーティクルシミュレーターを用いています。 → [https://github.com/akitsuki-35/DX11-Particle-Simulator]
+本プロジェクトの制作にあたり、自作のパーティクルシミュレーターを用いています。 → [ https://github.com/akitsuki-35/DX11-Particle-Simulator ]
 
 ## ブランチ
 * master　…　安定版のdevelopをマージ
@@ -39,10 +39,16 @@ DirectX11 / C++20を用いて開発中のアクションゲーム。自作フレ
 | publicメンバ関数 | PascalCase | FunctionName |
 | privateメンバ関数 | camelCase | functionName |
 
+### 列挙体
+| Type | Style | Sample |
+| ---- | ---- | ---- |
+| 列挙体 | PascalCase | EnumName |
+| 列挙体変数 | PascalCase | EnumValue |
+
 ### 構造体
 | Type | Style | Sample |
 | ---- | ---- | ---- |
-| 構造体 | PascalCase | StructName |
+| 構造体 | UPPER_SNAKE_CASE | STRUCT_NAME |
 | 構造体変数 | PascalCase | StructValue |
 
 ---
